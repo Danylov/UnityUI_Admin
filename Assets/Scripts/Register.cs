@@ -1,12 +1,12 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Button = UnityEngine.UI.Button;
+using Toggle = UnityEngine.UI.Toggle;
 
 public class Register : MonoBehaviour
 {
+    private PersDataCheck persDataCheck;
+    
     public GameObject fullname;
     public GameObject organizType;
     public GameObject position;
@@ -14,8 +14,10 @@ public class Register : MonoBehaviour
     public GameObject login;
     public GameObject passw;
     public GameObject confPassw;
+    public GameObject PersData;
     public Button regButton;
-
+    
+    private Toggle persDataToggle;
     private string Fullname;
     private string OrganizType;
     private string Position;
@@ -25,12 +27,14 @@ public class Register : MonoBehaviour
     private string ConfPassw;
 
     private string form;
-    private bool EmailValid = false;
+    // private bool EmailValid = false;
     
-    // Start is called before the first frame update
     void Start()
     {
+        persDataCheck = GameObject.Find("PersDataImage").GetComponent<PersDataCheck>();
         regButton.onClick.AddListener(RegisterButton);
+        persDataToggle = PersData.GetComponent<Toggle>();
+        persDataToggle.onValueChanged.AddListener((x) => Invoke("toggleChanged", 0f));
     }
 
     // Update is called once per frame
@@ -46,7 +50,7 @@ public class Register : MonoBehaviour
             if (passw.GetComponent<InputField>().isFocused)  confPassw.GetComponent<InputField>().Select();
             if (confPassw.GetComponent<InputField>().isFocused)  fullname.GetComponent<InputField>().Select();
         }
-        
+                    
         Fullname = fullname.GetComponent<InputField>().text;
         OrganizType = organizType.GetComponent<InputField>().text;
         Position = position.GetComponent<InputField>().text;
@@ -54,13 +58,18 @@ public class Register : MonoBehaviour
         Login = login.GetComponent<InputField>().text;
         Passw = passw.GetComponent<InputField>().text;
         ConfPassw = confPassw.GetComponent<InputField>().text;
-
+            
         if (Input.GetKeyDown(KeyCode.Return))  RegisterButton();
     }
-
-    public void RegisterButton()
+            
+    private void RegisterButton()
     {
         if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw)) Debug.Log("Registration successfull");
         else Debug.Log("Fill required field");
+    }
+            
+    private void toggleChanged()
+    {
+        persDataCheck.changeSprite();
     }
 }
