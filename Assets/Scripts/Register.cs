@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 using Toggle = UnityEngine.UI.Toggle;
@@ -7,17 +8,16 @@ public class Register : MonoBehaviour
 {
     private PersDataCheck persDataCheck;
     
-    public GameObject fullname;
-    public GameObject organizType;
-    public GameObject position;
-    public GameObject persNumber;
-    public GameObject login;
-    public GameObject passw;
-    public GameObject confPassw;
-    public GameObject PersData;
+    public TMP_InputField fullname;
+    public TMP_InputField organizType;
+    public TMP_InputField position;
+    public TMP_InputField persNumber;
+    public TMP_InputField login;
+    public TMP_InputField passw;
+    public TMP_InputField confPassw;
+    public Toggle PersData;
     public Button regButton;
     
-    private Toggle persDataToggle;
     private string Fullname;
     private string OrganizType;
     private string Position;
@@ -26,15 +26,11 @@ public class Register : MonoBehaviour
     private string Passw;
     private string ConfPassw;
 
-    private string form;
-    // private bool EmailValid = false;
-    
     void Start()
     {
         persDataCheck = GameObject.Find("PersDataImage").GetComponent<PersDataCheck>();
         regButton.onClick.AddListener(RegisterButton);
-        persDataToggle = PersData.GetComponent<Toggle>();
-        persDataToggle.onValueChanged.AddListener((x) => Invoke("toggleChanged", 0f));
+        PersData.onValueChanged.AddListener((x) => Invoke("toggleChanged", 0f));
     }
 
     // Update is called once per frame
@@ -42,22 +38,22 @@ public class Register : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (fullname.GetComponent<InputField>().isFocused)  organizType.GetComponent<InputField>().Select();
-            if (organizType.GetComponent<InputField>().isFocused)  position.GetComponent<InputField>().Select();
-            if (position.GetComponent<InputField>().isFocused)  persNumber.GetComponent<InputField>().Select();
-            if (persNumber.GetComponent<InputField>().isFocused)  login.GetComponent<InputField>().Select();
-            if (login.GetComponent<InputField>().isFocused)  passw.GetComponent<InputField>().Select();
-            if (passw.GetComponent<InputField>().isFocused)  confPassw.GetComponent<InputField>().Select();
-            if (confPassw.GetComponent<InputField>().isFocused)  fullname.GetComponent<InputField>().Select();
+            if (fullname.isFocused)  organizType.Select();
+            if (organizType.isFocused)  position.Select();
+            if (position.isFocused)  persNumber.Select();
+            if (persNumber.isFocused)  login.Select();
+            if (login.isFocused)  passw.Select();
+            if (passw.isFocused)  confPassw.Select();
+            if (confPassw.isFocused)  fullname.Select();
         }
                     
-        Fullname = fullname.GetComponent<InputField>().text;
-        OrganizType = organizType.GetComponent<InputField>().text;
-        Position = position.GetComponent<InputField>().text;
-        PersNumber = persNumber.GetComponent<InputField>().text;
-        Login = login.GetComponent<InputField>().text;
-        Passw = passw.GetComponent<InputField>().text;
-        ConfPassw = confPassw.GetComponent<InputField>().text;
+        Fullname = fullname.text;
+        OrganizType = organizType.text;
+        Position = position.text;
+        PersNumber = persNumber.text;
+        Login = login.text;
+        Passw = passw.text;
+        ConfPassw = confPassw.text;
             
         if (Input.GetKeyDown(KeyCode.Return))  RegisterButton();
     }
