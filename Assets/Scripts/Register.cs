@@ -68,4 +68,15 @@ public class Register : MonoBehaviour
     {
         persDataCheck.changeSprite();
     }
+    
+    public void ShowPanel()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void HidePanel()
+    {
+        gameObject.SetActive(false);
+    }
+
 }
