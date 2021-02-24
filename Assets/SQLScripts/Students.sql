@@ -1,5 +1,5 @@
 CREATE TABLE `students` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `fullname` varchar(45) DEFAULT NULL,
   `organiztype` varchar(45) DEFAULT NULL,
   `position` varchar(45) DEFAULT NULL,

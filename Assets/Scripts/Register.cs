@@ -1,6 +1,10 @@
-﻿using TMPro;
+﻿using System.Data;
+using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 using Button = UnityEngine.UI.Button;
 using Toggle = UnityEngine.UI.Toggle;
 
@@ -26,12 +30,14 @@ public class Register : MonoBehaviour
     private string Passw;
     private string ConfPassw;
 
+    private string connect = "Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
+    
     void Start()
     {
         persDataCheck = GameObject.Find("PersDataImage").GetComponent<PersDataCheck>();
         regButton.onClick.AddListener(RegisterButton);
         PersData.onValueChanged.AddListener((x) => Invoke("toggleChanged", 0f));
-    }
+        }
 
     // Update is called once per frame
     void Update()
@@ -60,12 +66,66 @@ public class Register : MonoBehaviour
             
     private void RegisterButton()
     {
-        if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw)) Debug.Log("Registration successfull");
+        if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw))
+        {
+            InsertEntries();
+            Debug.Log("Registration successfull");
+        }
         else Debug.Log("Fill required field");
     }
             
     private void toggleChanged()
     {
         persDataCheck.changeSprite();
+    }
+    
+    public void ShowPanel()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void HidePanel()
+    {
+        gameObject.SetActive(false);
+    }
+
+    void InsertEntries() 
+    { 
+        string query = string.Empty; 
+        try 
+        { 
+            MySqlConnection con = new MySqlConnection(connect); 
+            // MySqlCommand cmd = null;
+            if (con.State.ToString()!="Open")  con.Open(); 
+            query = "INSERT INTO students (fullname, organiztype, position, persnumber, login, password) VALUES (?fullname, ?organiztype, ?position, ?persnumber, ?login, ?password)";
+            using (con) 
+            {
+                    using (MySqlCommand cmd = new MySqlCommand(query, con)) 
+                    { 
+                        MySqlParameter oParam1 = cmd.Parameters.Add("?fullname", MySqlDbType.VarChar); 
+                        oParam1.Value = Fullname; 
+                        MySqlParameter oParam2 = cmd.Parameters.Add("?organiztype", MySqlDbType.VarChar); 
+                        oParam2.Value = OrganizType; 
+                        MySqlParameter oParam3 = cmd.Parameters.Add("?position", MySqlDbType.VarChar); 
+                        oParam3.Value = Position; 
+                        MySqlParameter oParam4 = cmd.Parameters.Add("?persnumber", MySqlDbType.Int32); 
+                        oParam4.Value = PersNumber; 
+                        MySqlParameter oParam5 = cmd.Parameters.Add("?login", MySqlDbType.VarChar); 
+                        oParam5.Value = Login; 
+                        MySqlParameter oParam6 = cmd.Parameters.Add("?password", MySqlDbType.VarChar); 
+                        oParam6.Value = Passw; 
+                        cmd.ExecuteNonQuery(); 
+                    }
+            }
+            con.Close(); 
+            con.Dispose();
+            
+            
+        }
+        catch (IOException ex) 
+        { 
+            Debug.Log(ex.ToString()); 
+        }
+        finally {} 
     }
 }
