@@ -65658,7 +65658,7 @@ GameObject:
   - component: {fileID: 1515157407}
   - component: {fileID: 1515157406}
   m_Layer: 5
-  m_Name: TopPanel
+  m_Name: TopPanelULR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77277,7 +77277,7 @@ GameObject:
   - component: {fileID: 1809900935}
   - component: {fileID: 1809900934}
   m_Layer: 5
-  m_Name: BotPanel
+  m_Name: BotPanelULR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
