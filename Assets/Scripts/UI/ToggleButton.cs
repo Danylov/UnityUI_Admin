@@ -8,12 +8,13 @@ namespace UI
     {
         [SerializeField] private Button button;
         [SerializeField] private Image tickImage;
-        [SerializeField] bool isOn;
+        private bool isOn = false;
 
         public bool IsOn => isOn;
 
         public void Start()
         {
+            tickImage.gameObject.SetActive(isOn);
             button.onClick.AddListener(Switch);
         }
 
