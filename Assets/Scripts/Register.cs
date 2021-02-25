@@ -71,6 +71,7 @@ public class Register : MonoBehaviour
         if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw))
         {
             InsertEntries();
+            usersVis.SpawnStudents();
             Debug.Log("Registration successfull");
         }
         else Debug.Log("Fill required field");

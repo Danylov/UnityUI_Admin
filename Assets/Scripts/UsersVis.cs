@@ -16,6 +16,11 @@ public class UsersVis : MonoBehaviour
     void Start()
     {
         register = GameObject.Find("Registration").GetComponent<Register>();
+        SpawnStudents();
+    }
+
+    public void SpawnStudents()
+    {
         botPanelULR = GameObject.Find("BotPanelULR");
         var query = string.Empty;
         try 
@@ -32,7 +37,7 @@ public class UsersVis : MonoBehaviour
                         while (reader.Read())
                         {
                             var i = 0;
-                           SpawnStudent(i, reader);
+                            SpawnStudent(i, reader);
                             i++;
                         }
                     }
