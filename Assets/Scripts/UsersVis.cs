@@ -9,19 +9,21 @@ using UnityEngine.UIElements;
 public class UsersVis : MonoBehaviour
 {
     private Register register;
-    private GameObject botPanelULR;
+    private GameObject studentPanelContent;
     public GameObject studentPrefab;
+    // public Button usersVisClose;
     
     // Start is called before the first frame update
     void Start()
     {
+        // usersVisClose.onClick.AddListener(usersVisCloseM);
         register = GameObject.Find("Registration").GetComponent<Register>();
         SpawnStudents();
     }
 
     public void SpawnStudents()
     {
-        botPanelULR = GameObject.Find("BotPanelULR");
+        studentPanelContent = GameObject.Find("StudentPanelContent");
         var query = string.Empty;
         try 
         { 
@@ -58,8 +60,9 @@ public class UsersVis : MonoBehaviour
             reader[0], reader[1], reader[2], reader[3], reader[4], reader[5])); // Отладка
         var spawnLocation = new Vector3(0, 2*i, 0);
         var studentInfo = Instantiate(studentPrefab, spawnLocation, Quaternion.identity);
-        studentInfo.transform.SetParent(botPanelULR.transform, false);
+        studentInfo.transform.SetParent(studentPanelContent.transform, false);
         var stInfoBlock = studentInfo.GetComponent<UserStudentBlock>();
+        Debug.Log(stInfoBlock);
         stInfoBlock.NameText.text = reader[0].ToString();
         stInfoBlock.OrgTypeText.text = reader[1].ToString();
         stInfoBlock.JobText.text = reader[2].ToString();
@@ -77,4 +80,8 @@ public class UsersVis : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void usersVisCloseM()
+    {
+        
+    }
 }
