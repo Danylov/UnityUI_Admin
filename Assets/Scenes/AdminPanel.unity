@@ -2397,8 +2397,9 @@ GameObject:
   - component: {fileID: 55034636}
   - component: {fileID: 55034635}
   - component: {fileID: 55034634}
+  - component: {fileID: 55034637}
   m_Layer: 5
-  m_Name: Students
+  m_Name: UsersList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2489,6 +2490,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55034632}
   m_CullTransparentMesh: 0
+--- !u!114 &55034637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55034632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cb877c0450a1e43a686abe432eaf69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  studentPrefab: {fileID: 1298046608943336987, guid: 82d91734104817e4ca2de0b08cedfa6f,
+    type: 3}
 --- !u!1 &60470849
 GameObject:
   m_ObjectHideFlags: 0
@@ -21959,6 +21974,7 @@ MonoBehaviour:
   confPassw: {fileID: 2111065580}
   PersData: {fileID: 803153284}
   regButton: {fileID: 543319900}
+  connect: Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;
 --- !u!1 &518486567
 GameObject:
   m_ObjectHideFlags: 0
@@ -66493,6 +66509,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903a3a2d11b457d4e8b1ba872255bca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  loginText: {fileID: 0}
+  orgTypeText: {fileID: 0}
+  jobText: {fileID: 0}
+  tabNumText: {fileID: 0}
 --- !u!114 &1543756899
 MonoBehaviour:
   m_ObjectHideFlags: 0

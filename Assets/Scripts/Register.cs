@@ -11,6 +11,7 @@ using Toggle = UnityEngine.UI.Toggle;
 public class Register : MonoBehaviour
 {
     private PersDataCheck persDataCheck;
+    private UsersVis usersVis;
     
     public TMP_InputField fullname;
     public TMP_InputField organizType;
@@ -30,13 +31,14 @@ public class Register : MonoBehaviour
     private string Passw;
     private string ConfPassw;
 
-    private string connect = "Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
+    public string connect = "Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
     
     void Start()
     {
         persDataCheck = GameObject.Find("PersDataImage").GetComponent<PersDataCheck>();
         regButton.onClick.AddListener(RegisterButton);
         PersData.onValueChanged.AddListener((x) => Invoke("toggleChanged", 0f));
+        usersVis = GameObject.Find("UsersList").GetComponent<UsersVis>();
         }
 
     // Update is called once per frame
@@ -91,11 +93,10 @@ public class Register : MonoBehaviour
 
     void InsertEntries() 
     { 
-        string query = string.Empty; 
+        var query = string.Empty; 
         try 
         { 
             MySqlConnection con = new MySqlConnection(connect); 
-            // MySqlCommand cmd = null;
             if (con.State.ToString()!="Open")  con.Open(); 
             query = "INSERT INTO students (fullname, organiztype, position, persnumber, login, password) VALUES (?fullname, ?organiztype, ?position, ?persnumber, ?login, ?password)";
             using (con) 
@@ -119,13 +120,12 @@ public class Register : MonoBehaviour
             }
             con.Close(); 
             con.Dispose();
-            
-            
+            HidePanel();
+            usersVis.ShowPanel();
         }
         catch (IOException ex) 
         { 
             Debug.Log(ex.ToString()); 
         }
-        finally {} 
     }
 }

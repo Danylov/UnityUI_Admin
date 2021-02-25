@@ -7,6 +7,7 @@ public class Authorization : MonoBehaviour
 {
     private Register register;
     private CreateTask createTask;
+    private UsersVis usersVis;
     public Button toRegistration;
     
     // Start is called before the first frame update
@@ -15,8 +16,10 @@ public class Authorization : MonoBehaviour
         toRegistration.onClick.AddListener(ToRegistration);
         register = GameObject.Find("Registration").GetComponent<Register>();
         createTask = GameObject.Find("CreateTask").GetComponent<CreateTask>();
+        usersVis = GameObject.Find("UsersList").GetComponent<UsersVis>();
         register.HidePanel();
         createTask.HidePanel();
+        usersVis.HidePanel();
     }
 
     // Update is called once per frame
