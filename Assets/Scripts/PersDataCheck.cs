@@ -6,7 +6,7 @@ public class PersDataCheck : MonoBehaviour
     Image m_Image;
     public Sprite m_Sprite1;
     public Sprite m_Sprite2;
-    private bool swtch;
+    public bool persDataAgreed;
     
     void Start()
     {
@@ -16,8 +16,8 @@ public class PersDataCheck : MonoBehaviour
 
     public void changeSprite()
     {
-        swtch = !swtch;
-        if (swtch) m_Image.sprite = m_Sprite1;
-        else m_Image.sprite = m_Sprite2;
+        persDataAgreed = !persDataAgreed;
+        if (persDataAgreed) m_Image.sprite = m_Sprite2;
+        else m_Image.sprite = m_Sprite1;
     }
 }

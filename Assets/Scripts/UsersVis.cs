@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using MySql.Data.MySqlClient;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class UsersVis : MonoBehaviour
 {
@@ -56,8 +53,6 @@ public class UsersVis : MonoBehaviour
 
     private void SpawnStudent(int i, MySqlDataReader reader)
     {
-        Debug.Log(String.Format("{0}, {1}, {2}, {3}, {4}, {5}", 
-            reader[0], reader[1], reader[2], reader[3], reader[4], reader[5])); // Отладка
         var spawnLocation = new Vector3(0, 2*i, 0);
         var studentInfo = Instantiate(studentPrefab, spawnLocation, Quaternion.identity);
         studentInfo.transform.SetParent(studentPanelContent.transform, false);

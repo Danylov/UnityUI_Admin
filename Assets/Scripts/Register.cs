@@ -1,15 +1,13 @@
-﻿using System.Data;
-using System.IO;
+﻿using System.IO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using MySql.Data;
 using MySql.Data.MySqlClient;
 using Button = UnityEngine.UI.Button;
 using Toggle = UnityEngine.UI.Toggle;
 
 public class Register : MonoBehaviour
 {
+    private MainScripts mainScripts;
     private PersDataCheck persDataCheck;
     private UsersVis usersVis;
     
@@ -35,6 +33,7 @@ public class Register : MonoBehaviour
     
     void Start()
     {
+        mainScripts = GameObject.Find("MainPanel").GetComponent<MainScripts>();
         persDataCheck = GameObject.Find("PersDataImage").GetComponent<PersDataCheck>();
         regButton.onClick.AddListener(RegisterButton);
         PersData.onValueChanged.AddListener((x) => Invoke("toggleChanged", 0f));
@@ -68,13 +67,13 @@ public class Register : MonoBehaviour
             
     private void RegisterButton()
     {
-        if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw))
+        if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw) && (persDataCheck.persDataAgreed == true))
         {
             InsertEntries();
             usersVis.SpawnStudents();
-            Debug.Log("Registration successfull");
+            Debug.Log("Регистрация успешная");
         }
-        else Debug.Log("Fill required field");
+        else Debug.Log("Заполните необходимые поля (имя, логин, пароль, подтверждение пароля), согласитесь на использование личных данных");
     }
             
     private void toggleChanged()
@@ -115,14 +114,14 @@ public class Register : MonoBehaviour
                         MySqlParameter oParam5 = cmd.Parameters.Add("?login", MySqlDbType.VarChar); 
                         oParam5.Value = Login; 
                         MySqlParameter oParam6 = cmd.Parameters.Add("?password", MySqlDbType.VarChar); 
-                        oParam6.Value = Passw; 
+                        oParam6.Value = mainScripts.PasswEncryption(Passw); 
                         cmd.ExecuteNonQuery(); 
                     }
             }
             con.Close(); 
             con.Dispose();
-            HidePanel();
             usersVis.ShowPanel();
+            HidePanel();
         }
         catch (IOException ex) 
         { 
