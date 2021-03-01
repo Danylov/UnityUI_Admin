@@ -29,6 +29,15 @@ public class Authorization : MonoBehaviour
         usersVis.HidePanel();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (login.isFocused)  passw.Select();
+            if (passw.isFocused)  login.Select();
+        }
+    }
+
     void EnterButton()
     {
         try 

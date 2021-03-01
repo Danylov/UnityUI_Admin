@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using MySql.Data.MySqlClient;
+using UI.Blocks;
 using UnityEngine;
 
 public class UsersVis : MonoBehaviour
@@ -21,12 +22,12 @@ public class UsersVis : MonoBehaviour
     public void SpawnStudents()
     {
         studentPanelContent = GameObject.Find("StudentPanelContent");
-        var query = string.Empty;
+        foreach(Transform child in studentPanelContent.transform)   Destroy(child.gameObject);
         try 
         { 
             MySqlConnection con = new MySqlConnection(register.connect); 
             if (con.State.ToString()!="Open")  con.Open(); 
-            query = "SELECT fullname, organiztype, position, persnumber, login, password FROM students;";
+            var query = "SELECT fullname, organiztype, position, persnumber, login, password FROM students;";
             using (con)
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
@@ -36,7 +37,7 @@ public class UsersVis : MonoBehaviour
                         while (reader.Read())
                         {
                             var i = 0;
-                            SpawnStudent(i, reader);
+                            SpawnStudent(i, reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString());
                             i++;
                         }
                     }
@@ -51,18 +52,17 @@ public class UsersVis : MonoBehaviour
         }
     }
 
-    private void SpawnStudent(int i, MySqlDataReader reader)
+    private void SpawnStudent(int i, string fullName, string organizType, string position, string persNumber, string login)
     {
         var spawnLocation = new Vector3(0, 2*i, 0);
         var studentInfo = Instantiate(studentPrefab, spawnLocation, Quaternion.identity);
         studentInfo.transform.SetParent(studentPanelContent.transform, false);
         var stInfoBlock = studentInfo.GetComponent<UserStudentBlock>();
-        Debug.Log(stInfoBlock);
-        stInfoBlock.NameText.text = reader[0].ToString();
-        stInfoBlock.OrgTypeText.text = reader[1].ToString();
-        stInfoBlock.JobText.text = reader[2].ToString();
-        stInfoBlock.TabNumText.text = reader[3].ToString();
-        stInfoBlock.LoginText.text = reader[4].ToString();
+        stInfoBlock.NameText.text = fullName;
+        stInfoBlock.OrgTypeText.text = organizType;
+        stInfoBlock.JobText.text = position;
+        stInfoBlock.TabNumText.text = persNumber;
+        stInfoBlock.LoginText.text = login;
     }
         
     public void ShowPanel()

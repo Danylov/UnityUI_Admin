@@ -17,7 +17,7 @@ public class PersDataCheck : MonoBehaviour
     public void changeSprite()
     {
         persDataAgreed = !persDataAgreed;
-        if (persDataAgreed) m_Image.sprite = m_Sprite2;
-        else m_Image.sprite = m_Sprite1;
+        if (!persDataAgreed) m_Image.sprite = m_Sprite1;
+        else m_Image.sprite = m_Sprite2;
     }
 }
