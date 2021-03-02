@@ -6,16 +6,15 @@ using UnityEngine;
 
 public class UsersVis : MonoBehaviour
 {
-    private Register register;
+    private MainScripts mainScripts;
     private GameObject studentPanelContent;
     public GameObject studentPrefab;
     // public Button usersVisClose;
     
-    // Start is called before the first frame update
     void Start()
     {
         // usersVisClose.onClick.AddListener(usersVisCloseM);
-        register = GameObject.Find("Registration").GetComponent<Register>();
+        mainScripts = GameObject.Find("MainPanel").GetComponent<MainScripts>();
         SpawnStudents();
     }
 
@@ -25,7 +24,7 @@ public class UsersVis : MonoBehaviour
         foreach(Transform child in studentPanelContent.transform)   Destroy(child.gameObject);
         try 
         { 
-            MySqlConnection con = new MySqlConnection(register.connect); 
+            MySqlConnection con = new MySqlConnection(mainScripts.connect); 
             if (con.State.ToString()!="Open")  con.Open(); 
             var query = "SELECT fullname, organiztype, position, persnumber, login, password FROM students;";
             using (con)

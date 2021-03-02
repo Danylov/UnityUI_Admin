@@ -28,8 +28,6 @@ public class Register : MonoBehaviour
     private string Login;
     private string Passw;
     private string ConfPassw;
-
-    public string connect = "Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
     
     void Start()
     {
@@ -40,7 +38,6 @@ public class Register : MonoBehaviour
         usersVis = GameObject.Find("UsersList").GetComponent<UsersVis>();
         }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -96,7 +93,7 @@ public class Register : MonoBehaviour
         var query = string.Empty; 
         try 
         { 
-            MySqlConnection con = new MySqlConnection(connect); 
+            MySqlConnection con = new MySqlConnection(mainScripts.connect); 
             if (con.State.ToString()!="Open")  con.Open(); 
             query = "INSERT INTO students (fullname, organiztype, position, persnumber, login, password) VALUES (?fullname, ?organiztype, ?position, ?persnumber, ?login, ?password)";
             using (con) 
@@ -120,8 +117,7 @@ public class Register : MonoBehaviour
             }
             con.Close(); 
             con.Dispose();
-            usersVis.ShowPanel();
-            HidePanel();
+            mainScripts.ShowUsersListPanel();
         }
         catch (IOException ex) 
         { 

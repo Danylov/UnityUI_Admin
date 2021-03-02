@@ -7,9 +7,6 @@ using UnityEngine.UI;
 public class Authorization : MonoBehaviour
 {
     private MainScripts mainScripts;
-    private Register register;
-    private CreateTask createTask;
-    private UsersVis usersVis;
     public TMP_InputField login;
     public TMP_InputField passw;
     public Button enterButton;
@@ -19,14 +16,10 @@ public class Authorization : MonoBehaviour
     void Start()
     {
         mainScripts = GameObject.Find("MainPanel").GetComponent<MainScripts>();
+        mainScripts.StartMainScript();
         toRegistration.onClick.AddListener(ToRegistration);
         enterButton.onClick.AddListener(EnterButton);
-        register = GameObject.Find("Registration").GetComponent<Register>();
-        createTask = GameObject.Find("CreateTask").GetComponent<CreateTask>();
-        usersVis = GameObject.Find("UsersList").GetComponent<UsersVis>();
-        register.HidePanel();
-        createTask.HidePanel();
-        usersVis.HidePanel();
+        mainScripts.ShowAuthorizationPanel();
     }
 
     void Update()
@@ -42,7 +35,7 @@ public class Authorization : MonoBehaviour
     {
         try 
         { 
-            MySqlConnection con = new MySqlConnection(register.connect); 
+            MySqlConnection con = new MySqlConnection(mainScripts.connect); 
             if (con.State.ToString()!="Open")  con.Open();
             var enteredLogin = login.text;
             var query = "SELECT password FROM students WHERE login = '" + enteredLogin + "'";
@@ -53,11 +46,7 @@ public class Authorization : MonoBehaviour
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         reader.Read();
-                        if (reader[0].ToString() == mainScripts.PasswEncryption(passw.text))
-                        {
-                            usersVis.ShowPanel();
-                            HidePanel();
-                        }
+                        if (reader[0].ToString() == mainScripts.PasswEncryption(passw.text))  mainScripts.ShowUsersListPanel();
                         else Debug.Log("Введенные логин и пароль не соответствуют друг другу");
                     }}
             }
@@ -73,8 +62,7 @@ public class Authorization : MonoBehaviour
 
     void ToRegistration()
     {
-        register.ShowPanel();
-        HidePanel();
+        mainScripts.ShowRegistrationPanel();
     }
     
     public void ShowPanel()
