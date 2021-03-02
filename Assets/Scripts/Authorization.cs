@@ -46,7 +46,7 @@ public class Authorization : MonoBehaviour
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         reader.Read();
-                        if (reader[0].ToString() == mainScripts.PasswEncryption(passw.text))  mainScripts.ShowUsersListPanel();
+                        if (reader[0].ToString() == mainScripts.PasswEncryption(passw.text))  mainScripts.ShowStudentsListPanel();
                         else Debug.Log("Введенные логин и пароль не соответствуют друг другу");
                     }}
             }

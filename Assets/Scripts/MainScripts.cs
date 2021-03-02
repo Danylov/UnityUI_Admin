@@ -6,7 +6,7 @@ public class MainScripts : MonoBehaviour
 {
     private Authorization authorization;
     private Register register;
-    private UsersVis usersVis;
+    private StudentsVis studentsVis;
     private CreateTask createTask;
     
     public string connect = "Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
@@ -25,7 +25,7 @@ public class MainScripts : MonoBehaviour
     {
         authorization = GameObject.Find("Authorization").GetComponent<Authorization>();
         register = GameObject.Find("Registration").GetComponent<Register>();
-        usersVis = GameObject.Find("UsersList").GetComponent<UsersVis>();
+        studentsVis = GameObject.Find("StudentsList").GetComponent<StudentsVis>();
         createTask = GameObject.Find("CreateTask").GetComponent<CreateTask>();
     }
 
@@ -33,7 +33,7 @@ public class MainScripts : MonoBehaviour
     {
         authorization.HidePanel();
         register.HidePanel();
-        usersVis.HidePanel();
+        studentsVis.HidePanel();
         createTask.HidePanel();
     }
 
@@ -50,10 +50,10 @@ public class MainScripts : MonoBehaviour
         register.ShowPanel();
     }
 
-    public void ShowUsersListPanel()
+    public void ShowStudentsListPanel()
     {
         HideAllPanels();
-        usersVis.ShowPanel();
+        studentsVis.ShowPanel();
     }
 
     public void ShowCreateTaskPanel()
