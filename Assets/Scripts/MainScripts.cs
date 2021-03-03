@@ -8,10 +8,8 @@ public class MainScripts : MonoBehaviour
     private Register register;
     private StudentsVis studentsVis;
     private CreateTask createTask;
-    
-    public string connect = "Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
 
-    public string PasswEncryption(string notEncrPassw)
+    public static string PasswEncryption(string notEncrPassw)
     {
         MD5 md5 = new MD5CryptoServiceProvider();  
         md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(notEncrPassw));  

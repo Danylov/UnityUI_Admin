@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using MySql.Data.MySqlClient;
 using TMPro;
 using UnityEngine;
@@ -33,31 +34,15 @@ public class Authorization : MonoBehaviour
 
     void EnterButton()
     {
-        try 
-        { 
-            MySqlConnection con = new MySqlConnection(mainScripts.connect); 
-            if (con.State.ToString()!="Open")  con.Open();
-            var enteredLogin = login.text;
-            var query = "SELECT password FROM students WHERE login = '" + enteredLogin + "'";
-            using (con)
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query, con))
-                {
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        reader.Read();
-                        if (reader[0].ToString() == mainScripts.PasswEncryption(passw.text))  mainScripts.ShowStudentsListPanel();
-                        else Debug.Log("Введенные логин и пароль не соответствуют друг другу");
-                    }}
-            }
-            con.Close(); 
-            con.Dispose();
-        }
-        catch (IOException ex) 
-        { 
-            Debug.Log(ex.ToString()); 
-        }
- 
+        var studentsDB = new StudentsDB();
+        var currPassword = MainScripts.PasswEncryption(passw.text);
+        var reader = studentsDB.findStudent(login.text);
+        if (reader.HasRows)
+        {
+            reader.Read();
+            if (reader[0].ToString() == currPassword)  mainScripts.ShowStudentsListPanel();
+            else Debug.Log("Введенные логин и пароль не соответствуют друг другу");
+        } else Debug.Log("Введенный логин не найден в БД");
     }
 
     void ToRegistration()

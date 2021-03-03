@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using MySql.Data.MySqlClient;
@@ -36,7 +37,7 @@ public class Register : MonoBehaviour
         regButton.onClick.AddListener(RegisterButton);
         PersData.onValueChanged.AddListener((x) => Invoke("toggleChanged", 0f));
         studentsVis = GameObject.Find("StudentsList").GetComponent<StudentsVis>();
-        }
+    }
 
     void Update()
     {
@@ -66,7 +67,7 @@ public class Register : MonoBehaviour
     {
         if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw) && (persDataCheck.persDataAgreed == true))
         {
-            InsertEntries();
+            AddStudentToDB();
             studentsVis.SpawnStudents();
             Debug.Log("Регистрация успешная");
         }
@@ -88,40 +89,11 @@ public class Register : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void InsertEntries() 
+    void AddStudentToDB() 
     { 
-        var query = string.Empty; 
-        try 
-        { 
-            MySqlConnection con = new MySqlConnection(mainScripts.connect); 
-            if (con.State.ToString()!="Open")  con.Open(); 
-            query = "INSERT INTO students (fullname, organiztype, position, persnumber, login, password) VALUES (?fullname, ?organiztype, ?position, ?persnumber, ?login, ?password)";
-            using (con) 
-            {
-                    using (MySqlCommand cmd = new MySqlCommand(query, con)) 
-                    { 
-                        MySqlParameter oParam1 = cmd.Parameters.Add("?fullname", MySqlDbType.VarChar); 
-                        oParam1.Value = Fullname; 
-                        MySqlParameter oParam2 = cmd.Parameters.Add("?organiztype", MySqlDbType.VarChar); 
-                        oParam2.Value = OrganizType; 
-                        MySqlParameter oParam3 = cmd.Parameters.Add("?position", MySqlDbType.VarChar); 
-                        oParam3.Value = Position; 
-                        MySqlParameter oParam4 = cmd.Parameters.Add("?persnumber", MySqlDbType.Int32); 
-                        oParam4.Value = PersNumber; 
-                        MySqlParameter oParam5 = cmd.Parameters.Add("?login", MySqlDbType.VarChar); 
-                        oParam5.Value = Login; 
-                        MySqlParameter oParam6 = cmd.Parameters.Add("?password", MySqlDbType.VarChar); 
-                        oParam6.Value = mainScripts.PasswEncryption(Passw); 
-                        cmd.ExecuteNonQuery(); 
-                    }
-            }
-            con.Close(); 
-            con.Dispose();
-            mainScripts.ShowStudentsListPanel();
-        }
-        catch (IOException ex) 
-        { 
-            Debug.Log(ex.ToString()); 
-        }
+        var studentsDB = new StudentsDB();
+        studentsDB.addStudent(new Student(Fullname, OrganizType, Position, Int32.Parse(PersNumber), Login, Passw));
+        studentsDB.close();
+        mainScripts.ShowStudentsListPanel();
     }
 }

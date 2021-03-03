@@ -25,33 +25,16 @@ public class StudentsVis : MonoBehaviour
     public void SpawnStudents()
     {
         foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
-        try 
-        { 
-            MySqlConnection con = new MySqlConnection(mainScripts.connect); 
-            if (con.State.ToString()!="Open")  con.Open(); 
-            var query = "SELECT fullname, organiztype, position, persnumber, login, password FROM students;";
-            using (con)
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query, con))
-                {
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var i = 0;
-                            SpawnStudent(i, reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString());
-                            i++;
-                        }
-                    }
-                }
-            }
-            con.Close(); 
-            con.Dispose();
+        var studentsDB = new StudentsDB();
+        var reader = studentsDB.getAllStudents();
+        var i = 0;
+        while (reader.Read())
+        {
+            SpawnStudent(i, reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), 
+                reader[4].ToString(), reader[5].ToString());
+            i++;
         }
-        catch (IOException ex) 
-        { 
-            Debug.Log(ex.ToString()); 
-        }
+        studentsDB.close();
     }
 
     private void SpawnStudent(int i, string fullName, string organizType, string position, string persNumber, string login)
@@ -79,36 +62,17 @@ public class StudentsVis : MonoBehaviour
 
     private void SLFindNameChanged(string currInput)
     {
-        Debug.Log(currInput); // Отладка
         foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
-        try 
-        { 
-            MySqlConnection con = new MySqlConnection(mainScripts.connect); 
-            if (con.State.ToString()!="Open")  con.Open(); 
-            var query = "SELECT fullname, organiztype, position, persnumber, login, password FROM students WHERE fullname LIKE '" + currInput + 
-                        "%' OR  login LIKE '" + currInput + "%'";
-            using (con)
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query, con))
-                {
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var i = 0;
-                            SpawnStudent(i, reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString());
-                            i++;
-                        }
-                    }
-                }
-            }
-            con.Close(); 
-            con.Dispose();
-        }
-        catch (IOException ex) 
-        { 
-            Debug.Log(ex.ToString()); 
-        }
+        var studentsDB = new StudentsDB();
+        var reader = studentsDB.findStudentsLike(currInput);
+        var i = 0;
+        while (reader.Read())
+        {
+            SpawnStudent(i, reader[0].ToString(), reader[1].ToString(), reader[2].ToString(),
+                reader[3].ToString(), reader[4].ToString());
+            i++;
+        };
+        studentsDB.close();
     }
     
     private void studentsVisCloseM()
