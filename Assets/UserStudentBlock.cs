@@ -11,12 +11,14 @@ namespace UI.Blocks
         [SerializeField] private TextMeshProUGUI orgTypeText;
         [SerializeField] private TextMeshProUGUI jobText;
         [SerializeField] private TextMeshProUGUI tabNumText;
+        [SerializeField] private ToggleButton toggleButton;
 
         public TextMeshProUGUI NameText => nameText;
         public TextMeshProUGUI LoginText => loginText;
         public TextMeshProUGUI OrgTypeText => orgTypeText;
         public TextMeshProUGUI JobText => jobText;
         public TextMeshProUGUI TabNumText => tabNumText;
+        public ToggleButton ToggleButton => toggleButton;
 
         [SerializeField] private RectTransform blockContainer;
         [SerializeField] private Transform changeButton;

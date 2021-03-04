@@ -37,7 +37,7 @@ public class StudentsDB : MySQLHelper
     public override MySqlDataReader findStudentsLike(string currInput)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "SELECT fullname, organiztype, position, persnumber, login, password FROM students WHERE fullname LIKE '" +
+        dbcmd.CommandText = "SELECT * FROM students WHERE fullname LIKE '" +
                             currInput + "%' OR  login LIKE '" + currInput + "%'";
         return dbcmd.ExecuteReader();
     }
@@ -45,7 +45,7 @@ public class StudentsDB : MySQLHelper
     public override void deleteStudentByLogin(string login)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "DELETE FROM  students WHERE login = '" + login + "'";;
+        dbcmd.CommandText = "DELETE FROM  students WHERE login = '" + login + "'";
         dbcmd.ExecuteNonQuery();
     }
 
@@ -57,6 +57,14 @@ public class StudentsDB : MySQLHelper
     public override void deleteAllStudents()
     {
         base.deleteAllStudents("Students");
+    }
+
+    public override void checkStudent(int id, bool isOn)
+    {
+        int isOnInt = isOn ? 1 : 0;
+        MySqlCommand dbcmd = getDbCommand();
+        dbcmd.CommandText = "UPDATE students SET choosed = '" + isOnInt + "' WHERE id = '" + id + "'";
+        dbcmd.ExecuteNonQuery();
     }
     
     public void close()
