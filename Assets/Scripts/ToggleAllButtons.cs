@@ -14,7 +14,7 @@ namespace UI
 
         public bool IsOn => isOn;
 
-        public void Start()
+        public void ToggleAllButtonsStart()
         {
             SLListContent = GameObject.Find("SLListContent");
             tickImage.gameObject.SetActive(isOn);

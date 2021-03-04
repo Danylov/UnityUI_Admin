@@ -2,12 +2,15 @@
 using System.IO;
 using MySql.Data.MySqlClient;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Authorization : MonoBehaviour
 {
     private MainScripts mainScripts;
+    private GameObject SLTickButton;
+    private ToggleAllButtons toggleAllButtons;
     public TMP_InputField login;
     public TMP_InputField passw;
     public Button enterButton;
@@ -18,6 +21,9 @@ public class Authorization : MonoBehaviour
     {
         mainScripts = GameObject.Find("MainPanel").GetComponent<MainScripts>();
         mainScripts.StartMainScript();
+        SLTickButton = GameObject.Find("SLTickButton");
+        toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
+        toggleAllButtons.ToggleAllButtonsStart();
         toRegistration.onClick.AddListener(ToRegistration);
         enterButton.onClick.AddListener(EnterButton);
         mainScripts.ShowAuthorizationPanel();

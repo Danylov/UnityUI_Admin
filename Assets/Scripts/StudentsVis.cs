@@ -24,7 +24,6 @@ public class StudentsVis : MonoBehaviour
         toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
         SLListContent = GameObject.Find("SLListContent");
         SLFindName.onValueChanged.AddListener(SLFindNameChanged);
-        SpawnStudents();
     }
 
     public void SpawnStudents()

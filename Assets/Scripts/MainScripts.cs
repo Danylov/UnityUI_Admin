@@ -52,6 +52,7 @@ public class MainScripts : MonoBehaviour
     {
         HideAllPanels();
         studentsVis.ShowPanel();
+        studentsVis.SpawnStudents();
     }
 
     public void ShowCreateTaskPanel()

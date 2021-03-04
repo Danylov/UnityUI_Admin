@@ -10,7 +10,6 @@ public class Register : MonoBehaviour
 {
     private MainScripts mainScripts;
     private PersDataCheck persDataCheck;
-    private StudentsVis studentsVis;
     
     public TMP_InputField fullname;
     public TMP_InputField organizType;
@@ -36,7 +35,6 @@ public class Register : MonoBehaviour
         persDataCheck = GameObject.Find("PersDataImage").GetComponent<PersDataCheck>();
         regButton.onClick.AddListener(RegisterButton);
         PersData.onValueChanged.AddListener((x) => Invoke("toggleChanged", 0f));
-        studentsVis = GameObject.Find("StudentsList").GetComponent<StudentsVis>();
     }
 
     void Update()
@@ -68,7 +66,6 @@ public class Register : MonoBehaviour
         if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw) && (persDataCheck.persDataAgreed == true))
         {
             AddStudentToDB();
-            studentsVis.SpawnStudents();
             Debug.Log("Регистрация успешная");
         }
         else Debug.Log("Заполните необходимые поля (имя, логин, пароль, подтверждение пароля), согласитесь на использование личных данных");
