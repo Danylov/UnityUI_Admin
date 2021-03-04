@@ -59,6 +59,11 @@ public class MySQLHelper
         throw null;
     }
 
+    public virtual void checkAllStudents(bool isOn)
+    {
+        throw null;
+    }
+
     public void close()
     {
         db_connection.Close();

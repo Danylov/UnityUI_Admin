@@ -10,6 +10,8 @@ public class StudentsVis : MonoBehaviour
 {
     private MainScripts mainScripts;
     private GameObject SLListContent;
+    private GameObject SLTickButton;
+    private ToggleAllButtons toggleAllButtons;
     public TMP_InputField SLFindName;
     public GameObject studentPrefab;
     // public Button studentsVisClose;
@@ -18,6 +20,8 @@ public class StudentsVis : MonoBehaviour
     {
         // studentsVisClose.onClick.AddListener(studentsVisCloseM);
         mainScripts = GameObject.Find("MainPanel").GetComponent<MainScripts>();
+        SLTickButton = GameObject.Find("SLTickButton");
+        toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
         SLListContent = GameObject.Find("SLListContent");
         SLFindName.onValueChanged.AddListener(SLFindNameChanged);
         SpawnStudents();
@@ -31,14 +35,15 @@ public class StudentsVis : MonoBehaviour
         var i = 0;
         while (reader.Read())
         {
-            SpawnStudent(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), 
-                reader[4].ToString(), reader[5].ToString());
+            SpawnStudent(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[7]));
             i++;
         }
         studentsDB.close();
+        toggleAllButtons.AnalizeChecks();
     }
 
-    private void SpawnStudent(int i, int id, string fullName, string organizType, string position, string persNumber, string login)
+    private void SpawnStudent(int i, int id, string fullName, string organizType, string position, string persNumber, string login, int choosed)
     {
         var spawnLocation = new Vector3(0, 2*i, 0);
         var studentInfo = Instantiate(studentPrefab, spawnLocation, Quaternion.identity);
@@ -50,6 +55,7 @@ public class StudentsVis : MonoBehaviour
         stInfoBlock.TabNumText.text = persNumber;
         stInfoBlock.LoginText.text = login;
         stInfoBlock.ToggleButton.studentDbId = id;
+        if (choosed == 1) stInfoBlock.ToggleButton.SetOn();
     }
         
     public void ShowPanel()
@@ -70,8 +76,8 @@ public class StudentsVis : MonoBehaviour
         var i = 0;
         while (reader.Read())
         {
-            SpawnStudent(i, Convert.ToInt32(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(),
-                reader[3].ToString(), reader[4].ToString(), reader[5].ToString());
+            SpawnStudent(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[7]));
             i++;
         };
         studentsDB.close();

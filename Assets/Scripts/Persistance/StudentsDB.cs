@@ -66,7 +66,15 @@ public class StudentsDB : MySQLHelper
         dbcmd.CommandText = "UPDATE students SET choosed = '" + isOnInt + "' WHERE id = '" + id + "'";
         dbcmd.ExecuteNonQuery();
     }
-    
+ 
+    public override void checkAllStudents(bool isOn)
+    {
+        int isOnInt = isOn ? 1 : 0;
+        MySqlCommand dbcmd = getDbCommand();
+        dbcmd.CommandText = "UPDATE students SET choosed = '" + isOnInt + "' WHERE id>=0";
+        dbcmd.ExecuteNonQuery();
+    }
+   
     public void close()
     {
         base.close();
