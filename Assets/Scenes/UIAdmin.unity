@@ -9269,8 +9269,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 46973566}
   m_HandleRect: {fileID: 46973565}
   m_Direction: 2
-  m_Value: 1.0000018
-  m_Size: 0.7582949
+  m_Value: 1.0000012
+  m_Size: 0.6741064
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -29535,6 +29535,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLLabBlock (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8154611878043997686, guid: 7c49d998506f69240bcce7f52b08d4b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.200012
+      objectReference: {fileID: 0}
     - target: {fileID: 8154611878421575537, guid: 7c49d998506f69240bcce7f52b08d4b3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -29689,6 +29694,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 561231171}
     m_Modifications:
+    - target: {fileID: 493295902190729956, guid: 82d91734104817e4ca2de0b08cedfa6f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493295902190729956, guid: 82d91734104817e4ca2de0b08cedfa6f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00062179565
+      objectReference: {fileID: 0}
     - target: {fileID: 5516221550215385510, guid: 82d91734104817e4ca2de0b08cedfa6f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -38329,6 +38344,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 561231171}
     m_Modifications:
+    - target: {fileID: 493295902190729956, guid: 82d91734104817e4ca2de0b08cedfa6f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493295902190729956, guid: 82d91734104817e4ca2de0b08cedfa6f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00062179565
+      objectReference: {fileID: 0}
     - target: {fileID: 5516221550215385510, guid: 82d91734104817e4ca2de0b08cedfa6f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -49210,6 +49235,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PLLabBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154611878043997686, guid: 7c49d998506f69240bcce7f52b08d4b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.200012
       objectReference: {fileID: 0}
     - target: {fileID: 8154611878421575537, guid: 7c49d998506f69240bcce7f52b08d4b3,
         type: 3}
@@ -62145,7 +62175,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 462990689}
   m_HandleRect: {fileID: 462990688}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -70980,6 +71010,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLLabBlock (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8154611878043997686, guid: 7c49d998506f69240bcce7f52b08d4b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.200012
+      objectReference: {fileID: 0}
     - target: {fileID: 8154611878421575537, guid: 7c49d998506f69240bcce7f52b08d4b3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -71242,6 +71277,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 561231171}
     m_Modifications:
+    - target: {fileID: 493295902190729956, guid: 82d91734104817e4ca2de0b08cedfa6f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493295902190729956, guid: 82d91734104817e4ca2de0b08cedfa6f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00062179565
+      objectReference: {fileID: 0}
     - target: {fileID: 5516221550215385510, guid: 82d91734104817e4ca2de0b08cedfa6f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -74627,6 +74672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PLLabBlock (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154611878043997686, guid: 7c49d998506f69240bcce7f52b08d4b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.200012
       objectReference: {fileID: 0}
     - target: {fileID: 8154611878421575537, guid: 7c49d998506f69240bcce7f52b08d4b3,
         type: 3}
@@ -86874,8 +86924,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1410078003}
   m_HandleRect: {fileID: 1410078002}
   m_Direction: 2
-  m_Value: 1.0000017
-  m_Size: 0.7074024
+  m_Value: 1.0000011
+  m_Size: 0.6153563
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -120926,6 +120976,7 @@ MonoBehaviour:
   jobText: {fileID: 0}
   tabNumText: {fileID: 0}
   toggleButton: {fileID: 0}
+  unloadButton: {fileID: 0}
   blockContainer: {fileID: 0}
   changeButton: {fileID: 0}
 --- !u!114 &1826225350
@@ -131507,6 +131558,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PLLabBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154611878043997686, guid: 7c49d998506f69240bcce7f52b08d4b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.200012
       objectReference: {fileID: 0}
     - target: {fileID: 8154611878421575537, guid: 7c49d998506f69240bcce7f52b08d4b3,
         type: 3}

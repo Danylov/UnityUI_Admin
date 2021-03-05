@@ -37,7 +37,6 @@ namespace UI
         }
         public void AnalizeChecks()
         {
-            Debug.Log("ToggleAllButtons.AnalizeChecks()"); // Отладка
             bool AllChecks = true;
             foreach(Transform child in SLListContent.transform)
             {

@@ -54,6 +54,8 @@ public class StudentsVis : MonoBehaviour
         stInfoBlock.TabNumText.text = persNumber;
         stInfoBlock.LoginText.text = login;
         stInfoBlock.ToggleButton.studentDbId = id;
+        stInfoBlock.UnloadButton.studentDbId = id;
+        stInfoBlock.UnloadButton.userStudentBlock = stInfoBlock;
         if (choosed == 1) stInfoBlock.ToggleButton.SetOn();
     }
         

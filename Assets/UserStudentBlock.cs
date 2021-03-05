@@ -12,6 +12,7 @@ namespace UI.Blocks
         [SerializeField] private TextMeshProUGUI jobText;
         [SerializeField] private TextMeshProUGUI tabNumText;
         [SerializeField] private ToggleButton toggleButton;
+        [SerializeField] private UnloadButton unloadButton;
 
         public TextMeshProUGUI NameText => nameText;
         public TextMeshProUGUI LoginText => loginText;
@@ -19,6 +20,7 @@ namespace UI.Blocks
         public TextMeshProUGUI JobText => jobText;
         public TextMeshProUGUI TabNumText => tabNumText;
         public ToggleButton ToggleButton => toggleButton;
+        public UnloadButton UnloadButton => unloadButton;
 
         [SerializeField] private RectTransform blockContainer;
         [SerializeField] private Transform changeButton;

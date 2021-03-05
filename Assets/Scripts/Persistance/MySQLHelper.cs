@@ -27,7 +27,10 @@ public class MySQLHelper
     {
         throw null;
     }
-    public virtual MySqlDataReader getAllStudents()
+    public virtual void deleteStudentById(int id)
+    {
+        throw null;
+    }    public virtual MySqlDataReader getAllStudents()
     {
         throw null;
     }
