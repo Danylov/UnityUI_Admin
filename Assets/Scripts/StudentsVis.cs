@@ -47,16 +47,16 @@ public class StudentsVis : MonoBehaviour
         var spawnLocation = new Vector3(0, 2*i, 0);
         var studentInfo = Instantiate(studentPrefab, spawnLocation, Quaternion.identity);
         studentInfo.transform.SetParent(SLListContent.transform, false);
-        var stInfoBlock = studentInfo.GetComponent<UserStudentBlock>();
-        stInfoBlock.NameText.text = fullName;
-        stInfoBlock.OrgTypeText.text = organizType;
-        stInfoBlock.JobText.text = position;
-        stInfoBlock.TabNumText.text = persNumber;
-        stInfoBlock.LoginText.text = login;
-        stInfoBlock.ToggleButton.studentDbId = id;
-        stInfoBlock.UnloadButton.studentDbId = id;
-        stInfoBlock.UnloadButton.userStudentBlock = stInfoBlock;
-        if (choosed == 1) stInfoBlock.ToggleButton.SetOn();
+        var userStudentBlock = studentInfo.GetComponent<UserStudentBlock>();
+        userStudentBlock.NameText.text = fullName;
+        userStudentBlock.OrgTypeText.text = organizType;
+        userStudentBlock.JobText.text = position;
+        userStudentBlock.TabNumText.text = persNumber;
+        userStudentBlock.LoginText.text = login;
+        userStudentBlock.ToggleButton.studentDbId = id;
+        userStudentBlock.UnloadButton.studentDbId = id;
+        userStudentBlock.UnloadButton.userStudentBlock = userStudentBlock;
+        if (choosed == 1) userStudentBlock.ToggleButton.SetOn();
     }
         
     public void ShowPanel()

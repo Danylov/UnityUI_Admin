@@ -11,7 +11,7 @@ namespace UI
         public int studentDbId;
         [SerializeField] private Button button;
         [SerializeField] private Image tickImage;
-        private bool isOn = false;
+        private bool isOn;
 
         public bool IsOn => isOn;
 

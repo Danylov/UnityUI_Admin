@@ -55,6 +55,13 @@ public class StudentsDB : MySQLHelper
         dbcmd.CommandText = "DELETE FROM  students WHERE id = '" + id + "'";
         dbcmd.ExecuteNonQuery();
     }
+    
+    public override void deleteCheckedStudents()
+    {
+        MySqlCommand dbcmd = getDbCommand();
+        dbcmd.CommandText = "DELETE FROM  students WHERE choosed = 1";
+        dbcmd.ExecuteNonQuery();
+    }
 
     public override MySqlDataReader getAllStudents()
     {

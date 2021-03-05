@@ -30,7 +30,12 @@ public class MySQLHelper
     public virtual void deleteStudentById(int id)
     {
         throw null;
-    }    public virtual MySqlDataReader getAllStudents()
+    }    
+    public virtual void deleteCheckedStudents()
+    {
+        throw null;
+    }    
+    public virtual MySqlDataReader getAllStudents()
     {
         throw null;
     }
