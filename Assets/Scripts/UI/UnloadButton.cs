@@ -17,7 +17,6 @@ public class UnloadButton : MonoBehaviour
     }
     private void UnloadButtonClick()
     {
-        Debug.Log("UnloadButton.UnloadButtonClick()"); // Отладка
         Destroy(userStudentBlock.gameObject);
         var studentsDB = new StudentsDB();
         studentsDB.deleteStudentById(studentDbId);
