@@ -131306,21 +131306,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 277632754}
@@ -131329,36 +131314,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 129764324}
-    - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenViewModePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OpenConcreteViewPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529563120270764394, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6529563120270764398, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
         type: 3}
       propertyPath: m_Pivot.x
