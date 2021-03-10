@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class TaskPanel : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class TaskPanel : MonoBehaviour
     [SerializeField] private RectTransform playlistChooseParticipantsMenu;
     [SerializeField] private RectTransform playlistDataBaseMenu;
     [SerializeField] private RectTransform playlistMpSetupMenu;
+
+
+    [SerializeField] private ChangableButton navPoint1;
+    [SerializeField] private ChangableButton navPoint2;
 
     private void CloseAllPanels()
     {
@@ -27,6 +32,16 @@ public class TaskPanel : MonoBehaviour
         playListCreationMenu.gameObject.SetActive(true);
     }
 
+    public void OpenPanel()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void ClosePanel()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void OpenPlayListSelectionMenu()
     {
         CloseAllPanels();
@@ -42,6 +57,8 @@ public class TaskPanel : MonoBehaviour
     public void OpenPlaylistChooseParticipantsMenu()
     {
         CloseAllPanels();
+        navPoint1.SetInactiveSprite();
+        navPoint2.SetActiveSprite();
         playlistChooseParticipantsMenu.gameObject.SetActive(true);
     }
 
@@ -60,6 +77,8 @@ public class TaskPanel : MonoBehaviour
     public void OpenPaneru3Menu()
     {
         CloseAllPanels();
+        navPoint2.SetInactiveSprite();
+        navPoint1.SetActiveSprite();
         panery3.gameObject.SetActive(true);
     }
 }

@@ -9,10 +9,11 @@ namespace UI
         private GameObject SLTickButton;
         private ToggleAllButtons toggleAllButtons;
         public int studentDbId;
+        public bool isInGroup = false;
         [SerializeField] private Button button;
+        public Button Button => button;
         [SerializeField] private Image tickImage;
         private bool isOn;
-
         public bool IsOn => isOn;
 
         public void Start()
@@ -25,12 +26,21 @@ namespace UI
 
         private void Switch()
         {
+            if (isInGroup)  return;
+
             isOn = !isOn;
+
             tickImage.gameObject.SetActive(isOn);
             var studentsDB = new StudentsDB();
             studentsDB.checkStudent(studentDbId, isOn);
             studentsDB.close();
             toggleAllButtons.AnalizeChecks();
+        }
+        
+        public void SetState(bool isOn)
+        {
+            this.isOn = isOn;
+            tickImage.gameObject.SetActive(isOn);
         }
 
         public void SetOn()

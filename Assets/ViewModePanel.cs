@@ -4,24 +4,42 @@ using UnityEngine;
 
 public class ViewModePanel : MonoBehaviour
 {
-    [SerializeField] private RectTransform viewModePanel;
-    [SerializeField] private RectTransform concreteViewPanel;
+    [SerializeField] private ViewsPanel viewModePanel;
+    [SerializeField] private ConcreteViewPanel concreteViewPanel;
+    [SerializeField] private HardModesPanel hardModesMenu;
 
-    public void CloseAllPanels()
+    public void OpenPanel()
     {
-        viewModePanel.gameObject.SetActive(false);
-        concreteViewPanel.gameObject.SetActive(false);
+        gameObject.SetActive(true);
+    }
+
+    public void ClosePanel()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void CloseAllPanels()
+    {
+        viewModePanel.ClosePanel();
+        hardModesMenu.ClosePanel();
+        concreteViewPanel.ClosePanel();
+    }
+
+    public void OpenHardModesPanel()
+    {
+        CloseAllPanels();
+        hardModesMenu.OpenPanel();
     }
 
     public void OpenViewModePanel()
     {
         CloseAllPanels();
-        viewModePanel.gameObject.SetActive(true);
+        viewModePanel.OpenPanel();
     }
 
     public void OpenConcreteViewPanel()
     {
         CloseAllPanels();
-        concreteViewPanel.gameObject.SetActive(true);
+        concreteViewPanel.OpenPanel();
     }
 }

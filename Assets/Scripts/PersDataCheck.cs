@@ -6,8 +6,8 @@ public class PersDataCheck : MonoBehaviour
     Image m_Image;
     public Sprite m_Sprite1;
     public Sprite m_Sprite2;
-    public bool persDataAgreed;
-    
+    private bool isOn = false;
+
     void Start()
     {
         m_Image = GetComponent<Image>();
@@ -16,8 +16,10 @@ public class PersDataCheck : MonoBehaviour
 
     public void changeSprite()
     {
-        persDataAgreed = !persDataAgreed;
-        if (!persDataAgreed) m_Image.sprite = m_Sprite1;
-        else m_Image.sprite = m_Sprite2;
+        isOn = !isOn;
+        if (isOn)
+            m_Image.sprite = m_Sprite2;
+        else
+            m_Image.sprite = m_Sprite1;
     }
 }
