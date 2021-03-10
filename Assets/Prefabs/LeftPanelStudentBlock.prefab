@@ -146,29 +146,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6529563120270764396}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OpenViewModePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: OpenConcreteViewPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &168300545115365174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,11 +164,6 @@ MonoBehaviour:
   labTimer: {fileID: 6529563121446881241}
   pcNumText: {fileID: 6529563121851760593}
   blockAnimator: {fileID: 6153042480451346623}
-  rBlockImage: {fileID: 6529563121597522326}
-  blockImage: {fileID: 6529563120270764396}
-  activeBlockSprite: {fileID: 21300000, guid: f1e671e0b00ce704dbeb481e92a34cad, type: 3}
-  inactiveBlockSprite: {fileID: 21300000, guid: 73e59cd15ee16914a8ddfaa14c852427,
-    type: 3}
 --- !u!95 &6153042480451346623
 Animator:
   serializedVersion: 3

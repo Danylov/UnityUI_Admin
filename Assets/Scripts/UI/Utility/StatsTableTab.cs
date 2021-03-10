@@ -16,6 +16,8 @@ public class StatsTableTab : MonoBehaviour
 
         filterPanel.gameObject.SetActive(true);
 
+        filterPanel.sizeDelta = new Vector2(filterPanel.sizeDelta.x, 0f);
+
         filterPanel.DOSizeDelta(new Vector2(filterPanel.sizeDelta.x, maximizedSize),
             MenuUIManager.DefaultStretchSpeed);
     }
@@ -23,7 +25,7 @@ public class StatsTableTab : MonoBehaviour
     private void HidePanel()
     {
         isOpen = false;
-
+        
         filterPanel.DOSizeDelta(new Vector2(filterPanel.sizeDelta.x, 0f),
             MenuUIManager.DefaultStretchSpeed).OnComplete(() => { filterPanel.gameObject.SetActive(false); });
     }
