@@ -8,17 +8,7 @@ public class AuthPanel : MonoBehaviour
     [SerializeField] private RegistrationAdminPanel registrationAdminPanel;
     [SerializeField] private RegistrationStudentPanel registrationStudentPanel;
 
-    public void OpenPanel()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void ClosePanel()
-    {
-        gameObject.SetActive(false);
-    }
-
-    private void CloseAllPanels()
+    public void CloseAllPanels()
     {
         authoriaztionPanel.ClosePanel();
         registrationAdminPanel.ClosePanel();

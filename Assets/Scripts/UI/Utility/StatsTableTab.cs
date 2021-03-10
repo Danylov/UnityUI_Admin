@@ -20,7 +20,7 @@ public class StatsTableTab : MonoBehaviour
             MenuUIManager.DefaultStretchSpeed);
     }
 
-    private void HidePanel()
+    private void ClosePanel()
     {
         isOpen = false;
 
@@ -31,7 +31,7 @@ public class StatsTableTab : MonoBehaviour
     public void SwitchPanelState()
     {
         if (isOpen)
-            HidePanel();
+            ClosePanel();
         else
             OpenPanel();
     }

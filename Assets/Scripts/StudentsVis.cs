@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class StudentsVis : MonoBehaviour
 {
-    private MainScripts mainScripts;
     private GameObject SLListContent;
     private GameObject SLTickButton;
     private ToggleAllButtons toggleAllButtons;
@@ -19,7 +18,6 @@ public class StudentsVis : MonoBehaviour
     void Start()
     {
         // studentsVisClose.onClick.AddListener(studentsVisCloseM);
-        mainScripts = GameObject.Find("MainPanel").GetComponent<MainScripts>();
         SLTickButton = GameObject.Find("SLTickButton");
         toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
         SLListContent = GameObject.Find("SLListContent");
@@ -59,12 +57,12 @@ public class StudentsVis : MonoBehaviour
         if (choosed == 1) userStudentBlock.ToggleButton.SetOn();
     }
         
-    public void ShowPanel()
+    public void OpenPanel()
     {
         gameObject.SetActive(true);
     }
 
-    public void HidePanel()
+    public void ClosePanel()
     {
         gameObject.SetActive(false);
     }

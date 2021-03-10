@@ -23,7 +23,7 @@ public class StudentsDB : MySQLHelper
         MySqlCommand dbcmd = getDbCommand();
         dbcmd.CommandText = "INSERT INTO students (fullname, organiztype, position, persnumber, login, password) VALUES ( '" + 
                             student.Fullname1 + "', '" + student.Organiztype1 + "', '" + student.Position1 + "', '" + 
-                            student.Persnumber1 + "', '" + student.Login1 + "', '" + MainScripts.PasswEncryption(student.Password1) + "' )";
+                            student.Persnumber1 + "', '" + student.Login1 + "', '" + MenuUIManager.PasswEncryption(student.Password1) + "' )";
         dbcmd.ExecuteNonQuery();
     }
    

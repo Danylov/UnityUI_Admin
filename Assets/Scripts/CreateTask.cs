@@ -2,12 +2,12 @@
 
 public class CreateTask : MonoBehaviour
 {
-    public void ShowPanel()
+    public void OpenPanel()
     {
         gameObject.SetActive(true);
     }
 
-    public void HidePanel()
+    public void ClosePanel()
     {
         gameObject.SetActive(false);
     }
