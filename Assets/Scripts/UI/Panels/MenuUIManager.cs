@@ -14,6 +14,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private ViewModePanel viewModePanel;
     [SerializeField] private NotificationsPanel notificationsPanel;
     [SerializeField] private StatsMenu statsPanel;
+    [SerializeField] private HelpPanel helpPanel;
 
     public AuthPanel AuthPanel => authPanel;
     public TaskPanel TaskPanel => taskPanel;
@@ -21,7 +22,7 @@ public class MenuUIManager : MonoBehaviour
     public ViewModePanel ViewModePanel => viewModePanel;
     public NotificationsPanel NotificationsPanel => notificationsPanel;
     public StatsMenu StatsPanel => statsPanel;
-
+    public HelpPanel HelpPanel => helpPanel;
 
     [SerializeField] private RectTransform mainPanel;
     [SerializeField] private RectTransform plSetUpMenu;
@@ -77,6 +78,16 @@ public class MenuUIManager : MonoBehaviour
     public void OpenCalendar()
     {
         datePicker.gameObject.SetActive(true);
+    }
+
+    public void OpenHelpPanel()
+    {
+        helpPanel.OpenPanel();
+    }
+
+    public void CloseHelpPanel()
+    {
+        helpPanel.ClosePanel();
     }
 
     public void CloseCalendar()

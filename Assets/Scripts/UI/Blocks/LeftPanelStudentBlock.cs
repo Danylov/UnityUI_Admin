@@ -15,14 +15,10 @@ public class LeftPanelStudentBlock : MonoBehaviour
 
     [SerializeField] private Animator blockAnimator;
 
-    [SerializeField] private Image rBlockImage;
-    [SerializeField] private Image blockImage;
-
-    [SerializeField] private Sprite activeBlockSprite;
-    [SerializeField] private Sprite inactiveBlockSprite;
+    [SerializeField] private Image[] onlineImages;
 
     private readonly Color activeColor = new Color32(255, 255, 255, 128);
-    private readonly Color inactiveColor = new Color32(255, 0, 61, 255);
+    private readonly Color inactiveColor = new Color32(255, 255, 255, 128);
     private readonly int userEndedLab = Animator.StringToHash("UserEndedLab");
 
     //public StudentData data 
@@ -35,18 +31,22 @@ public class LeftPanelStudentBlock : MonoBehaviour
 
     private void SetOffline()
     {
-        rBlockImage.enabled = false;
-        blockImage.sprite = inactiveBlockSprite;
+        foreach (var onlineImage in onlineImages)
+        {
+            onlineImage.enabled = false;
 
-        labTimer.color = inactiveColor;
+            labTimer.color = inactiveColor;
+        }
     }
 
     private void SetOnline()
     {
-        rBlockImage.enabled = true;
-        blockImage.sprite = activeBlockSprite;
+        foreach (var onlineImage in onlineImages)
+        {
+            onlineImage.enabled = false;
 
-        labTimer.color = activeColor;
+            labTimer.color = activeColor;
+        }
     }
 
     private void AnimateLabEnded()
