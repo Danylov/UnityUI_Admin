@@ -13,6 +13,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private AuthPanel authPanel;
     [SerializeField] private TaskPanel taskPanel;
     [SerializeField] private UserPanel userPanel;
+    [SerializeField] private StudentsPanel studentsPanel;
     [SerializeField] private ViewModePanel viewModePanel;
     [SerializeField] private NotificationsPanel notificationsPanel;
     [SerializeField] private StatsMenu statsPanel;
@@ -20,6 +21,7 @@ public class MenuUIManager : MonoBehaviour
     public AuthPanel AuthPanel => authPanel;
     public TaskPanel TaskPanel => taskPanel;
     public UserPanel UserPanel => userPanel;
+    public StudentsPanel StudentsPanel => studentsPanel;
     public ViewModePanel ViewModePanel => viewModePanel;
     public NotificationsPanel NotificationsPanel => notificationsPanel;
     public StatsMenu StatsPanel => statsPanel;
@@ -59,13 +61,9 @@ public class MenuUIManager : MonoBehaviour
         authPanel.CloseAllPanels();
         taskPanel.ClosePanel();
         userPanel.ClosePanel();
+        studentsPanel.ClosePanel();
         viewModePanel.ClosePanel();
         statsPanel.ClosePanel();
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
     }
 
     public void OpenMainPanel()
@@ -73,6 +71,13 @@ public class MenuUIManager : MonoBehaviour
         AuthPanel.CloseAllPanels();
         mainPanel.gameObject.SetActive(true);
     }
+   
+    public void OpenStudentsPanel()
+    {
+        AuthPanel.CloseAllPanels();
+        studentsPanel.gameObject.SetActive(true);
+    }
+
 
     public void OpenCalendar()
     {
@@ -180,6 +185,11 @@ public class MenuUIManager : MonoBehaviour
         StringBuilder strBuilder = new StringBuilder();  
         for (int i = 0; i < result.Length; i++)  strBuilder.Append(result[i].ToString("x2"));  
         return strBuilder.ToString();          
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
 }

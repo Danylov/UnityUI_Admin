@@ -6,18 +6,18 @@ using UI;
 using UI.Blocks;
 using UnityEngine;
 
-public class StudentsVis : MonoBehaviour
+public class StudentsPanel : MonoBehaviour
 {
     private GameObject SLListContent;
     private GameObject SLTickButton;
     private ToggleAllButtons toggleAllButtons;
     public TMP_InputField SLFindName;
     public GameObject studentPrefab;
-    // public Button studentsVisClose;
+    // public Button studentsPanelClose;
     
     void Start()
     {
-        // studentsVisClose.onClick.AddListener(studentsVisCloseM);
+        // studentsPanelClose.onClick.AddListener(studentsPanelCloseM);
         SLTickButton = GameObject.Find("SLTickButton");
         toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
         SLListContent = GameObject.Find("SLListContent");
@@ -82,7 +82,7 @@ public class StudentsVis : MonoBehaviour
         studentsDB.close();
     }
     
-    private void studentsVisCloseM()
+    private void studentsPanelCloseM()
     {
         
     }
