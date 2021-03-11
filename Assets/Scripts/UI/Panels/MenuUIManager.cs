@@ -53,7 +53,7 @@ public class MenuUIManager : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.LogError($"More then a single instance of {GetType()}");
-        }
+        };
     }
 
     private void CloseAllPanels()
@@ -74,6 +74,7 @@ public class MenuUIManager : MonoBehaviour
    
     public void OpenStudentsPanel()
     {
+        studentsPanel.SpawnStudents();
         authPanel.CloseAllPanels();
         studentsPanel.gameObject.SetActive(true);
     }
@@ -152,7 +153,6 @@ public class MenuUIManager : MonoBehaviour
     public void SendPopup(float time, string text)
     {
         StopAllCoroutines();
-
         StartCoroutine(PopUp(time, text));
     }
 

@@ -80,6 +80,6 @@ public class RegistrationAdminPanel : MonoBehaviour
         studentsDB.addStudent(new Student(Fullname, OrganizType, Position, Int32.Parse(PersNumber), Login, Passw));
         studentsDB.close();
         // MenuUIManager.Instance.OpenMainPanel();
-        MenuUIManager.Instance.OpenUserPanel();
+        MenuUIManager.Instance.OpenStudentsPanel();
     }
 }

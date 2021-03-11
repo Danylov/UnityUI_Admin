@@ -59,6 +59,7 @@ public class StudentsPanel : MonoBehaviour
         
     public void OpenPanel()
     {
+        MenuUIManager.Instance.StudentsPanel.SpawnStudents();
         gameObject.SetActive(true);
     }
 
