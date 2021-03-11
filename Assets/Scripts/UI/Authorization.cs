@@ -5,30 +5,28 @@ using UnityEngine.UI;
 
 public class Authorization : MonoBehaviour
 {
-    [SerializeField] Register register;
-    [SerializeField] RectTransform createTask;
+    [SerializeField] RegistrationAdminPanel registrationAdminPanel;
     public Button toRegistration;
 
     // Start is called before the first frame update
     private void Start()
     {
         toRegistration.onClick.AddListener(ToRegistration);
-        register.HidePanel();
-        createTask.gameObject.SetActive(false);
+        registrationAdminPanel.ClosePanel();
     }
 
     private void ToRegistration()
     {
-        register.ShowPanel();
-        HidePanel();
+        registrationAdminPanel.OpenPanel();
+        ClosePanel();
     }
 
-    public void ShowPanel()
+    public void OpenPanel()
     {
         gameObject.SetActive(true);
     }
 
-    public void HidePanel()
+    public void ClosePanel()
     {
         gameObject.SetActive(false);
     }

@@ -20,6 +20,8 @@ public class DayToggle : MonoBehaviour
 
     public event UnityAction<DateTime?> onDateTimeSelected = null;
 
+    private bool isOn = false;
+
     [SerializeField] private Button dayButton;
     [SerializeField] private Text dayText;
     [SerializeField] private Image buttonImage;

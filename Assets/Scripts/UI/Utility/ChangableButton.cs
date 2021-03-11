@@ -8,8 +8,7 @@ public class ChangableButton : MonoBehaviour
     [SerializeField] private Sprite activeSprite;
     [SerializeField] private Sprite inactiveSprite;
 
-    [SerializeField] private bool setNativeSize = false;
-    [SerializeField] private bool changeOnClick = true;
+    [SerializeField] private bool changeOnClick = false;
     [SerializeField] private Button button;
 
     private bool isActive = false;
@@ -35,16 +34,10 @@ public class ChangableButton : MonoBehaviour
     public void SetActiveSprite()
     {
         image.sprite = activeSprite;
-
-        if (setNativeSize)
-            image.SetNativeSize();
     }
 
     public void SetInactiveSprite()
     {
         image.sprite = inactiveSprite;
-
-        if (setNativeSize)
-            image.SetNativeSize();
     }
 }
