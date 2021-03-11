@@ -46,7 +46,7 @@ public class MenuUIManager : MonoBehaviour
 
     public static MenuUIManager Instance;
 
-    private void Awake()
+    void Awake()
     {
         if (Instance == null) Instance = this;
         else
@@ -68,13 +68,13 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenMainPanel()
     {
-        AuthPanel.CloseAllPanels();
+        authPanel.CloseAllPanels();
         mainPanel.gameObject.SetActive(true);
     }
    
     public void OpenStudentsPanel()
     {
-        AuthPanel.CloseAllPanels();
+        authPanel.CloseAllPanels();
         studentsPanel.gameObject.SetActive(true);
     }
 

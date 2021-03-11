@@ -5,12 +5,13 @@ using TMPro;
 using UI;
 using UI.Blocks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StudentsPanel : MonoBehaviour
 {
     private GameObject SLListContent;
-    private GameObject SLTickButton;
-    private ToggleAllButtons toggleAllButtons;
+    [SerializeField] Button SLTickButton;
+    public ToggleAllButtons toggleAllButtons;
     public TMP_InputField SLFindName;
     public GameObject studentPrefab;
     // public Button studentsPanelClose;
@@ -18,7 +19,6 @@ public class StudentsPanel : MonoBehaviour
     void Start()
     {
         // studentsPanelClose.onClick.AddListener(studentsPanelCloseM);
-        SLTickButton = GameObject.Find("SLTickButton");
         toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
         SLListContent = GameObject.Find("SLListContent");
         SLFindName.onValueChanged.AddListener(SLFindNameChanged);
