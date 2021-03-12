@@ -18,7 +18,9 @@ public class StudentsPanel : MonoBehaviour
     
    public void SpawnStudents()
     {
+        Debug.Log("In StudentsPanel.OpenPanel():2"); // Отладка
         foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
+        Debug.Log("In StudentsPanel.OpenPanel():3"); // Отладка
         var studentsDB = new StudentsDB();
         var reader = studentsDB.getAllStudents();
         var i = 0;
@@ -29,7 +31,9 @@ public class StudentsPanel : MonoBehaviour
             i++;
         }
         studentsDB.close();
+        Debug.Log("In StudentsPanel.OpenPanel():4"); // Отладка
         toggleAllButtons.AnalizeChecks();
+        Debug.Log("In StudentsPanel.OpenPanel():5"); // Отладка
     }
 
     private void SpawnStudent(int i, int id, string fullName, string organizType, string position, string persNumber, string login, int choosed)
@@ -54,8 +58,11 @@ public class StudentsPanel : MonoBehaviour
         toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
         toggleAllButtons.ToggleAllButtonsStart();
         SLFindName.onValueChanged.AddListener(SLFindNameChanged);
+        Debug.Log("In StudentsPanel.OpenPanel():1"); // Отладка
         MenuUIManager.Instance.StudentsPanel.SpawnStudents();
+        Debug.Log("In StudentsPanel.OpenPanel():6"); // Отладка
         gameObject.SetActive(true);
+        Debug.Log("In StudentsPanel.OpenPanel():7"); // Отладка
     }
 
     public void ClosePanel()
