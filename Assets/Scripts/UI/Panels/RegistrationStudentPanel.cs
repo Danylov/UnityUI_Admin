@@ -22,6 +22,7 @@ public class RegistrationStudentPanel : MonoBehaviour
     private string Login;
     private string Passw;
     private string ConfPassw;
+    private string Ipaddress;
     
     void Start()
     {
@@ -41,7 +42,12 @@ public class RegistrationStudentPanel : MonoBehaviour
             if (passw.isFocused)  confPassw.Select();
             if (confPassw.isFocused)  fullname.Select();
         }
-                    
+            
+        if (Input.GetKeyDown(KeyCode.Return))  RegisterButton();
+    }
+            
+    private void RegisterButton()
+    {
         Fullname = fullname.text;
         OrganizType = organizType.text;
         Position = position.text;
@@ -49,12 +55,7 @@ public class RegistrationStudentPanel : MonoBehaviour
         Login = login.text;
         Passw = passw.text;
         ConfPassw = confPassw.text;
-            
-        if (Input.GetKeyDown(KeyCode.Return))  RegisterButton();
-    }
-            
-    private void RegisterButton()
-    {
+        Ipaddress = RegistrationAdminPanel.GetLocalIPAddress();
         if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw) && (persDataCheck.persDataAgreed == true))
         {
             AddStudentToDB();
@@ -76,9 +77,9 @@ public class RegistrationStudentPanel : MonoBehaviour
     void AddStudentToDB() 
     { 
         var studentsDB = new StudentsDB();
-        studentsDB.addStudent(new Student(Fullname, OrganizType, Position, Int32.Parse(PersNumber), Login, Passw));
+        studentsDB.addStudent(new Student(Fullname, OrganizType, Position, Int32.Parse(PersNumber), Login, Passw, Ipaddress, 0));
         studentsDB.close();
         // MenuUIManager.Instance.OpenMainPanel();
-        MenuUIManager.Instance.OpenUserPanel();
+        MenuUIManager.Instance.OpenStudentsPanel();
     }
 }

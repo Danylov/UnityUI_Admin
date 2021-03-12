@@ -45,7 +45,8 @@ public class MenuUIManager : MonoBehaviour
     public const float DefaultStretchSpeed = .15f;
 
     public static MenuUIManager Instance;
-
+    
+    public static readonly string connect = "Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
     void Awake()
     {
         if (Instance == null) Instance = this;

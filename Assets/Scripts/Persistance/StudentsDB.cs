@@ -2,9 +2,9 @@
 using MySql.Data.MySqlClient;
 using UnityEngine;
 
-public class StudentsDB : MySQLHelper
+public class StudentsDB : StudentDbHelper
 {
-    private static readonly string connect = "Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
+    private static readonly string connect = MenuUIManager.connect; 
 
     public StudentsDB() : base(connect)
     {
@@ -21,9 +21,10 @@ public class StudentsDB : MySQLHelper
     public void addStudent(Student student)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "INSERT INTO students (fullname, organiztype, position, persnumber, login, password) VALUES ( '" + 
+        dbcmd.CommandText = "INSERT INTO students (fullname, organiztype, position, persnumber, login, password, ipaddress, choosed) VALUES ( '" + 
                             student.Fullname1 + "', '" + student.Organiztype1 + "', '" + student.Position1 + "', '" + 
-                            student.Persnumber1 + "', '" + student.Login1 + "', '" + MenuUIManager.PasswEncryption(student.Password1) + "' )";
+                            student.Persnumber1 + "', '" + student.Login1 + "', '" + MenuUIManager.PasswEncryption(student.Password1) + 
+                            "', '" + student.Ipaddress1 + "', '" + student.Choosed1 + "' )";
         dbcmd.ExecuteNonQuery();
     }
    

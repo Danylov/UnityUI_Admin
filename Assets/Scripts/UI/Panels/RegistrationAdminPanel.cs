@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System;
+using System.Net;
+using System.Net.Sockets;
 using TMPro;
 using Button = UnityEngine.UI.Button;
 
@@ -23,6 +25,7 @@ public class RegistrationAdminPanel : MonoBehaviour
     private string Login;
     private string Passw;
     private string ConfPassw;
+    private string Ipaddress;
     
     void Start()
     {
@@ -42,7 +45,11 @@ public class RegistrationAdminPanel : MonoBehaviour
             if (passw.isFocused)  confPassw.Select();
             if (confPassw.isFocused)  fullname.Select();
         }
-                    
+        if (Input.GetKeyDown(KeyCode.Return))  RegisterButton();
+    }
+            
+    private void RegisterButton()
+    {
         Fullname = fullname.text;
         OrganizType = organizType.text;
         Position = position.text;
@@ -50,15 +57,10 @@ public class RegistrationAdminPanel : MonoBehaviour
         Login = login.text;
         Passw = passw.text;
         ConfPassw = confPassw.text;
-            
-        if (Input.GetKeyDown(KeyCode.Return))  RegisterButton();
-    }
-            
-    private void RegisterButton()
-    {
+        Ipaddress = GetLocalIPAddress();
         if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw) && (persDataCheck.persDataAgreed == true))
         {
-            AddStudentToDB();
+            AddTeacherToDB();
             Debug.Log("Регистрация успешная");
         }
         else Debug.Log("Заполните необходимые поля (имя, логин, пароль, подтверждение пароля), согласитесь на использование личных данных");
@@ -74,12 +76,23 @@ public class RegistrationAdminPanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void AddStudentToDB() 
+    void AddTeacherToDB() 
     { 
-        var studentsDB = new StudentsDB();
-        studentsDB.addStudent(new Student(Fullname, OrganizType, Position, Int32.Parse(PersNumber), Login, Passw));
-        studentsDB.close();
+        Debug.Log("Ipaddress = " + Ipaddress); // Отладка
+        var teachersDB = new TeachersDB();
+        teachersDB.addTeacher(new Teacher(Fullname, OrganizType, Position, Int32.Parse(PersNumber), Login, Passw, Ipaddress, 0));
+        teachersDB.close();
         // MenuUIManager.Instance.OpenMainPanel();
         MenuUIManager.Instance.OpenStudentsPanel();
+    }
+    
+    public static string GetLocalIPAddress()
+    {
+        var host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (var ip in host.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork)  return ip.ToString();
+        }
+        throw new Exception("No network adapters with an IPv4 address in the system!");
     }
 }

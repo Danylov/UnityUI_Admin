@@ -10,9 +10,10 @@ public class Student
     private int Persnumber;
     private string Login;
     private string Password;
+    private string Ipaddress;
     private int Choosed;
 
-    public Student(string fullname, string organiztype, string position, int persnumber, string login, string password)
+    public Student(string fullname, string organiztype, string position, int persnumber, string login, string password, string ipaddress, int choosed)
     {
         Fullname = fullname;
         Organiztype = organiztype;
@@ -20,6 +21,8 @@ public class Student
         Persnumber = persnumber;
         Login = login;
         Password = password;
+        Ipaddress = ipaddress;
+        Choosed = choosed;
     }
 
     public int Id1
@@ -62,6 +65,12 @@ public class Student
     {
         get => Password;
         set => Password = value;
+    }
+
+    public string Ipaddress1
+    {
+        get => Ipaddress;
+        set => Ipaddress = value;
     }
 
     [DefaultValue(0)]
