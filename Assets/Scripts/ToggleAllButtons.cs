@@ -7,7 +7,7 @@ namespace UI
     [RequireComponent(typeof(Button))]
     public class ToggleAllButtons : MonoBehaviour
     {
-        private GameObject SLListContent;
+        [SerializeField] private GameObject SLListContent;
         [SerializeField] private Button button;
         [SerializeField] private Image tickImage;
         private bool isOn = false;
@@ -16,7 +16,7 @@ namespace UI
 
         public void ToggleAllButtonsStart()
         {
-            SLListContent = GameObject.Find("SLListContent");
+            // SLListContent = GameObject.Find("SLListContent");
             tickImage.gameObject.SetActive(isOn);
             button.onClick.AddListener(Switch);
         }

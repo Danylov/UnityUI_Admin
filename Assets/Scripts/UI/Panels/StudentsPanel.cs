@@ -9,22 +9,14 @@ using UnityEngine.UI;
 
 public class StudentsPanel : MonoBehaviour
 {
-    private GameObject SLListContent;
+    [SerializeField] private GameObject SLListContent;
     [SerializeField] Button SLTickButton;
-    public ToggleAllButtons toggleAllButtons;
+    private ToggleAllButtons toggleAllButtons;
     public TMP_InputField SLFindName;
     public GameObject studentPrefab;
     // public Button studentsPanelClose;
     
-    void Start()
-    {
-        // studentsPanelClose.onClick.AddListener(studentsPanelCloseM);
-        toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
-        SLListContent = GameObject.Find("SLListContent");
-        SLFindName.onValueChanged.AddListener(SLFindNameChanged);
-    }
-
-    public void SpawnStudents()
+   public void SpawnStudents()
     {
         foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
         var studentsDB = new StudentsDB();
@@ -59,6 +51,9 @@ public class StudentsPanel : MonoBehaviour
         
     public void OpenPanel()
     {
+        toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
+        toggleAllButtons.ToggleAllButtonsStart();
+        SLFindName.onValueChanged.AddListener(SLFindNameChanged);
         MenuUIManager.Instance.StudentsPanel.SpawnStudents();
         gameObject.SetActive(true);
     }

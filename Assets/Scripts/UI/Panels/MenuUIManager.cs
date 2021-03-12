@@ -74,9 +74,8 @@ public class MenuUIManager : MonoBehaviour
    
     public void OpenStudentsPanel()
     {
-        studentsPanel.SpawnStudents();
         authPanel.CloseAllPanels();
-        studentsPanel.gameObject.SetActive(true);
+        studentsPanel.OpenPanel();
     }
 
 
@@ -140,7 +139,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenPLSetUpMenu()
     {
-        userPanel.gameObject.SetActive(false);
+        userPanel.ClosePanel();
         plSetUpMenu.gameObject.SetActive(true);
     }
 
