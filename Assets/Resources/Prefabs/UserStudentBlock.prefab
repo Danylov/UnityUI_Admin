@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 5516221550342041129}
   - component: {fileID: 5516221550342041130}
   - component: {fileID: 5516221550342041131}
-  - component: {fileID: 2754666385235127218}
+  - component: {fileID: 6127433099812645993}
   m_Layer: 5
   m_Name: UserStudentBlock
   m_TagString: Untagged
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2754666385235127218
+--- !u!114 &6127433099812645993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -427,7 +427,7 @@ MonoBehaviour:
   tabNumText: {fileID: 5516221551458078791}
   toggleButton: {fileID: 5516221550233684692}
   unloadButton: {fileID: 8058026022599419154}
-  blockContainer: {fileID: 0}
+  blockContainer: {fileID: 5516221550342041132}
   changeButton: {fileID: 5516221551839939845}
 --- !u!1 &5516221550491398704
 GameObject:
@@ -803,7 +803,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5516221551366363802}
-  - {fileID: 5516221551850919492}
   m_Father: {fileID: 5516221551979114878}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1650,7 +1649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   studentDbId: 0
-  userStudentBlock: {fileID: 2754666385235127218}
+  userStudentBlock: {fileID: 0}
   button: {fileID: 1735391345373727815}
 --- !u!1 &5516221551151957228
 GameObject:
@@ -1991,7 +1990,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5516221551850919492}
   m_Father: {fileID: 5516221550547255189}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2450,8 +2450,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 6127433099812645993}
+        m_TargetAssemblyTypeName: UI.Blocks.UserStudentBlock, Assembly-CSharp
         m_MethodName: SwitchState
         m_Mode: 1
         m_Arguments:
@@ -2461,7 +2461,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!1 &5516221551750760373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2778,12 +2778,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5516221551850919493}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5516221550547255189}
-  m_RootOrder: 1
+  m_Father: {fileID: 5516221551366363802}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
