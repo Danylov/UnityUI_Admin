@@ -66,12 +66,12 @@ public class StudentsDB : StudentDbHelper
 
     public override MySqlDataReader getAllStudents()
     {
-        return base.getAllStudents("Students");
+        return base.getAllStudents("students");
     }
 
     public override void deleteAllStudents()
     {
-        base.deleteAllStudents("Students");
+        base.deleteAllStudents("students");
     }
 
     public override void checkStudent(int id, bool isOn)

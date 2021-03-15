@@ -4,16 +4,17 @@ using UnityEngine;
 using Button = UnityEngine.UI.Button;
 public class RegistrationStudentPanel : MonoBehaviour
 {
- private PersDataCheck persDataCheck;
+    [SerializeField] TMP_InputField fullname;
+    [SerializeField] TMP_InputField organizType;
+    [SerializeField] TMP_InputField position;
+    [SerializeField] TMP_InputField persNumber;
+    [SerializeField] TMP_InputField login;
+    [SerializeField] TMP_InputField passw;
+    [SerializeField] TMP_InputField confPassw;
+    [SerializeField] GameObject persDataImage;
+    [SerializeField] Button regButton;
     
-    public TMP_InputField fullname;
-    public TMP_InputField organizType;
-    public TMP_InputField position;
-    public TMP_InputField persNumber;
-    public TMP_InputField login;
-    public TMP_InputField passw;
-    public TMP_InputField confPassw;
-    public Button regButton;
+    private PersDataCheck persDataCheck;
     
     private string Fullname;
     private string OrganizType;
@@ -24,9 +25,10 @@ public class RegistrationStudentPanel : MonoBehaviour
     private string ConfPassw;
     private string Ipaddress;
     
-    void Start()
+    public void StartRegistrationStudentPanel()
     {
-        persDataCheck = GameObject.Find("PersDataImage").GetComponent<PersDataCheck>();
+        persDataCheck = persDataImage.GetComponent<PersDataCheck>();
+        persDataCheck.persDataCheckStart();
         regButton.onClick.AddListener(RegisterButton);
     }
 
@@ -66,6 +68,14 @@ public class RegistrationStudentPanel : MonoBehaviour
     
     public void OpenPanel()
     {
+        fullname.text = "";
+        organizType.text = "";
+        position.text = "";
+        persNumber.text = "";
+        login.text = "";
+        passw.text = "";
+        confPassw.text = "";
+        persDataCheck.ToNotAgreed();
         gameObject.SetActive(true);
     }
 

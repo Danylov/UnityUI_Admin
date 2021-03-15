@@ -8,6 +8,12 @@ public class AuthPanel : MonoBehaviour
     [SerializeField] private RegistrationAdminPanel registrationAdminPanel;
     [SerializeField] private RegistrationStudentPanel registrationStudentPanel;
 
+    void Start()
+    {
+        registrationAdminPanel.StartRegistrationAdminPanel();
+        registrationStudentPanel.StartRegistrationStudentPanel();
+    }
+
     public void CloseAllPanels()
     {
         authoriaztionPanel.ClosePanel();

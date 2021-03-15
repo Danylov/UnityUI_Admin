@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class AuthorizationPanel : MonoBehaviour
 {
     [SerializeField] RegistrationAdminPanel registrationAdminPanel;
-    [SerializeField]  Button toRegistration;
+    [SerializeField] Button toRegistration;
     [SerializeField] TMP_InputField login;
     [SerializeField] TMP_InputField passw;
-    [SerializeField]  Button enterButton;
+    [SerializeField] Button enterButton;
     
     void Start()
     {
@@ -28,9 +28,9 @@ public class AuthorizationPanel : MonoBehaviour
 
     void EnterButton()
     {
-        var studentsDB = new StudentsDB();
+        var teachersDB = new TeachersDB();
         var currPassword = MenuUIManager.PasswEncryption(passw.text);
-        var reader = studentsDB.findStudent(login.text);
+        var reader = teachersDB.findTeacher(login.text);
         if (reader.HasRows)
         {
             reader.Read();
@@ -46,6 +46,8 @@ public class AuthorizationPanel : MonoBehaviour
     
     public void OpenPanel()
     {
+        login.text = "";
+        passw.text = "";
         gameObject.SetActive(true);
     }
 

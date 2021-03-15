@@ -23,7 +23,7 @@ public class StudentsPanel : MonoBehaviour
         while (reader.Read())
         {
             SpawnStudent(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
-                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[7]));
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[8]));
             i++;
         }
         studentsDB.close();
@@ -70,13 +70,18 @@ public class StudentsPanel : MonoBehaviour
         while (reader.Read())
         {
             SpawnStudent(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
-                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[7]));
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[8]));
             i++;
         };
         studentsDB.close();
     }
+
+    public void ShowRegistrationStudentPanel()
+    {
+        MenuUIManager.Instance.AuthPanel.OpenRegistrationStudentPanel();
+    }
     
-        private void studentsPanelCloseM()
+    private void studentsPanelCloseM()
     {
         
     }
