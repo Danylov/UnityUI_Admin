@@ -60,7 +60,7 @@ public class RegistrationStudentPanel : MonoBehaviour
         Ipaddress = RegistrationAdminPanel.GetLocalIPAddress();
         if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw) && (persDataCheck.persDataAgreed == true))
         {
-            MenuUIManager.Instance.SendPopup(5, "Успешная регистрация учителя", () => AddStudentToDB());
+            MenuUIManager.Instance.SendPopup(5, "Успешная регистрация студента", () => AddStudentToDB());
         }
         else Debug.Log("Заполните необходимые поля (имя, логин, пароль, подтверждение пароля), согласитесь на использование личных данных");
     }
