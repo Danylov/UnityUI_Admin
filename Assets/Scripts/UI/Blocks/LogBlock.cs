@@ -7,4 +7,9 @@ public class LogBlock : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI logText;
     [SerializeField] private TextMeshProUGUI logTimeText;
+    
+    public void FillData()
+    {
+        
+    }
 }

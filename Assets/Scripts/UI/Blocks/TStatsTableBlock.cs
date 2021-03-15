@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TrainingBlock : MonoBehaviour
+public class TStatsTableBlock : MonoBehaviour
 {
     [SerializeField] private StretchingList stretchingList;
-    
-    [SerializeField] private TextMeshProUGUI trainingText;
-    [SerializeField] private TextMeshProUGUI dateText;
+    [SerializeField] private TextMeshProUGUI trainingNameText;
+    [SerializeField] private TextMeshProUGUI trainingDateText;
 
-    [SerializeField] private GameObject logBlockPrefab;
-    
+    [SerializeField] private GameObject tStatsBlockStudentBlockPrefab;
+
     public void FillData()
     {
         
