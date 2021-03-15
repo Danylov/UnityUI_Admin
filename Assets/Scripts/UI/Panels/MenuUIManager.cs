@@ -15,7 +15,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private NotificationsPanel notificationsPanel;
     [SerializeField] private StatsMenu statsPanel;
     [SerializeField] private HelpPanel helpPanel;
-
+    [SerializeField] private LabDescPanel labDescPanel;
     public AuthPanel AuthPanel => authPanel;
     public TaskPanel TaskPanel => taskPanel;
     public UserPanel UserPanel => userPanel;
@@ -23,6 +23,7 @@ public class MenuUIManager : MonoBehaviour
     public NotificationsPanel NotificationsPanel => notificationsPanel;
     public StatsMenu StatsPanel => statsPanel;
     public HelpPanel HelpPanel => helpPanel;
+    public LabDescPanel LabDescPanel => labDescPanel;
 
     [SerializeField] private RectTransform mainPanel;
     [SerializeField] private RectTransform plSetUpMenu;
@@ -62,6 +63,8 @@ public class MenuUIManager : MonoBehaviour
         userPanel.ClosePanel();
         viewModePanel.ClosePanel();
         statsPanel.ClosePanel();
+        helpPanel.ClosePanel();
+        labDescPanel.ClosePanel();
     }
 
     public void Exit()
@@ -88,6 +91,16 @@ public class MenuUIManager : MonoBehaviour
     public void CloseHelpPanel()
     {
         helpPanel.ClosePanel();
+    }
+
+    public void OpenLabDescPanel()
+    {
+        labDescPanel.OpenPanel();
+    }
+
+    public void CloseLabDescPanel()
+    {
+        labDescPanel.ClosePanel();
     }
 
     public void CloseCalendar()
@@ -159,14 +172,14 @@ public class MenuUIManager : MonoBehaviour
         plSetUpMenu.gameObject.SetActive(false);
     }
 
-    public void SendPopup(float time, string text)
+    public void SendPopup(float time, string text, Action onComplete = null)
     {
         StopAllCoroutines();
 
-        StartCoroutine(PopUp(time, text));
+        StartCoroutine(PopUp(time, text, onComplete));
     }
 
-    private IEnumerator PopUp(float time, string text)
+    private IEnumerator PopUp(float time, string text, Action onComplete)
     {
         popupImage.gameObject.SetActive(true);
 
@@ -183,6 +196,10 @@ public class MenuUIManager : MonoBehaviour
         yield return new WaitForSeconds(time / 3f);
 
         popupImage.DOFade(0f, time / 3f);
-        popupText.DOFade(0f, time / 3f).OnComplete(() => { popupImage.gameObject.SetActive(false); });
+        popupText.DOFade(0f, time / 3f).OnComplete(() =>
+        {
+            popupImage.gameObject.SetActive(false);
+            onComplete?.Invoke();
+        });
     }
 }

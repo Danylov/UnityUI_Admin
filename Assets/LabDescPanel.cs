@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegistrationAdminPanel : MonoBehaviour
+public class LabDescPanel : MonoBehaviour
 {
     public void OpenPanel()
     {
@@ -12,11 +12,5 @@ public class RegistrationAdminPanel : MonoBehaviour
     public void ClosePanel()
     {
         gameObject.SetActive(false);
-    }
-
-    public void Register()
-    {
-        MenuUIManager.Instance.SendPopup(5, "Успешная регистрация",
-            () => MenuUIManager.Instance.OpenMainPanel());
     }
 }

@@ -16,14 +16,7 @@ public class RegistrationStudentPanel : MonoBehaviour
 
     public void Register()
     {
-        MenuUIManager.Instance.SendPopup(5, "Успешная регистрация");
-        StartCoroutine(DelayMenu(5f));
-    }
-
-    private IEnumerator DelayMenu(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        MenuUIManager.Instance.OpenMainPanel();
+        MenuUIManager.Instance.SendPopup(5, "Студент успешно зарегестрирован",
+            () => MenuUIManager.Instance.OpenMainPanel());
     }
 }
