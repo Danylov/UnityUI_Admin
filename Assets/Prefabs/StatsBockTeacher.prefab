@@ -338,6 +338,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3579a2b2aa4eae46847f94070724cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stretchingList: {fileID: 1773761275899370700}
+  nameText: {fileID: 1773761276941418686}
+  trainingBlockPrefab: {fileID: 2520127124370365096, guid: af9bf15c263c4d044a944eee563afd2f,
+    type: 3}
 --- !u!1 &1773761276402588763
 GameObject:
   m_ObjectHideFlags: 0

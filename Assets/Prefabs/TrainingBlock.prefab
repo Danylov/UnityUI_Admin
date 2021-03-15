@@ -438,8 +438,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45320c179efe8f4da66a8fde8fed905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trainingText: {fileID: 0}
-  dateText: {fileID: 0}
+  stretchingList: {fileID: 606783350794353147}
+  trainingText: {fileID: 606783350992052719}
+  dateText: {fileID: 606783351627472074}
+  logBlockPrefab: {fileID: 360572197167390570, guid: 53fca1af061afc94fb3bff29a64c556b,
+    type: 3}
 --- !u!1 &606783350992052717
 GameObject:
   m_ObjectHideFlags: 0

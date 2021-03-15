@@ -609,6 +609,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00b3df1180f9484d99eeb8a5baefa42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stretchingList: {fileID: 2520127124370365099}
+  trainingNameText: {fileID: 2520127123496846002}
+  trainingDateText: {fileID: 2520127123385728919}
+  tStatsBlockStudentBlockPrefab: {fileID: 6076748570148165336, guid: f598ecb6feb28f54a892a6b8aae5564f,
+    type: 3}
 --- !u!1 &7352679316502663688
 GameObject:
   m_ObjectHideFlags: 0
