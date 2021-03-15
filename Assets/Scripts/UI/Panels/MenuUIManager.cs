@@ -17,7 +17,8 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private ViewModePanel viewModePanel;
     [SerializeField] private NotificationsPanel notificationsPanel;
     [SerializeField] private StatsMenu statsPanel;
-
+    [SerializeField] private HelpPanel helpPanel;
+    [SerializeField] private LabDescPanel labDescPanel;
     public AuthPanel AuthPanel => authPanel;
     public TaskPanel TaskPanel => taskPanel;
     public UserPanel UserPanel => userPanel;
@@ -25,7 +26,8 @@ public class MenuUIManager : MonoBehaviour
     public ViewModePanel ViewModePanel => viewModePanel;
     public NotificationsPanel NotificationsPanel => notificationsPanel;
     public StatsMenu StatsPanel => statsPanel;
-
+    public HelpPanel HelpPanel => helpPanel;
+    public LabDescPanel LabDescPanel => labDescPanel;
 
     [SerializeField] private RectTransform mainPanel;
     [SerializeField] private RectTransform plSetUpMenu;
@@ -54,7 +56,7 @@ public class MenuUIManager : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.LogError($"More then a single instance of {GetType()}");
-        };
+        }
     }
 
     private void CloseAllPanels()
@@ -65,6 +67,13 @@ public class MenuUIManager : MonoBehaviour
         studentsPanel.ClosePanel();
         viewModePanel.ClosePanel();
         statsPanel.ClosePanel();
+        helpPanel.ClosePanel();
+        labDescPanel.ClosePanel();
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     public void OpenMainPanel()
@@ -83,6 +92,26 @@ public class MenuUIManager : MonoBehaviour
     public void OpenCalendar()
     {
         datePicker.gameObject.SetActive(true);
+    }
+
+    public void OpenHelpPanel()
+    {
+        helpPanel.OpenPanel();
+    }
+
+    public void CloseHelpPanel()
+    {
+        helpPanel.ClosePanel();
+    }
+
+    public void OpenLabDescPanel()
+    {
+        labDescPanel.OpenPanel();
+    }
+
+    public void CloseLabDescPanel()
+    {
+        labDescPanel.ClosePanel();
     }
 
     public void CloseCalendar()
@@ -150,13 +179,13 @@ public class MenuUIManager : MonoBehaviour
         plSetUpMenu.gameObject.SetActive(false);
     }
 
-    public void SendPopup(float time, string text)
+    public void SendPopup(float time, string text, Action onComplete = null)
     {
         StopAllCoroutines();
-        StartCoroutine(PopUp(time, text));
+        StartCoroutine(PopUp(time, text, onComplete));
     }
 
-    private IEnumerator PopUp(float time, string text)
+    private IEnumerator PopUp(float time, string text, Action onComplete)
     {
         popupImage.gameObject.SetActive(true);
 
@@ -173,10 +202,13 @@ public class MenuUIManager : MonoBehaviour
         yield return new WaitForSeconds(time / 3f);
 
         popupImage.DOFade(0f, time / 3f);
-        popupText.DOFade(0f, time / 3f).OnComplete(() => { popupImage.gameObject.SetActive(false); });
+        popupText.DOFade(0f, time / 3f).OnComplete(() =>
+        {
+            popupImage.gameObject.SetActive(false);
+            onComplete?.Invoke();
+        });
     }
-    
-    
+
     public static string PasswEncryption(string notEncrPassw)
     {
         MD5 md5 = new MD5CryptoServiceProvider();  
@@ -185,11 +217,6 @@ public class MenuUIManager : MonoBehaviour
         StringBuilder strBuilder = new StringBuilder();  
         for (int i = 0; i < result.Length; i++)  strBuilder.Append(result[i].ToString("x2"));  
         return strBuilder.ToString();          
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
     }
 
 }

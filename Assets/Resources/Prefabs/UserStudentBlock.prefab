@@ -1649,7 +1649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   studentDbId: 0
-  userStudentBlock: {fileID: 0}
+  userStudentBlock: {fileID: 6127433099812645993}
   button: {fileID: 1735391345373727815}
 --- !u!1 &5516221551151957228
 GameObject:

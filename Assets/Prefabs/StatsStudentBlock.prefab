@@ -1843,9 +1843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beed9561ef85044c8593f344d9f0bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stretchingList: {fileID: 0}
-  nameText: {fileID: 0}
-  groupText: {fileID: 0}
+  stretchingList: {fileID: 1117665954065078515}
+  nameText: {fileID: 1117665953290228705}
+  groupText: {fileID: 1117665953759668712}
+  trainingBlockPrefab: {fileID: 606783350794353141, guid: d6766711049380648adc1c1acefcfdc6,
+    type: 3}
 --- !u!1001 &4835100016293431113
 PrefabInstance:
   m_ObjectHideFlags: 0
