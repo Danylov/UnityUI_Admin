@@ -7,15 +7,19 @@ using UnityEngine.UI;
 
 public class StudentsPanel : MonoBehaviour
 {
+    private ToggleAllButtons toggleAllButtons;
+    [SerializeField] private GameObject SLListContentL;
     [SerializeField] private GameObject SLListContent;
     [SerializeField] Button SLTickButton;
-    private ToggleAllButtons toggleAllButtons;
-    public TMP_InputField SLFindName;
-    public GameObject studentPrefab;
+    [SerializeField] TMP_InputField SLFindName;
+    [SerializeField] TMP_InputField SLFindNameL;
+    [SerializeField] GameObject studentPrefabL;
+    [SerializeField] GameObject studentPrefab;
     // public Button studentsPanelClose;
     
    public void SpawnStudents()
     {
+        foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject);
         foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
         var studentsDB = new StudentsDB();
         var reader = studentsDB.getAllStudents();
@@ -33,9 +37,14 @@ public class StudentsPanel : MonoBehaviour
     private void SpawnStudent(int i, int id, string fullName, string organizType, string position, string persNumber, string login, int choosed)
     {
         var spawnLocation = new Vector3(0, 2*i, 0);
+        var studentInfoL = Instantiate(studentPrefabL, spawnLocation, Quaternion.identity);
         var studentInfo = Instantiate(studentPrefab, spawnLocation, Quaternion.identity);
+        studentInfoL.transform.SetParent(SLListContentL.transform, false);
         studentInfo.transform.SetParent(SLListContent.transform, false);
+        var studentBlock = studentInfoL.GetComponent<StudentBlock>();
         var userStudentBlock = studentInfo.GetComponent<UserStudentBlock>();
+        studentBlock.NameText.text = fullName;
+        studentBlock.TaskText.text = "Нет задач";
         userStudentBlock.NameText.text = fullName;
         userStudentBlock.OrgTypeText.text = organizType;
         userStudentBlock.JobText.text = position;
@@ -52,6 +61,7 @@ public class StudentsPanel : MonoBehaviour
         toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
         toggleAllButtons.ToggleAllButtonsStart();
         SLFindName.onValueChanged.AddListener(SLFindNameChanged);
+        SLFindNameL.onValueChanged.AddListener(SLFindNameChanged);
         MenuUIManager.Instance.StudentsPanel.SpawnStudents();
         gameObject.SetActive(true);
     }
@@ -63,6 +73,7 @@ public class StudentsPanel : MonoBehaviour
 
     private void SLFindNameChanged(string currInput)
     {
+        foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject);
         foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
         var studentsDB = new StudentsDB();
         var reader = studentsDB.findStudentsLike(currInput);

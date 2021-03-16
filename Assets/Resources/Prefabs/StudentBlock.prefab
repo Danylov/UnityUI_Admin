@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: 7188323568988624504}
   - component: {fileID: 7188323568988624505}
   - component: {fileID: 7188323568988624510}
+  - component: {fileID: 2624584144317477}
   m_Layer: 5
   m_Name: StudentBlock
   m_TagString: Untagged
@@ -569,6 +570,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2624584144317477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188323568988624507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5876304ab15c469c8721b9153bb8821c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 7188323568005841050}
+  taskText: {fileID: 7188323569128163792}
+  timerText: {fileID: 7188323567817029837}
 --- !u!1 &7188323569128163794
 GameObject:
   m_ObjectHideFlags: 0
