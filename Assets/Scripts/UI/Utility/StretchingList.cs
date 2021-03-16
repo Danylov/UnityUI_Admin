@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using DG.Tweening;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 public class StretchingList : MonoBehaviour
 {
