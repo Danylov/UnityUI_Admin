@@ -2,53 +2,46 @@
 using UnityEngine;
 using System.Data;
 
-public class StudentDbHelper
+public class SessionsDbHelper
 {
     private MySqlConnection db_connection;
-    public StudentDbHelper(string db_connection_string)
+    public SessionsDbHelper(string db_connection_string)
     {
         db_connection = new MySqlConnection(db_connection_string);
         db_connection.Open();
     }
 
-    ~StudentDbHelper()
+    ~SessionsDbHelper()
     {
         db_connection.Close();
     }
-    public virtual MySqlDataReader findStudent(string login)
+    public virtual void addSession(Session session)
     {
         throw null;
     }
-    public virtual MySqlDataReader findStudentsLike(string currInput)
+
+    public virtual MySqlDataReader findSessionsByTeacherId(int teacherId)
     {
         throw null;
     }
-    public virtual void deleteStudentByLogin(string login)
-    {
-        throw null;
-    }
-    public virtual void deleteStudentById(int id)
+    public virtual void deleteSessionById(int id)
     {
         throw null;
     }    
-    public virtual void deleteCheckedStudents()
-    {
-        throw null;
-    }    
-    public virtual MySqlDataReader getAllStudents()
+    public virtual MySqlDataReader getAllSessions()
     {
         throw null;
     }
-    public virtual void deleteAllStudents()
+    public virtual void deleteAllSessions()
     {
         throw null;
     }
-   public MySqlCommand getDbCommand()
+    public MySqlCommand getDbCommand()
     {
         return db_connection.CreateCommand();
     }
 
-    public MySqlDataReader getAllStudents(string table_name)
+    public MySqlDataReader getAllSessions(string table_name)
     {
         MySqlCommand dbcmd = db_connection.CreateCommand();
         dbcmd.CommandText = "SELECT * FROM" + " " + table_name;
@@ -56,22 +49,12 @@ public class StudentDbHelper
         return reader;
     }
 
-    public void deleteAllStudents(string table_name)
+    public void deleteAllSessions(string table_name)
     {
         MySqlCommand dbcmd = db_connection.CreateCommand();
         dbcmd.CommandText = "DROP TABLE IF EXISTS " + table_name;
         dbcmd.ExecuteNonQuery();
     }
-    public virtual void checkStudent(int id, bool isOn)
-    {
-        throw null;
-    }
-
-    public virtual void checkAllStudents(bool isOn)
-    {
-        throw null;
-    }
-
     public void close()
     {
         db_connection.Close();

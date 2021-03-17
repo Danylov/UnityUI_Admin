@@ -2,7 +2,7 @@
 using MySql.Data.MySqlClient;
 using UnityEngine;
 
-public class TeachersDB : TeacherDbHelper
+public class TeachersDB : TeachersDbHelper
 {
     private static readonly string connect = MenuUIManager.connect; 
 
@@ -19,7 +19,7 @@ public class TeachersDB : TeacherDbHelper
         dbcmd.ExecuteNonQuery();
     }
 
-    public void addTeacher(Teacher teacher)
+    public override void addTeacher(Teacher teacher)
     {
         MySqlCommand dbcmd = getDbCommand();
         dbcmd.CommandText = "INSERT INTO teachers (fullname, organiztype, position, persnumber, login, password, ipaddress, regtime, choosed) VALUES ( '" + 

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using UnityEngine;
 
 public class Student
 {
