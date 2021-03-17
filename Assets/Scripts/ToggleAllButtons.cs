@@ -16,7 +16,6 @@ namespace UI
 
         public void ToggleAllButtonsStart()
         {
-            // SLListContent = GameObject.Find("SLListContent");
             tickImage.gameObject.SetActive(isOn);
             button.onClick.AddListener(Switch);
         }

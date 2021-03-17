@@ -7,19 +7,24 @@ using UnityEngine.UI;
 public class UnloadButton : MonoBehaviour
 {
     public int studentDbId;
-    public UserStudentBlock userStudentBlock; 
+    [SerializeField] private UserStudentBlock userStudentBlock; 
     [SerializeField] private Button button;
+    private GameObject StudentsPanel;
+    StudentsPanel studentsPanel;
+    private 
     
     // Start is called before the first frame update
     void Start()
     {
-        button.onClick.AddListener(UnloadButtonClick);   
+        button.onClick.AddListener(UnloadButtonClick);  
+        StudentsPanel = GameObject.Find("StudentsPanel");
+        studentsPanel = StudentsPanel.GetComponent<StudentsPanel>();
     }
     private void UnloadButtonClick()
     {
-        Destroy(userStudentBlock.gameObject);
         var studentsDB = new StudentsDB();
         studentsDB.deleteStudentById(studentDbId);
         studentsDB.close();
+        studentsPanel.SpawnStudents();
     }
 }

@@ -17,7 +17,7 @@ public class StudentsPanel : MonoBehaviour
     [SerializeField] GameObject studentPrefab;
     // public Button studentsPanelClose;
     
-   public void SpawnStudents()
+    public void SpawnStudents()
     {
         foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject);
         foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
@@ -26,7 +26,9 @@ public class StudentsPanel : MonoBehaviour
         var i = 0;
         while (reader.Read())
         {
-            SpawnStudent(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
+            SpawnStudent(0, i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[8]));
+            SpawnStudent(1, i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
                 reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[8]));
             i++;
         }
@@ -34,34 +36,38 @@ public class StudentsPanel : MonoBehaviour
         toggleAllButtons.AnalizeChecks();
     }
 
-    private void SpawnStudent(int i, int id, string fullName, string organizType, string position, string persNumber, string login, int choosed)
+    private void SpawnStudent(int NumPanel, int i, int id, string fullName, string organizType, string position, string persNumber, string login, int choosed)
     {
         var spawnLocation = new Vector3(0, 2*i, 0);
-        var studentInfoL = Instantiate(studentPrefabL, spawnLocation, Quaternion.identity);
-        var studentInfo = Instantiate(studentPrefab, spawnLocation, Quaternion.identity);
-        studentInfoL.transform.SetParent(SLListContentL.transform, false);
-        studentInfo.transform.SetParent(SLListContent.transform, false);
-        var studentBlock = studentInfoL.GetComponent<StudentBlock>();
-        var userStudentBlock = studentInfo.GetComponent<UserStudentBlock>();
-        studentBlock.NameText.text = fullName;
-        studentBlock.TaskText.text = "Нет задач";
-        userStudentBlock.NameText.text = fullName;
-        userStudentBlock.OrgTypeText.text = organizType;
-        userStudentBlock.JobText.text = position;
-        userStudentBlock.TabNumText.text = persNumber;
-        userStudentBlock.LoginText.text = login;
-        userStudentBlock.ToggleButton.studentDbId = id;
-        userStudentBlock.UnloadButton.studentDbId = id;
-        userStudentBlock.UnloadButton.userStudentBlock = userStudentBlock;
-        if (choosed == 1) userStudentBlock.ToggleButton.SetOn();
+        if (NumPanel == 0) {
+            var studentInfoL = Instantiate(studentPrefabL, spawnLocation, Quaternion.identity);
+            studentInfoL.transform.SetParent(SLListContentL.transform, false);
+            var studentBlock = studentInfoL.GetComponent<StudentBlock>();
+            studentBlock.NameText.text = fullName;
+            studentBlock.TaskText.text = "Нет задач";
+        }
+        if (NumPanel == 1)
+        {
+            var studentInfo = Instantiate(studentPrefab, spawnLocation, Quaternion.identity);
+            studentInfo.transform.SetParent(SLListContent.transform, false);
+            var userStudentBlock = studentInfo.GetComponent<UserStudentBlock>();
+            userStudentBlock.NameText.text = fullName;
+            userStudentBlock.OrgTypeText.text = organizType;
+            userStudentBlock.JobText.text = position;
+            userStudentBlock.TabNumText.text = persNumber;
+            userStudentBlock.LoginText.text = login;
+            userStudentBlock.ToggleButton.studentDbId = id;
+            userStudentBlock.UnloadButton.studentDbId = id;
+            if (choosed == 1) userStudentBlock.ToggleButton.SetOn();
+        }
     }
         
     public void OpenPanel()
     {
         toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
         toggleAllButtons.ToggleAllButtonsStart();
-        SLFindName.onValueChanged.AddListener(SLFindNameChanged);
-        SLFindNameL.onValueChanged.AddListener(SLFindNameChanged);
+        SLFindNameL.onValueChanged.AddListener(currInput => SLFindNameChanged(currInput, 0));
+        SLFindName.onValueChanged.AddListener(currInput => SLFindNameChanged(currInput, 1));
         MenuUIManager.Instance.StudentsPanel.SpawnStudents();
         gameObject.SetActive(true);
     }
@@ -71,16 +77,22 @@ public class StudentsPanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void SLFindNameChanged(string currInput)
+    private void SLFindNameChanged(string currInput, int NumPanel)
     {
-        foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject);
-        foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
+        switch (NumPanel)
+        {
+            case 0: foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject); break;
+            case 1: foreach(Transform child in SLListContent.transform)    Destroy(child.gameObject); break;
+            default: foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject); 
+                foreach(Transform child in SLListContent.transform)    Destroy(child.gameObject); 
+                break;
+        }
         var studentsDB = new StudentsDB();
         var reader = studentsDB.findStudentsLike(currInput);
         var i = 0;
         while (reader.Read())
         {
-            SpawnStudent(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
+            SpawnStudent(NumPanel, i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
                 reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[8]));
             i++;
         };
