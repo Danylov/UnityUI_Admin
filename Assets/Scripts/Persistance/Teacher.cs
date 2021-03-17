@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Teacher
@@ -11,9 +12,10 @@ public class Teacher
     private string Login;
     private string Password;
     private string Ipaddress;
+    private DateTime Regtime;
     private int Choosed;
 
-    public Teacher(string fullname, string organiztype, string position, int persnumber, string login, string password, string ipaddress, int choosed)
+    public Teacher(string fullname, string organiztype, string position, int persnumber, string login, string password, string ipaddress, DateTime regtime, int choosed)
     {
         Fullname = fullname;
         Organiztype = organiztype;
@@ -22,6 +24,7 @@ public class Teacher
         Login = login;
         Password = password;
         Ipaddress = ipaddress;
+        Regtime = regtime;
         Choosed = choosed;
     }
 
@@ -72,6 +75,13 @@ public class Teacher
         get => Ipaddress;
         set => Ipaddress = value;
     }
+
+    
+    public DateTime Regtime1 
+    { 
+        get => Regtime;
+        set => Regtime = value;
+}
 
     [DefaultValue(0)]
     public int Choosed1

@@ -27,6 +27,7 @@ public class RegistrationAdminPanel : MonoBehaviour
     private string Passw;
     private string ConfPassw;
     private string Ipaddress;
+    private DateTime Regtime;
     
     public void StartRegistrationAdminPanel()
     {
@@ -60,6 +61,7 @@ public class RegistrationAdminPanel : MonoBehaviour
         Passw = passw.text;
         ConfPassw = confPassw.text;
         Ipaddress = GetLocalIPAddress();
+        Regtime = DateTime.Now;
         if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw) && (persDataCheck.persDataAgreed == true))
         {
             MenuUIManager.Instance.SendPopup(5, "Успешная регистрация учителя", () => AddTeacherToDB());
@@ -88,7 +90,7 @@ public class RegistrationAdminPanel : MonoBehaviour
     void AddTeacherToDB() 
     { 
         var teachersDB = new TeachersDB();
-        teachersDB.addTeacher(new Teacher(Fullname, OrganizType, Position, Int32.Parse(PersNumber), Login, Passw, Ipaddress, 0));
+        teachersDB.addTeacher(new Teacher(Fullname, OrganizType, Position, Int32.Parse(PersNumber), Login, Passw, Ipaddress, Regtime, 0));
         teachersDB.close();
         // MenuUIManager.Instance.OpenMainPanel();
         MenuUIManager.Instance.OpenStudentsPanel();

@@ -13,6 +13,7 @@ public class TeachersDB : TeacherDbHelper
                             "`fullname` varchar(45) DEFAULT NULL, `organiztype` varchar(45) DEFAULT NULL, " + 
                             "`position` varchar(45) DEFAULT NULL, `persnumber` int DEFAULT NULL, " + 
                             "`login` varchar(45) DEFAULT NULL, `password` varchar(45) DEFAULT NULL, " + 
+                            "`ipaddress` varchar(45) DEFAULT NULL, `regtime` datetime DEFAULT NULL, " +
                             "`choosed` tinyint(1) NOT NULL DEFAULT '0', PRIMARY KEY (`id`) ) " + 
                             "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;";
         dbcmd.ExecuteNonQuery();
@@ -21,10 +22,10 @@ public class TeachersDB : TeacherDbHelper
     public void addTeacher(Teacher teacher)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "INSERT INTO teachers (fullname, organiztype, position, persnumber, login, password, ipaddress, choosed) VALUES ( '" + 
+        dbcmd.CommandText = "INSERT INTO teachers (fullname, organiztype, position, persnumber, login, password, ipaddress, regtime, choosed) VALUES ( '" + 
                             teacher.Fullname1 + "', '" + teacher.Organiztype1 + "', '" + teacher.Position1 + "', '" + 
                             teacher.Persnumber1 + "', '" + teacher.Login1 + "', '" + MenuUIManager.PasswEncryption(teacher.Password1) + 
-                            "', '" + teacher.Ipaddress1 + "', '" + teacher.Choosed1 + "' )";
+                            "', '" + teacher.Ipaddress1 + "', '" + teacher.Regtime1.ToString("yyyy-MM-dd H:mm:ss") + "', '" + teacher.Choosed1 + "' )";
         dbcmd.ExecuteNonQuery();
     }
    
