@@ -4,22 +4,22 @@ using System.ComponentModel;
 public class Teacher
 {
     private int Id;
-    private string Fullname;
-    private string Organiztype;
+    private string Name;
+    private string Family;
+    private string MdlName; 
     private string Position;
-    private int Persnumber;
     private string Login;
     private string Password;
     private string Ipaddress;
     private DateTime Regtime;
     private int Choosed;
 
-    public Teacher(string fullname, string organiztype, string position, int persnumber, string login, string password, string ipaddress, DateTime regtime, int choosed)
+    public Teacher(string name, string family, string mdlName, string position, string login, string password, string ipaddress, DateTime regtime, int choosed)
     {
-        Fullname = fullname;
-        Organiztype = organiztype;
+        Name = name;
+        Family = family;
+        MdlName = mdlName;
         Position = position;
-        Persnumber = persnumber;
         Login = login;
         Password = password;
         Ipaddress = ipaddress;
@@ -33,28 +33,28 @@ public class Teacher
         set => Id = value;
     }
 
-    public string Fullname1
+    public string Name1
     {
-        get => Fullname;
-        set => Fullname = value;
+        get => Name;
+        set => Name = value;
     }
 
-    public string Organiztype1
+    public string Family1
     {
-        get => Organiztype;
-        set => Organiztype = value;
+        get => Family;
+        set => Family = value;
+    }
+
+    public string MdlName1
+    {
+        get => MdlName;
+        set => MdlName = value;
     }
 
     public string Position1
     {
         get => Position;
         set => Position = value;
-    }
-
-    public int Persnumber1
-    {
-        get => Persnumber;
-        set => Persnumber = value;
     }
 
     public string Login1

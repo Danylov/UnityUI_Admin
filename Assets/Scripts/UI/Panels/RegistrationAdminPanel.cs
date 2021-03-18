@@ -7,10 +7,10 @@ using Button = UnityEngine.UI.Button;
 
 public class RegistrationAdminPanel : MonoBehaviour
 {
-    [SerializeField] TMP_InputField fullname;
-    [SerializeField] TMP_InputField organizType;
+    [SerializeField] TMP_InputField name;
+    [SerializeField] TMP_InputField family;
+    [SerializeField] TMP_InputField mdlName;
     [SerializeField] TMP_InputField position;
-    [SerializeField] TMP_InputField persNumber;
     [SerializeField] TMP_InputField login;
     [SerializeField] TMP_InputField passw;
     [SerializeField] TMP_InputField confPassw;
@@ -19,10 +19,10 @@ public class RegistrationAdminPanel : MonoBehaviour
     
     private PersDataCheck persDataCheck;
     
-    private string Fullname;
-    private string OrganizType;
+    private string Name;
+    private string Family;
+    private string MdlName;
     private string Position;
-    private string PersNumber;
     private string Login;
     private string Passw;
     private string ConfPassw;
@@ -40,41 +40,42 @@ public class RegistrationAdminPanel : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (fullname.isFocused)  organizType.Select();
-            if (organizType.isFocused)  position.Select();
-            if (position.isFocused)  persNumber.Select();
-            if (persNumber.isFocused)  login.Select();
+            if (name.isFocused)  family.Select();
+            if (family.isFocused)  mdlName.Select();
+            if (mdlName.isFocused)  position.Select();
+            if (position.isFocused)  login.Select();
             if (login.isFocused)  passw.Select();
             if (passw.isFocused)  confPassw.Select();
-            if (confPassw.isFocused)  fullname.Select();
+            if (confPassw.isFocused)  name.Select();
         }
         if (Input.GetKeyDown(KeyCode.Return))  RegisterButton();
     }
             
     private void RegisterButton()
     {
-        Fullname = fullname.text;
-        OrganizType = organizType.text;
+        Name = name.text;
+        Family = family.text;
+        MdlName = mdlName.text;
         Position = position.text;
-        PersNumber = persNumber.text;
         Login = login.text;
         Passw = passw.text;
         ConfPassw = confPassw.text;
         Ipaddress = GetLocalIPAddress();
         Regtime = DateTime.Now;
-        if ((Fullname != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw) && (persDataCheck.persDataAgreed == true))
+        if ((Name != "") && (Family != "") && (Login != "") && (Passw != "") && (Passw == ConfPassw) && 
+            (persDataCheck.persDataAgreed == true))
         {
-            MenuUIManager.Instance.SendPopup(5, "Успешная регистрация учителя", () => AddTeacherToDB());
+            MenuUIManager.Instance.SendPopup(3, "Успешная регистрация учителя", () => AddTeacherToDB());
         }
-        else Debug.Log("Заполните необходимые поля (имя, логин, пароль, подтверждение пароля), согласитесь на использование личных данных");
+        else MenuUIManager.Instance.SendPopup(3, "Заполните необходимые поля (имя, фамилия, логин, пароль, подтверждение пароля), согласитесь на использование личных данных");
     }
     
     public void OpenPanel()
     {
-        fullname.text = "";
-        organizType.text = "";
+        name.text = "";
+        family.text = "";
+        mdlName.text = "";
         position.text = "";
-        persNumber.text = "";
         login.text = "";
         passw.text = "";
         confPassw.text = "";
@@ -90,7 +91,7 @@ public class RegistrationAdminPanel : MonoBehaviour
     void AddTeacherToDB() 
     { 
         var teachersDB = new TeachersDB();
-        teachersDB.addTeacher(new Teacher(Fullname, OrganizType, Position, Int32.Parse(PersNumber), Login, Passw, Ipaddress, Regtime, 0));
+        teachersDB.addTeacher(new Teacher(Name, Family, MdlName, Position, Login, Passw, Ipaddress, Regtime, 0));
         teachersDB.close();
         // MenuUIManager.Instance.OpenMainPanel();
         MenuUIManager.Instance.OpenStudentsPanel();

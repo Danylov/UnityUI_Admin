@@ -10,8 +10,8 @@ public class StudentsDB : StudentsDbHelper
     {
         MySqlCommand dbcmd = getDbCommand();
         dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS students (`id` int NOT NULL AUTO_INCREMENT, " + 
-                            "`fullname` varchar(45) DEFAULT NULL, `organiztype` varchar(45) DEFAULT NULL, " + 
-                            "`position` varchar(45) DEFAULT NULL, `persnumber` int DEFAULT NULL, " + 
+                            "`name` varchar(45) DEFAULT NULL, `family` varchar(45) DEFAULT NULL, " + 
+                            "`mdlname` varchar(45) DEFAULT NULL, `studgroup` varchar(45) DEFAULT NULL, " + 
                             "`login` varchar(45) DEFAULT NULL, `password` varchar(45) DEFAULT NULL, " + 
                             "`choosed` tinyint(1) NOT NULL DEFAULT '0', PRIMARY KEY (`id`) ) " + 
                             "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;";
@@ -21,11 +21,14 @@ public class StudentsDB : StudentsDbHelper
     public override void addStudent(Student student)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "INSERT INTO students (fullname, organiztype, position, persnumber, login, password, ipaddress, choosed) VALUES ( '" + 
-                            student.Fullname1 + "', '" + student.Organiztype1 + "', '" + student.Position1 + "', '" + 
-                            student.Persnumber1 + "', '" + student.Login1 + "', '" + MenuUIManager.PasswEncryption(student.Password1) + 
+        Debug.Log("addStudent():1"); // Отладка
+        dbcmd.CommandText = "INSERT INTO students (name, family, mdlname, studgroup, login, password, ipaddress, choosed) VALUES ( '" + 
+                            student.Name1 + "', '" + student.Family1 + "', '" + student.MdlName1 + "', '" + 
+                            student.StudGroup1 + "', '" + student.Login1 + "', '" + MenuUIManager.PasswEncryption(student.Password1) + 
                             "', '" + student.Ipaddress1 + "', '" + student.Choosed1 + "' )";
+        Debug.Log("addStudent():2"); // Отладка
         dbcmd.ExecuteNonQuery();
+        Debug.Log("addStudent():3"); // Отладка
     }
    
     public override MySqlDataReader findStudent(string login)
@@ -38,7 +41,7 @@ public class StudentsDB : StudentsDbHelper
     public override MySqlDataReader findStudentsLike(string currInput)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "SELECT * FROM students WHERE fullname LIKE '" +
+        dbcmd.CommandText = "SELECT * FROM students WHERE family LIKE '" +
                             currInput + "%' OR  login LIKE '" + currInput + "%'";
         return dbcmd.ExecuteReader();
     }

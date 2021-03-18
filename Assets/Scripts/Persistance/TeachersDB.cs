@@ -10,8 +10,8 @@ public class TeachersDB : TeachersDbHelper
     {
         MySqlCommand dbcmd = getDbCommand();
         dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS teachers (`id` int NOT NULL AUTO_INCREMENT, " + 
-                            "`fullname` varchar(45) DEFAULT NULL, `organiztype` varchar(45) DEFAULT NULL, " + 
-                            "`position` varchar(45) DEFAULT NULL, `persnumber` int DEFAULT NULL, " + 
+                            "`name` varchar(45) DEFAULT NULL, `family` varchar(45) DEFAULT NULL, " + 
+                            "`mdlname` varchar(45) DEFAULT NULL, `position` varchar(45) DEFAULT NULL, " + 
                             "`login` varchar(45) DEFAULT NULL, `password` varchar(45) DEFAULT NULL, " + 
                             "`ipaddress` varchar(45) DEFAULT NULL, `regtime` datetime DEFAULT NULL, " +
                             "`choosed` tinyint(1) NOT NULL DEFAULT '0', PRIMARY KEY (`id`) ) " + 
@@ -22,9 +22,9 @@ public class TeachersDB : TeachersDbHelper
     public override void addTeacher(Teacher teacher)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "INSERT INTO teachers (fullname, organiztype, position, persnumber, login, password, ipaddress, regtime, choosed) VALUES ( '" + 
-                            teacher.Fullname1 + "', '" + teacher.Organiztype1 + "', '" + teacher.Position1 + "', '" + 
-                            teacher.Persnumber1 + "', '" + teacher.Login1 + "', '" + MenuUIManager.PasswEncryption(teacher.Password1) + 
+        dbcmd.CommandText = "INSERT INTO teachers (name, family, mdlname, position, login, password, ipaddress, regtime, choosed) VALUES ( '" + 
+                            teacher.Name1 + "', '" + teacher.Family1 + "', '" + teacher.MdlName1 + "', '" + 
+                            teacher.Position1 + "', '" + teacher.Login1 + "', '" + MenuUIManager.PasswEncryption(teacher.Password1) + 
                             "', '" + teacher.Ipaddress1 + "', '" + teacher.Regtime1.ToString("yyyy-MM-dd H:mm:ss") + "', '" + teacher.Choosed1 + "' )";
         dbcmd.ExecuteNonQuery();
     }
@@ -39,7 +39,7 @@ public class TeachersDB : TeachersDbHelper
     public override MySqlDataReader findTeachersLike(string currInput)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "SELECT * FROM teachers WHERE fullname LIKE '" +
+        dbcmd.CommandText = "SELECT * FROM teachers WHERE family LIKE '" +
                             currInput + "%' OR  login LIKE '" + currInput + "%'";
         return dbcmd.ExecuteReader();
     }
