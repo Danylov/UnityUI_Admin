@@ -1,6 +1,4 @@
-﻿using System;
-using MySql.Data.MySqlClient;
-using UnityEngine;
+﻿using MySql.Data.MySqlClient;
 
 public class StudentsDB : StudentsDbHelper
 {
@@ -21,20 +19,17 @@ public class StudentsDB : StudentsDbHelper
     public override void addStudent(Student student)
     {
         MySqlCommand dbcmd = getDbCommand();
-        Debug.Log("addStudent():1"); // Отладка
         dbcmd.CommandText = "INSERT INTO students (name, family, mdlname, studgroup, login, password, ipaddress, choosed) VALUES ( '" + 
                             student.Name1 + "', '" + student.Family1 + "', '" + student.MdlName1 + "', '" + 
                             student.StudGroup1 + "', '" + student.Login1 + "', '" + MenuUIManager.PasswEncryption(student.Password1) + 
                             "', '" + student.Ipaddress1 + "', '" + student.Choosed1 + "' )";
-        Debug.Log("addStudent():2"); // Отладка
         dbcmd.ExecuteNonQuery();
-        Debug.Log("addStudent():3"); // Отладка
-    }
+        }
    
-    public override MySqlDataReader findStudent(string login)
+    public override MySqlDataReader findStudentById(int id)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "SELECT password FROM students WHERE login = '" + login + "'";;
+        dbcmd.CommandText = "SELECT * FROM students WHERE id = '" + id + "'";;
         return dbcmd.ExecuteReader();
     }
     
@@ -60,11 +55,12 @@ public class StudentsDB : StudentsDbHelper
         dbcmd.ExecuteNonQuery();
     }
     
-    public override void deleteCheckedStudents()
+    public override MySqlDataReader getChoosedStudents()
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "DELETE FROM  students WHERE choosed = 1";
-        dbcmd.ExecuteNonQuery();
+        dbcmd.CommandText = "SELECT * FROM  students WHERE choosed = 1";
+        MySqlDataReader reader = dbcmd.ExecuteReader();
+        return reader;
     }
 
     public override MySqlDataReader getAllStudents()

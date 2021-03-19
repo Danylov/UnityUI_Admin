@@ -15,7 +15,6 @@ public class StudentsPanel : MonoBehaviour
     [SerializeField] TMP_InputField SLFindNameL;
     [SerializeField] GameObject studentPrefabL;
     [SerializeField] GameObject studentPrefab;
-    // public Button studentsPanelClose;
     
     public void SpawnStudents()
     {
@@ -102,10 +101,5 @@ public class StudentsPanel : MonoBehaviour
     public void ShowRegistrationStudentPanel()
     {
         MenuUIManager.Instance.AuthPanel.OpenRegistrationStudentPanel();
-    }
-    
-    private void studentsPanelCloseM()
-    {
-        
     }
 }

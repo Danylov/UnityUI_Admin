@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UI.Blocks;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UnloadAllChecked : MonoBehaviour
 {
-    [SerializeField] private StudentsPanel studentsPanel;
     [SerializeField] private Button button;
-    private StudentsPanel StudentsPanel => studentsPanel;
+    private UnloadButton unloadButton;
     
-    // Start is called before the first frame update
     void Start()
     {
         button.onClick.AddListener(UnloadAllCheckedClick);   
@@ -18,8 +14,11 @@ public class UnloadAllChecked : MonoBehaviour
     private void UnloadAllCheckedClick()
     {
         var studentsDB = new StudentsDB();
-        studentsDB.deleteCheckedStudents();
+        var reader = studentsDB.getChoosedStudents();
+        while (reader.Read())
+        {
+            UnloadButton.UnloadButtonClick(Convert.ToInt32(reader[0]));
+        }
         studentsDB.close();
-        studentsPanel.SpawnStudents();
     }
 }

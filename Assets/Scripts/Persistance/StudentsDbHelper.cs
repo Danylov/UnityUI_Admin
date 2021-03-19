@@ -1,6 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using UnityEngine;
-using System.Data;
 
 public class StudentsDbHelper
 {
@@ -19,7 +17,7 @@ public class StudentsDbHelper
     {
         throw null;
     }
-    public virtual MySqlDataReader findStudent(string login)
+    public virtual MySqlDataReader findStudentById(int id)
     {
         throw null;
     }
@@ -35,7 +33,7 @@ public class StudentsDbHelper
     {
         throw null;
     }    
-    public virtual void deleteCheckedStudents()
+    public virtual MySqlDataReader getChoosedStudents()
     {
         throw null;
     }    
