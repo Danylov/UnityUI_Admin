@@ -11,12 +11,13 @@ public class SessionsDB : SessionsDbHelper
         MySqlCommand dbcmd = getDbCommand();
         dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS `sessions` (`id` int unsigned NOT NULL, " + 
                             " `teacherid` int DEFAULT NULL, `studentid` int DEFAULT NULL," + 
+                            "`taskid` int DEFAULT NULL," + 
                             "`begtime` datetime DEFAULT NULL, `endtime` datetime DEFAULT NULL," + 
-                            "`taskname` varchar(45) DEFAULT NULL," + 
                             "PRIMARY KEY (`id`), KEY `studentid_fk_idx` (`studentid`)," + 
-                            "KEY `teacherid_fk_idx` (`teacherid`)," + 
+                            "KEY `teacherid_fk_idx` (`teacherid`), KEY `taskid_fk_idx` (`taskid`)," + 
                             "CONSTRAINT `studentid_fk` FOREIGN KEY (`studentid`) REFERENCES `students` (`id`)," + 
                             "CONSTRAINT `teacherid_fk` FOREIGN KEY (`teacherid`) REFERENCES `teachers` (`id`)" + 
+                            "CONSTRAINT `taskid_fk` FOREIGN KEY (`taskid`) REFERENCES `tasks` (`id`)" + 
                             ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci";
         dbcmd.ExecuteNonQuery();
     }
@@ -24,9 +25,9 @@ public class SessionsDB : SessionsDbHelper
     public override void addSession(Session session)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "INSERT INTO sessions (teacherid, studentid, begtime, endtime, taskname) VALUES ( '" + 
-                            session.Teacherid1 + "', '" + session.Studentid1 + "', '" + session.Begtime1 + "', '" + 
-                            session.Endtime1 + "', '" + session.Taskname1 +  "' )";
+        dbcmd.CommandText = "INSERT INTO sessions (teacherid, studentid, taskid, begtime, endtime) VALUES ( '" + 
+                            session.Teacherid1 + "', '" + session.Studentid1 + "', '" + session.Taskid1 + 
+                            "', '" + session.Begtime1 + "', '" + session.Endtime1 +  "' )";
         dbcmd.ExecuteNonQuery();
     }
    

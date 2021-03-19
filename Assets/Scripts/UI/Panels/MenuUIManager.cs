@@ -116,7 +116,8 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenTaskPanel()
     {
-        CloseAllPanels();
+        // CloseAllPanels();
+        OpenMainPanel();
         taskPanel.OpenPanel();
     }
 
