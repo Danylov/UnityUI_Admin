@@ -13,9 +13,14 @@ public class DateSelector : MonoBehaviour
         MenuUIManager.Instance.OpenCalendar();
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         MenuUIManager.Instance.DatePicker.OnDateSelected += DatePickerOnOnDateSelected;
+    }
+    
+    private void OnDisable()
+    {
+        MenuUIManager.Instance.DatePicker.OnDateSelected -= DatePickerOnOnDateSelected;
     }
 
     private void DatePickerOnOnDateSelected(DateTime d1, DateTime d2)

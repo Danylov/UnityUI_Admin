@@ -80,6 +80,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenCalendar()
     {
+        UIBlocker.OnClick += CloseHelpPanel;
         datePicker.gameObject.SetActive(true);
     }
 
@@ -90,6 +91,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseHelpPanel()
     {
+        UIBlocker.OnClick -= CloseHelpPanel;
         helpPanel.ClosePanel();
     }
 
