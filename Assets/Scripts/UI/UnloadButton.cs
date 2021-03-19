@@ -9,7 +9,6 @@ public class UnloadButton : MonoBehaviour
     public int studentDbId;
     [SerializeField] private Button button;
     private GameObject StudentsPanel;
-    private 
     
         void Start()
     {

@@ -13,7 +13,6 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private AuthPanel authPanel;
     [SerializeField] private TaskPanel taskPanel;
     [SerializeField] private UserPanel userPanel;
-    [SerializeField] private StudentsPanel studentsPanel;
     [SerializeField] private ViewModePanel viewModePanel;
     [SerializeField] private NotificationsPanel notificationsPanel;
     [SerializeField] private StatsMenu statsPanel;
@@ -22,7 +21,6 @@ public class MenuUIManager : MonoBehaviour
     public AuthPanel AuthPanel => authPanel;
     public TaskPanel TaskPanel => taskPanel;
     public UserPanel UserPanel => userPanel;
-    public StudentsPanel StudentsPanel => studentsPanel;
     public ViewModePanel ViewModePanel => viewModePanel;
     public NotificationsPanel NotificationsPanel => notificationsPanel;
     public StatsMenu StatsPanel => statsPanel;
@@ -64,7 +62,6 @@ public class MenuUIManager : MonoBehaviour
         authPanel.CloseAllPanels();
         taskPanel.ClosePanel();
         userPanel.ClosePanel();
-        studentsPanel.ClosePanel();
         viewModePanel.ClosePanel();
         statsPanel.ClosePanel();
         helpPanel.ClosePanel();
@@ -81,14 +78,7 @@ public class MenuUIManager : MonoBehaviour
         authPanel.CloseAllPanels();
         mainPanel.gameObject.SetActive(true);
     }
-   
-    public void OpenStudentsPanel()
-    {
-        authPanel.CloseAllPanels();
-        studentsPanel.OpenPanel();
-    }
-
-
+ 
     public void OpenCalendar()
     {
         datePicker.gameObject.SetActive(true);
@@ -138,7 +128,8 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenUserPanel()
     {
-        CloseAllPanels();
+        // CloseAllPanels();
+        OpenMainPanel();
         userPanel.OpenPanel();
     }
 

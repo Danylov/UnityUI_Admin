@@ -94,7 +94,7 @@ public class RegistrationAdminPanel : MonoBehaviour
         teachersDB.addTeacher(new Teacher(Name, Family, MdlName, Position, Login, Passw, Ipaddress, Regtime, 0));
         teachersDB.close();
         // MenuUIManager.Instance.OpenMainPanel();
-        MenuUIManager.Instance.OpenStudentsPanel();
+        MenuUIManager.Instance.OpenUserPanel();
     }
     
     public static string GetLocalIPAddress()

@@ -17,6 +17,11 @@ public class LeftPanelStudentBlock : MonoBehaviour
 
     [SerializeField] private Image[] onlineImages;
 
+    public TextMeshProUGUI StudentNameText => studentNameText;
+    public TextMeshProUGUI LabCodeText => labCodeText;
+    public TextMeshProUGUI LabTimer => labTimer;
+    public TextMeshProUGUI PcNumText => pcNumText;
+
     private readonly Color activeColor = new Color32(255, 255, 255, 128);
     private readonly Color inactiveColor = new Color32(255, 255, 255, 128);
     private readonly int userEndedLab = Animator.StringToHash("UserEndedLab");
