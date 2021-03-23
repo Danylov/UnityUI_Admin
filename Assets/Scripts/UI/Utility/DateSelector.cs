@@ -42,19 +42,27 @@ public class DateSelector : MonoBehaviour
         }
         else if (selectedDate1 == null && selectedDate2 == null)
         {
+            dateInputField.interactable = false;
             dateInputField.text = defaultText;
         }
         else
+        {
+            dateInputField.interactable = true;
             dateInputField.text = $"{selectedDate1?.ToString("dd/MM/yyyy")} - {selectedDate2?.ToString("dd/MM/yyyy")}";
+        }
     }
 
     private void OnEnable()
     {
         MenuUIManager.Instance.DatePicker.OnDateSelected += DatePickerOnOnDateSelected;
+
+        dateInputField.interactable = false;
     }
 
     private void OnDisable()
     {
+        picker.ForceDaySelect(null, null);
+        
         MenuUIManager.Instance.DatePicker.OnDateSelected -= DatePickerOnOnDateSelected;
     }
 
@@ -62,8 +70,11 @@ public class DateSelector : MonoBehaviour
     {
         if (d1 == null && d2 == null)
         {
-            dateInputField.text = defaultText;
+            selectedDate1 = d1;
+            selectedDate2 = d2;
 
+            dateInputField.text = defaultText;
+            dateInputField.interactable = false;
             return;
         }
 
@@ -77,6 +88,8 @@ public class DateSelector : MonoBehaviour
             selectedDate1 = d1;
             selectedDate2 = d2;
         }
+
+        dateInputField.interactable = true;
 
         dateInputField.text = $"{d1?.ToString("dd/MM/yyyy")} - {d2?.ToString("dd/MM/yyyy")}";
     }

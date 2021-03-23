@@ -255,10 +255,15 @@ public class DatePicker : MonoBehaviour
         SwitchToSelectedDate();
     }
 
-    public void ForceDaySelect(DateTime date1, DateTime date2)
+    public void ForceDaySelect(DateTime? date1, DateTime? date2)
     {
         m_SelectedDate1 = date1;
         m_SelectedDate2 = date2;
+
+        if (date1 == null && date2 == null)
+        {
+            selectedD1 = null;
+        }
 
         SelectActiveBlocks();
 
@@ -291,10 +296,6 @@ public class DatePicker : MonoBehaviour
             }
         }
 
-        Debug.Log(selectedD1);
-        Debug.Log(m_SelectedDate1);
-        Debug.Log(m_SelectedDate2);
-
         OnDateSelected?.Invoke(m_SelectedDate1, m_SelectedDate2);
     }
 
@@ -312,7 +313,7 @@ public class DatePicker : MonoBehaviour
         {
             foreach (var dayToggle in DayToggles)
             {
-                dayToggle.SetState(dayToggle.dateTime <= SelectedDate1
+                dayToggle?.SetState(dayToggle.dateTime <= SelectedDate1
                                    && dayToggle.dateTime >= SelectedDate2);
             }
         }

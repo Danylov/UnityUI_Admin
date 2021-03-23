@@ -40,6 +40,13 @@ public class TaskPanel : MonoBehaviour
     public void ClosePanel()
     {
         gameObject.SetActive(false);
+        
+        if (LauncherSettings.Current.ResetPanelStates)
+        {
+            CloseAllPanels();
+            OpenPaneru3Menu();
+        }
+        
     }
 
     public void OpenPlayListSelectionMenu()

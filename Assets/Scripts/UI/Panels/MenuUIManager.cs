@@ -16,6 +16,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private StatsMenu statsPanel;
     [SerializeField] private HelpPanel helpPanel;
     [SerializeField] private LabDescPanel labDescPanel;
+    [SerializeField] private UnderLineSelectedElement topPanelUnderline;
     public AuthPanel AuthPanel => authPanel;
     public TaskPanel TaskPanel => taskPanel;
     public UserPanel UserPanel => userPanel;
@@ -27,7 +28,14 @@ public class MenuUIManager : MonoBehaviour
 
     [SerializeField] private RectTransform mainPanel;
     [SerializeField] private RectTransform plSetUpMenu;
-
+    [SerializeField] private RectTransform settingsPanel;
+    
+    [Space(10)] [SerializeField] private RectTransform tasksEl;
+    [SerializeField] private RectTransform statsEl;
+    [SerializeField] private RectTransform usersEl;
+    [SerializeField] private RectTransform viewModeEl;
+    [SerializeField] private RectTransform settingsEl;
+    
     [Space(10)] [Header("PopupProps")] [SerializeField]
     private Image popupImage;
 
@@ -65,6 +73,7 @@ public class MenuUIManager : MonoBehaviour
         statsPanel.ClosePanel();
         helpPanel.ClosePanel();
         labDescPanel.ClosePanel();
+        CloseSettingsPanel();
     }
 
     public void Exit()
@@ -76,6 +85,18 @@ public class MenuUIManager : MonoBehaviour
     {
         AuthPanel.ClosePanel();
         mainPanel.gameObject.SetActive(true);
+    }
+
+    public void OpenSettingsPanel()
+    {
+        CloseAllPanels();
+        topPanelUnderline.UnderlineToElement(settingsEl);
+        settingsPanel.gameObject.SetActive(true);
+    }
+
+    public void CloseSettingsPanel()
+    {
+        settingsPanel.gameObject.SetActive(false);
     }
 
     public void OpenCalendar(Vector2 position)
@@ -118,6 +139,7 @@ public class MenuUIManager : MonoBehaviour
     {
         CloseAllPanels();
         taskPanel.OpenPanel();
+        topPanelUnderline.UnderlineToElement(tasksEl);
     }
 
     public void OpenAuthPanel()
@@ -130,18 +152,21 @@ public class MenuUIManager : MonoBehaviour
     {
         CloseAllPanels();
         userPanel.OpenPanel();
+        topPanelUnderline.UnderlineToElement(usersEl);
     }
 
     public void OpenViewModePanel()
     {
         CloseAllPanels();
         viewModePanel.OpenPanel();
+        topPanelUnderline.UnderlineToElement(viewModeEl);
     }
 
     public void OpenStatsPanel()
     {
         CloseAllPanels();
         statsPanel.OpenPanel();
+        topPanelUnderline.UnderlineToElement(statsEl);
     }
 
     public void SwitchNotificationsPanelState()

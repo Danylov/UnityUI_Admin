@@ -16,6 +16,12 @@ public class ViewModePanel : MonoBehaviour
     public void ClosePanel()
     {
         gameObject.SetActive(false);
+        
+        if (LauncherSettings.Current.ResetPanelStates)
+        {
+            CloseAllPanels();
+            OpenViewModePanel();
+        }
     }
 
     private void CloseAllPanels()

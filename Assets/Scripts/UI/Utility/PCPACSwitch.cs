@@ -1,4 +1,5 @@
-﻿using NUnit.Framework.Internal;
+﻿using System;
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class PCPACSwitch : MonoBehaviour
@@ -22,5 +23,13 @@ public class PCPACSwitch : MonoBehaviour
         pc12Text.SetActive(value: false);
         pacButton.SetActiveSprite();
         pcButton.SetInactiveSprite();
+    }
+
+    private void OnDisable()
+    {
+        if (LauncherSettings.Current.ResetPanelStates)
+        {
+            ShowPCMenu();
+        }
     }
 }

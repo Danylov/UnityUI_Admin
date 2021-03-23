@@ -48,4 +48,9 @@ public class UserSwitcher : MonoBehaviour
         else
             SetStudentState();
     }
+
+    private void OnDisable()
+    {
+        SetStudentState();
+    }
 }

@@ -26,6 +26,12 @@ public class StatsMenu : MonoBehaviour
     public void ClosePanel()
     {
         gameObject.SetActive(false);
+
+        if (LauncherSettings.Current.ResetPanelStates)
+        {
+            CloseAllPanels();
+            OpenStatsMenuAll();
+        }
     }
 
     public void OpenStatsMenuAll()
