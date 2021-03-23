@@ -78,10 +78,10 @@ public class MenuUIManager : MonoBehaviour
         mainPanel.gameObject.SetActive(true);
     }
 
-    public void OpenCalendar()
+    public void OpenCalendar(Vector2 position)
     {
-        UIBlocker.OnClick += CloseHelpPanel;
-        datePicker.gameObject.SetActive(true);
+        datePicker.GetComponent<RectTransform>().anchoredPosition = position;
+        datePicker.Activate();
     }
 
     public void OpenHelpPanel()
@@ -91,7 +91,6 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseHelpPanel()
     {
-        UIBlocker.OnClick -= CloseHelpPanel;
         helpPanel.ClosePanel();
     }
 
@@ -107,7 +106,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseCalendar()
     {
-        datePicker.gameObject.SetActive(false);
+        datePicker.Deactivate();
     }
 
     public void CloseMainPanel()

@@ -4,12 +4,11 @@ using UnityEngine;
 public class PCPACSwitch : MonoBehaviour
 {
     [SerializeField] private RectTransform pcMenu;
-    [SerializeField] private RectTransform pacMenu;
 
     [SerializeField] private ChangableButton pcButton;
     [SerializeField] private ChangableButton pacButton;
 
-    [SerializeField] private GameObject pc12Text;
+    [SerializeField] private GameObject pc12Text; // ЭТО КОСТЫЛЬ, СУТЬ В ТОМ, ЧТО В СПИСКЕ ИГРОКОВ НЕ ДОЛЖНЫ ОТОБРАЖАТЬСЯ НОМЕРА ПК ПРИ ВЫБРАНОМ ПАКЕ
     
     public void ShowPCMenu()
     {

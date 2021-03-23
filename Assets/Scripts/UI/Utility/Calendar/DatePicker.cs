@@ -26,7 +26,9 @@ public class DatePicker : MonoBehaviour
     private DateTime? m_SelectedDate1;
     private DateTime? m_SelectedDate2;
 
-    public event UnityAction<DateTime, DateTime> OnDateSelected = null;
+    [SerializeField] private GameObject calendarBlocker;
+
+    public event UnityAction<DateTime?, DateTime?> OnDateSelected = null;
 
     public DateTime? SelectedDate1
     {
@@ -95,12 +97,14 @@ public class DatePicker : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public void Activate()
     {
+        calendarBlocker.SetActive(true);
     }
 
-    private void OnDisable()
+    public void Deactivate()
     {
+        calendarBlocker.SetActive(false);
     }
 
     public string Truncate(string value, int maxLength)
@@ -251,6 +255,16 @@ public class DatePicker : MonoBehaviour
         SwitchToSelectedDate();
     }
 
+    public void ForceDaySelect(DateTime date1, DateTime date2)
+    {
+        m_SelectedDate1 = date1;
+        m_SelectedDate2 = date2;
+
+        SelectActiveBlocks();
+
+        OnDateSelected?.Invoke(m_SelectedDate1, m_SelectedDate2);
+    }
+
     void OnDaySelected(DateTime? date)
     {
         if (selectedD1 == null)
@@ -259,6 +273,8 @@ public class DatePicker : MonoBehaviour
             SelectedDate2 = date;
 
             selectedD1 = true;
+
+            SelectActiveBlocks();
         }
         else
         {
@@ -266,6 +282,8 @@ public class DatePicker : MonoBehaviour
             {
                 SelectedDate2 = date;
                 selectedD1 = false;
+
+                SelectActiveBlocks();
             }
             else
             {
@@ -273,18 +291,30 @@ public class DatePicker : MonoBehaviour
             }
         }
 
-        if (selectedD1 != null)
-        {
-            SelectActiveBlocks();
-        }
+        Debug.Log(selectedD1);
+        Debug.Log(m_SelectedDate1);
+        Debug.Log(m_SelectedDate2);
+
+        OnDateSelected?.Invoke(m_SelectedDate1, m_SelectedDate2);
     }
 
     private void SelectActiveBlocks()
     {
-        foreach (var dayToggle in DayToggles)
+        if (SelectedDate1 < SelectedDate2)
         {
-            dayToggle.SetState(dayToggle.dateTime >= SelectedDate1
-                               && dayToggle.dateTime <= SelectedDate2);
+            foreach (var dayToggle in DayToggles)
+            {
+                dayToggle.SetState(dayToggle.dateTime >= SelectedDate1
+                                   && dayToggle.dateTime <= SelectedDate2);
+            }
+        }
+        else
+        {
+            foreach (var dayToggle in DayToggles)
+            {
+                dayToggle.SetState(dayToggle.dateTime <= SelectedDate1
+                                   && dayToggle.dateTime >= SelectedDate2);
+            }
         }
     }
 
