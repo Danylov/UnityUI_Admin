@@ -11,7 +11,7 @@ namespace UI.Blocks
         [SerializeField] private TextMeshProUGUI orgTypeText;
         [SerializeField] private TextMeshProUGUI jobText;
         [SerializeField] private TextMeshProUGUI tabNumText;
-        [SerializeField] private ToggleButton toggleButton;
+        [SerializeField] private ToggleButtonUser toggleButtonUser;
         [SerializeField] private UnloadButton unloadButton;
 
         public TextMeshProUGUI NameText => nameText;
@@ -19,7 +19,7 @@ namespace UI.Blocks
         public TextMeshProUGUI OrgTypeText => orgTypeText;
         public TextMeshProUGUI JobText => jobText;
         public TextMeshProUGUI TabNumText => tabNumText;
-        public ToggleButton ToggleButton => toggleButton;
+        public ToggleButtonUser ToggleButtonUser => toggleButtonUser;
         public UnloadButton UnloadButton => unloadButton;
 
         [SerializeField] private RectTransform blockContainer;

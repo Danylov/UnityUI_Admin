@@ -178,8 +178,8 @@ GameObject:
   - component: {fileID: 5516221550233684680}
   - component: {fileID: 5516221550233684694}
   - component: {fileID: 5516221550233684695}
-  - component: {fileID: 5516221550233684692}
   - component: {fileID: 5516221550233684693}
+  - component: {fileID: 6698617215559097126}
   m_Layer: 5
   m_Name: Tick
   m_TagString: Untagged
@@ -244,22 +244,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5516221550233684692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5516221550233684681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fee6bf7a0a60f841a020a556fd26d6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  studentDbId: 0
-  isInGroup: 0
-  button: {fileID: 5516221550233684693}
-  tickImage: {fileID: 5516221549905347090}
 --- !u!114 &5516221550233684693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +287,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6698617215559097126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516221550233684681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62769c7c5b14927b2b81d43b6502636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  studentDbId: 0
+  isInGroup: 0
+  button: {fileID: 5516221550233684693}
+  tickImage: {fileID: 5516221549905347090}
 --- !u!1 &5516221550342041133
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +421,7 @@ MonoBehaviour:
   orgTypeText: {fileID: 5516221551850919490}
   jobText: {fileID: 5516221550999467925}
   tabNumText: {fileID: 5516221551458078791}
-  toggleButton: {fileID: 5516221550233684692}
+  toggleButtonUser: {fileID: 6698617215559097126}
   unloadButton: {fileID: 8058026022599419154}
   blockContainer: {fileID: 5516221550342041132}
   changeButton: {fileID: 5516221551839939845}
@@ -1635,7 +1635,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   studentDbId: 0
-  userStudentBlock: {fileID: 6127433099812645993}
   button: {fileID: 1735391345373727815}
 --- !u!1 &5516221551151957228
 GameObject:

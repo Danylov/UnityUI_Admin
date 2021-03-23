@@ -65,9 +65,9 @@ public class UserPanel : MonoBehaviour
             userStudentBlock.JobText.text = position;
             userStudentBlock.TabNumText.text = persNumber;
             userStudentBlock.LoginText.text = login;
-            userStudentBlock.ToggleButton.studentDbId = id;
+            userStudentBlock.ToggleButtonUser.studentDbId = id;
             userStudentBlock.UnloadButton.studentDbId = id;
-            if (choosed == 1) userStudentBlock.ToggleButton.SetOn();
+            if (choosed == 1) userStudentBlock.ToggleButtonUser.SetOn();
         }
     }
         

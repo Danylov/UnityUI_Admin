@@ -89,7 +89,7 @@ public class RegistrationStudentPanel : MonoBehaviour
         var studentsDB = new StudentsDB();
         studentsDB.addStudent(new Student(Name, Family, MdlName, StudGroup, Login, Passw, Ipaddress, 0));
         studentsDB.close();
-        // MenuUIManager.Instance.OpenMainPanel();
+        // MenuUIManager.Instance.OpenTaskPanel();
         MenuUIManager.Instance.OpenUserPanel();
     }
 }

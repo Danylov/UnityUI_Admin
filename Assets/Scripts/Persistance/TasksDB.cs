@@ -8,8 +8,8 @@ public class TasksDB : TasksDbHelper
     {
         MySqlCommand dbcmd = getDbCommand();
         dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS tasks (`id` int NOT NULL AUTO_INCREMENT, " + 
-                            "`name` varchar(45) DEFAULT NULL, `path` varchar(45) DEFAULT NULL, " + 
-                            " PRIMARY KEY (`id`) ) " + 
+                            "`code` varchar(45) DEFAULT NULL, `description` varchar(450) DEFAULT NULL, " + 
+                            "`path` varchar(45) DEFAULT NULL,  PRIMARY KEY (`id`) ) " + 
                             "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;";
         dbcmd.ExecuteNonQuery();
     }
@@ -17,8 +17,8 @@ public class TasksDB : TasksDbHelper
     public override void addTask(Task task)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "INSERT INTO tasks (name, path) VALUES ( '" + 
-                            task.Name1 + "', '" + task.Path1 + "' )";
+        dbcmd.CommandText = "INSERT INTO tasks (code, description, path) VALUES ( '" + 
+                            task.Code1 + "', '" + task.Description1 + "', '" + task.Path1 + "' )";
         dbcmd.ExecuteNonQuery();
         }
    

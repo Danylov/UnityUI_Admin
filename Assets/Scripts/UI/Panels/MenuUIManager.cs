@@ -46,7 +46,7 @@ public class MenuUIManager : MonoBehaviour
 
     public static MenuUIManager Instance;
     
-    public static readonly string connect = "Server=localhost;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
+    public static readonly string connect = "Server=127.0.0.1;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -116,7 +116,6 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenTaskPanel()
     {
-        // CloseAllPanels();
         OpenMainPanel();
         taskPanel.OpenPanel();
     }
@@ -129,7 +128,6 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenUserPanel()
     {
-        // CloseAllPanels();
         OpenMainPanel();
         userPanel.OpenPanel();
     }

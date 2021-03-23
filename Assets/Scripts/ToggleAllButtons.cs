@@ -30,8 +30,8 @@ namespace UI
             foreach(Transform child in SLListContent.transform)
             {
                 var stInfoBlock = child.GetComponent<UserStudentBlock>();
-                if (isOn) stInfoBlock.ToggleButton.SetOn();
-                else stInfoBlock.ToggleButton.SetOff();
+                if (isOn) stInfoBlock.ToggleButtonUser.SetOn();
+                else stInfoBlock.ToggleButtonUser.SetOff();
             }
         }
         public void AnalizeChecks()
@@ -40,7 +40,7 @@ namespace UI
             foreach(Transform child in SLListContent.transform)
             {
                 var stInfoBlock = child.GetComponent<UserStudentBlock>();
-                if (!stInfoBlock.ToggleButton.GetIsOn()) AllChecks = false;
+                if (!stInfoBlock.ToggleButtonUser.GetIsOn()) AllChecks = false;
             }
             isOn = AllChecks;
             tickImage.gameObject.SetActive(isOn);

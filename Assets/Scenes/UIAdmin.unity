@@ -4224,7 +4224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &61865429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4237,15 +4237,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ac0a0b93e0f6249ab0bc6d6a111093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playListCreationMenu: {fileID: 0}
-  playListSelectionMenu: {fileID: 0}
-  panery3: {fileID: 0}
-  playlistChangeParametersMenu: {fileID: 0}
-  playlistChooseParticipantsMenu: {fileID: 0}
-  playlistDataBaseMenu: {fileID: 0}
-  playlistMpSetupMenu: {fileID: 0}
-  navPoint1: {fileID: 0}
-  navPoint2: {fileID: 0}
+  playListCreationMenu: {fileID: 2081241320}
+  playListSelectionMenu: {fileID: 608950588}
+  panery3: {fileID: 1776484894}
+  playlistChangeParametersMenu: {fileID: 1990061386}
+  playlistChooseParticipantsMenu: {fileID: 1208668850}
+  playlistDataBaseMenu: {fileID: 608950588}
+  playlistMpSetupMenu: {fileID: 1782833374}
+  navPoint1: {fileID: 1535300785}
+  navPoint2: {fileID: 1287737888}
 --- !u!224 &61865430
 RectTransform:
   m_ObjectHideFlags: 0
@@ -55427,19 +55427,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OpenAuthPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: OpenRegistrationStudentPanel
+      - m_Target: {fileID: 1114775619}
+        m_MethodName: ShowRegistrationStudentPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -62731,7 +62720,7 @@ RectTransform:
   m_Children:
   - {fileID: 1368642619}
   m_Father: {fileID: 773674714}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -75370,7 +75359,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1592044639}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -86939,7 +86928,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2034563472}
   m_HandleRect: {fileID: 2034563471}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -92210,8 +92199,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -347.8267}
-  m_SizeDelta: {x: 352, y: 695.6534}
+  m_AnchoredPosition: {x: 0, y: -352.2692}
+  m_SizeDelta: {x: 352, y: 704.5384}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1414570082
 MonoBehaviour:
@@ -104333,7 +104322,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 332666288}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -111371,8 +111360,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 859, y: -347.8267}
-  m_SizeDelta: {x: 1014, y: 695.6534}
+  m_AnchoredPosition: {x: 859, y: -352.2692}
+  m_SizeDelta: {x: 1014, y: 704.5384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751045576
 MonoBehaviour:
@@ -112757,8 +112746,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 424, y: -233.82669}
-  m_SizeDelta: {x: 848, y: 467.65338}
+  m_AnchoredPosition: {x: 424, y: -238.2692}
+  m_SizeDelta: {x: 848, y: 476.5384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774040138
 MonoBehaviour:
@@ -122682,8 +122671,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 424, y: -393.65338}
-  m_SizeDelta: {x: 848, y: 351.65338}
+  m_AnchoredPosition: {x: 424, y: -402.5384}
+  m_SizeDelta: {x: 848, y: 360.5384}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1911778919
 MonoBehaviour:
@@ -127121,8 +127110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176, y: -695.6534}
-  m_SizeDelta: {x: 352, y: 488.47928}
+  m_AnchoredPosition: {x: 176, y: -704.5384}
+  m_SizeDelta: {x: 352, y: 497.3643}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1978668262
 MonoBehaviour:
@@ -132632,8 +132621,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 507, y: -380.8267}
-  m_SizeDelta: {x: 1014, y: 629.6534}
+  m_AnchoredPosition: {x: 507, y: -385.2692}
+  m_SizeDelta: {x: 1014, y: 638.5384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2069248470
 MonoBehaviour:

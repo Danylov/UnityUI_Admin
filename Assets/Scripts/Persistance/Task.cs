@@ -1,13 +1,15 @@
     public class Task
     {
         private int Id;
-        private int Name;
-        private int Path;
+        private string Code;
+        private string Description;
+        private string Path;
 
-        public Task(int id, int name, int path)
+        public Task(int id, string code, string description, string path)
         {
             Id = id;
-            Name = name;
+            Code = code;
+            Description = description;
             Path = path;
         }
 
@@ -17,13 +19,20 @@
             set => Id = value;
         }
 
-        public int Name1
+        public string Code1
         {
-            get => Name;
-            set => Name = value;
+            get => Code;
+            set => Code = value;
         }
  
-        public int Path1
+
+        public string Description1
+        {
+            get => Description;
+            set => Description = value;
+        }
+ 
+        public string Path1
         {
             get => Path;
             set => Path = value;

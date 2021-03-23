@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using TMPro;
 using Button = UnityEngine.UI.Button;
 
@@ -89,12 +91,24 @@ public class RegistrationAdminPanel : MonoBehaviour
     }
 
     void AddTeacherToDB() 
-    { 
-        var teachersDB = new TeachersDB();
-        teachersDB.addTeacher(new Teacher(Name, Family, MdlName, Position, Login, Passw, Ipaddress, Regtime, 0));
-        teachersDB.close();
-        // MenuUIManager.Instance.OpenMainPanel();
-        MenuUIManager.Instance.OpenUserPanel();
+    {
+        try
+        {
+            var teachersDB = new TeachersDB();
+            teachersDB.addTeacher(new Teacher(Name, Family, MdlName, Position, Login, Passw, Ipaddress, Regtime, 0));
+            teachersDB.close();
+            // MenuUIManager.Instance.OpenMainPanel();
+            // MenuUIManager.Instance.SendPopup(3,"AddTeacherToDB(): before OpenUserPanel().");  // Отладка
+            MenuUIManager.Instance.OpenUserPanel();
+        }
+        catch (Exception ex)    // Отладка (вниз)
+        {
+            var errorSB = new StringBuilder();
+            var newErrorLine = string.Format("{0}", ex.Message);
+            errorSB.AppendLine(newErrorLine);
+            var csvFilePath = "c:\\" + "errorLauncher.txt";
+            File.WriteAllText(csvFilePath, errorSB.ToString());
+        }  // Отладка (вверх)
     }
     
     public static string GetLocalIPAddress()

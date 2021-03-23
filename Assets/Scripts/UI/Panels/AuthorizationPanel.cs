@@ -34,7 +34,8 @@ public class AuthorizationPanel : MonoBehaviour
         if (reader.HasRows)
         {
             reader.Read();
-            if (reader[0].ToString() == currPassword)  MenuUIManager.Instance.OpenTaskPanel();
+            // if (reader[0].ToString() == currPassword)  MenuUIManager.Instance.OpenTaskPanel();
+            if (reader[0].ToString() == currPassword)  MenuUIManager.Instance.OpenUserPanel();
             else Debug.Log("Введенные логин и пароль не соответствуют друг другу");
         } else Debug.Log("Введенный логин не найден в БД");
     }

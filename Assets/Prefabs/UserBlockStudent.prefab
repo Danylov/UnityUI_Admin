@@ -418,6 +418,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 3670910314954550906}
   loginText: {fileID: 3670910313459239971}
+  orgTypeText: {fileID: 0}
+  jobText: {fileID: 0}
+  tabNumText: {fileID: 0}
+  toggleButtonUser: {fileID: 0}
+  unloadButton: {fileID: 0}
   blockContainer: {fileID: 3670910313390593575}
   changeButton: {fileID: 3670910313558396372}
 --- !u!1 &3670910313426139739
@@ -923,9 +928,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3670910313609308225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45854ccbf341aff4aaed09ea475b9483, type: 3}
+  m_Script: {fileID: 11500000, guid: f62769c7c5b14927b2b81d43b6502636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  studentDbId: 0
   isInGroup: 0
   button: {fileID: 3670910313609308231}
   tickImage: {fileID: 3670910313165368543}
