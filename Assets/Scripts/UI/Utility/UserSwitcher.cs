@@ -11,6 +11,8 @@ public class UserSwitcher : MonoBehaviour
     [SerializeField] private Image studentsImage;
     [SerializeField] private Image teachersImage;
 
+    [SerializeField] private GameObject filter;
+    
     private bool isStudentState = false;
 
     private void Start()
@@ -22,6 +24,8 @@ public class UserSwitcher : MonoBehaviour
     private void SetTeacherState()
     {
         isStudentState = false;
+        
+        filter.SetActive(false);
 
         studentsImage.gameObject.SetActive(true);
         teachersImage.gameObject.SetActive(false);
@@ -30,6 +34,8 @@ public class UserSwitcher : MonoBehaviour
     private void SetStudentState()
     {
         isStudentState = true;
+        
+        filter.SetActive(true);
 
         studentsImage.gameObject.SetActive(false);
         teachersImage.gameObject.SetActive(true);

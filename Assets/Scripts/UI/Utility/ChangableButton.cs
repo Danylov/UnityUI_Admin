@@ -24,16 +24,16 @@ public class ChangableButton : MonoBehaviour
 
     private void Switch()
     {
-        isActive = !isActive;
-
         if (isActive)
-            SetActiveSprite();
-        else
             SetInactiveSprite();
+        else
+            SetActiveSprite();
     }
 
     public void SetActiveSprite()
     {
+        isActive = true;
+        
         image.sprite = activeSprite;
 
         if (setNativeSize)
@@ -42,6 +42,8 @@ public class ChangableButton : MonoBehaviour
 
     public void SetInactiveSprite()
     {
+        isActive = false;
+        
         image.sprite = inactiveSprite;
 
         if (setNativeSize)

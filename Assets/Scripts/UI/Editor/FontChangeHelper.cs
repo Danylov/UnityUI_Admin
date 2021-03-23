@@ -24,18 +24,16 @@ public class FontChangeHelper : MonoBehaviour
     [ContextMenu("HadleToSliced")]
     public void HadleToSliced()
     {
-        var uguis = (Image[]) Resources.FindObjectsOfTypeAll(typeof(Image));
+        var uguis = (Scrollbar[]) Resources.FindObjectsOfTypeAll(typeof(Scrollbar));
 
         foreach (var ugui in uguis)
         {
-            if (ugui.sprite != lfSpite)
-                continue;
+            if (ugui.gameObject.name == "Scrollbar Vertical")
+            {
+                var oldRect = ugui.GetComponent<RectTransform>();
 
-            ugui.type = Image.Type.Simple;
-
-            ugui.sprite = null;
-
-            ugui.color = new Color32(255, 255, 255, 128);
+                ugui.GetComponent<RectTransform>().sizeDelta = new Vector2(8f, oldRect.sizeDelta.y);
+            }
         }
     }
 }

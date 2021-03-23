@@ -45,9 +45,10 @@ public class MenuUIManager : MonoBehaviour
     public const float DefaultStretchSpeed = .15f;
 
     public static MenuUIManager Instance;
-    
+
     public static readonly string connect = "Server=127.0.0.1;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
-    void Awake()
+    
+    private void Awake()
     {
         if (Instance == null) Instance = this;
         else
@@ -60,12 +61,14 @@ public class MenuUIManager : MonoBehaviour
     private void CloseAllPanels()
     {
         authPanel.CloseAllPanels();
+        helpPanel.ClosePanel();
         taskPanel.ClosePanel();
+        statsPanel.ClosePanel();
         userPanel.ClosePanel();
         viewModePanel.ClosePanel();
-        statsPanel.ClosePanel();
-        helpPanel.ClosePanel();
+        CloseNotificationsPanel();
         labDescPanel.ClosePanel();
+        mainPanel.gameObject.SetActive(false);
     }
 
     public void Exit()
@@ -75,17 +78,19 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenMainPanel()
     {
-        authPanel.CloseAllPanels();
+        CloseAllPanels();
         mainPanel.gameObject.SetActive(true);
     }
- 
-    public void OpenCalendar()
+
+    public void OpenCalendar(Vector2 position)
     {
-        datePicker.gameObject.SetActive(true);
+        datePicker.GetComponent<RectTransform>().anchoredPosition = position;
+        datePicker.Activate();
     }
 
     public void OpenHelpPanel()
     {
+        CloseAllPanels();
         helpPanel.OpenPanel();
     }
 
@@ -96,6 +101,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenLabDescPanel()
     {
+        OpenMainPanel();
         labDescPanel.OpenPanel();
     }
 
@@ -106,7 +112,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void CloseCalendar()
     {
-        datePicker.gameObject.SetActive(false);
+        datePicker.Deactivate();
     }
 
     public void CloseMainPanel()
@@ -122,7 +128,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenAuthPanel()
     {
-        CloseMainPanel();
+        CloseAllPanels();
         authPanel.OpenAuthorizationPanel();
     }
 
@@ -134,13 +140,13 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenViewModePanel()
     {
-        CloseAllPanels();
+        OpenMainPanel();
         viewModePanel.OpenPanel();
     }
 
     public void OpenStatsPanel()
     {
-        CloseAllPanels();
+        OpenMainPanel();
         statsPanel.OpenPanel();
     }
 
@@ -159,7 +165,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void OpenPLSetUpMenu()
     {
-        userPanel.ClosePanel();
+        CloseAllPanels();
         plSetUpMenu.gameObject.SetActive(true);
     }
 
