@@ -97,9 +97,7 @@ public class RegistrationAdminPanel : MonoBehaviour
             var teachersDB = new TeachersDB();
             teachersDB.addTeacher(new Teacher(Name, Family, MdlName, Position, Login, Passw, Ipaddress, Regtime, 0));
             teachersDB.close();
-            // MenuUIManager.Instance.OpenMainPanel();
-            // MenuUIManager.Instance.SendPopup(3,"AddTeacherToDB(): before OpenUserPanel().");  // Отладка
-            MenuUIManager.Instance.OpenUserPanel();
+            MenuUIManager.Instance.OpenTaskPanel();
         }
         catch (Exception ex)    // Отладка (вниз)
         {

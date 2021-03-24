@@ -1828,12 +1828,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b45c7ce95464344818d410bde224dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DayToggleTemplate: {fileID: 0}
-  DayNameLabelTemplate: {fileID: 0}
-  DayContainer: {fileID: 0}
-  SelectedDateText: {fileID: 0}
-  CurrentMonth: {fileID: 0}
-  CurrentYear: {fileID: 0}
+  DayToggleTemplate: {fileID: 1074793876}
+  DayNameLabelTemplate: {fileID: 749193392}
+  DayContainer: {fileID: 466708454}
+  SelectedDateText: {fileID: 822193830}
+  CurrentMonth: {fileID: 3417202}
+  CurrentYear: {fileID: 231343550}
   DateFormat: dd-MM-yyyy
   MonthFormat: MMMMM
   ForwardPickOnly: 0
@@ -5750,11 +5750,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1487bc2f5bdbc4685aeeb0dccbf5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  activeSprite: {fileID: 0}
-  inactiveSprite: {fileID: 0}
+  image: {fileID: 81264307}
+  activeSprite: {fileID: 21300000, guid: 62b6e826bf66ed24a97ed765315974db, type: 3}
+  inactiveSprite: {fileID: 21300000, guid: dc6387ad8fa38d946840e98c31b09b94, type: 3}
   setNativeSize: 0
-  changeOnClick: 1
+  changeOnClick: 0
   button: {fileID: 0}
 --- !u!114 &81264307
 MonoBehaviour:
@@ -9099,7 +9099,7 @@ MonoBehaviour:
   teachersButton: {fileID: 1464196632}
   studentsImage: {fileID: 784760675}
   teachersImage: {fileID: 1211844090}
-  filter: {fileID: 0}
+  filter: {fileID: 1189571998}
 --- !u!114 &128620437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9301,10 +9301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c53e90435f46b24d86fb8a2698f8e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsMenuAll: {fileID: 0}
-  statsMenuTeachers: {fileID: 0}
-  statsMenuStudents: {fileID: 0}
-  statsTable: {fileID: 0}
+  statsMenuAll: {fileID: 1153636364}
+  statsMenuTeachers: {fileID: 388914618}
+  statsMenuStudents: {fileID: 2092114262}
+  statsTable: {fileID: 58040698}
 --- !u!222 &131484211
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11333,8 +11333,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 424, y: -387.5384}
-  m_SizeDelta: {x: 848, y: 345.5384}
+  m_AnchoredPosition: {x: 424, y: -148.72787}
+  m_SizeDelta: {x: 848, y: 106.727875}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &154952159
 MonoBehaviour:
@@ -12219,7 +12219,7 @@ MonoBehaviour:
   activeSprite: {fileID: 0}
   inactiveSprite: {fileID: 0}
   setNativeSize: 0
-  changeOnClick: 1
+  changeOnClick: 0
   button: {fileID: 0}
 --- !u!114 &173701099
 MonoBehaviour:
@@ -14402,7 +14402,7 @@ MonoBehaviour:
   m_RestoreOriginalTextOnEscape: 1
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
-  m_InputValidator: {fileID: 11400000, guid: baa44e04e74f2be41b2daad1d8c1077a, type: 2}
+  m_InputValidator: {fileID: 11400000, guid: 1a335791623d5b44c9ab071812e261b3, type: 2}
 --- !u!114 &209366039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14477,7 +14477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &209722569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14510,13 +14510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c985f7f35a5de74f85e8d4d644154b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SLListContentL: {fileID: 847990672}
   SLListContent: {fileID: 953471154}
   SLTickButton: {fileID: 1476333203}
   SLFindName: {fileID: 2104358867}
-  SLFindNameL: {fileID: 1528957204}
-  studentPrefabL: {fileID: 6529563120270764399, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
-    type: 3}
   studentPrefab: {fileID: 5516221550342041133, guid: 82d91734104817e4ca2de0b08cedfa6f,
     type: 3}
 --- !u!222 &209722571
@@ -15550,7 +15546,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 678305937}
         m_MethodName: OpenViewModePanel
         m_Mode: 1
         m_Arguments:
@@ -23965,8 +23961,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 859, y: -265.74536}
-  m_SizeDelta: {x: 1014, y: 531.4907}
+  m_AnchoredPosition: {x: 859, y: -232.86394}
+  m_SizeDelta: {x: 1014, y: 465.72787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348203064
 MonoBehaviour:
@@ -24395,11 +24391,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1487bc2f5bdbc4685aeeb0dccbf5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  activeSprite: {fileID: 0}
-  inactiveSprite: {fileID: 0}
+  image: {fileID: 357279565}
+  activeSprite: {fileID: 21300000, guid: 62b6e826bf66ed24a97ed765315974db, type: 3}
+  inactiveSprite: {fileID: 21300000, guid: dc6387ad8fa38d946840e98c31b09b94, type: 3}
   setNativeSize: 0
-  changeOnClick: 1
+  changeOnClick: 0
   button: {fileID: 0}
 --- !u!114 &357279565
 MonoBehaviour:
@@ -25942,10 +25938,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da6ac27d23560243b633817a63ddcc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  picker: {fileID: 0}
+  picker: {fileID: 20963940}
   defaultText: "\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u0434\u0430\u0442\u0443
     (\u043E\u0442\\\u0434\u043E)"
-  dateInputField: {fileID: 0}
+  dateInputField: {fileID: 1848970220}
   calendarPosition: {x: 0, y: 0}
 --- !u!114 &374605215
 MonoBehaviour:
@@ -32246,12 +32242,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 678305937}
+        m_MethodName: OpenPLSetUpMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -36782,7 +36778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 0, y: -24.99997}
   m_SizeDelta: {x: -100, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &508975453
@@ -38740,7 +38736,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1525222181}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.828125
+  m_Size: 0.6938679
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -39062,7 +39058,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1890655400}
   m_HandleRect: {fileID: 1890655399}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -40423,12 +40419,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1487bc2f5bdbc4685aeeb0dccbf5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  activeSprite: {fileID: 0}
-  inactiveSprite: {fileID: 0}
+  image: {fileID: 566142231}
+  activeSprite: {fileID: 21300000, guid: 0ce94ac36862b114aa82117453d9ea39, type: 3}
+  inactiveSprite: {fileID: 21300000, guid: e73218b0ca071254abe41feea89fabbd, type: 3}
   setNativeSize: 0
-  changeOnClick: 1
-  button: {fileID: 0}
+  changeOnClick: 0
+  button: {fileID: 566142229}
 --- !u!114 &566142231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46891,8 +46887,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -265.74536}
-  m_SizeDelta: {x: 352, y: 531.4907}
+  m_AnchoredPosition: {x: 0, y: -232.86394}
+  m_SizeDelta: {x: 352, y: 465.72787}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &663228119
 MonoBehaviour:
@@ -47181,6 +47177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   authPanel: {fileID: 25045931}
   taskPanel: {fileID: 1304392140}
+  leftStudentPanel: {fileID: 2014323314}
   userPanel: {fileID: 209722570}
   viewModePanel: {fileID: 1341649049}
   notificationsPanel: {fileID: 1805584993}
@@ -47191,7 +47188,7 @@ MonoBehaviour:
   plSetUpMenu: {fileID: 459540303}
   popupImage: {fileID: 1714095321}
   popupText: {fileID: 747304102}
-  datePicker: {fileID: 0}
+  datePicker: {fileID: 20963940}
 --- !u!1 &679268650
 GameObject:
   m_ObjectHideFlags: 0
@@ -54594,7 +54591,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 566042544}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -64634,7 +64631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &953471156
@@ -67718,7 +67715,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 678305937}
         m_MethodName: OpenTaskPanel
         m_Mode: 1
         m_Arguments:
@@ -76258,8 +76255,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 507, y: -298.74536}
-  m_SizeDelta: {x: 1014, y: 465.49072}
+  m_AnchoredPosition: {x: 507, y: -265.86395}
+  m_SizeDelta: {x: 1014, y: 399.72787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1105977478
 MonoBehaviour:
@@ -81230,7 +81227,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 678305937}
         m_MethodName: OpenUserPanel
         m_Mode: 1
         m_Arguments:
@@ -83139,7 +83136,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1464196631}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -88600,7 +88597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1304392140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88613,15 +88610,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ac0a0b93e0f6249ab0bc6d6a111093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playListCreationMenu: {fileID: 0}
-  playListSelectionMenu: {fileID: 0}
-  panery3: {fileID: 0}
-  playlistChangeParametersMenu: {fileID: 0}
-  playlistChooseParticipantsMenu: {fileID: 0}
-  playlistDataBaseMenu: {fileID: 0}
-  playlistMpSetupMenu: {fileID: 0}
-  navPoint1: {fileID: 0}
-  navPoint2: {fileID: 0}
+  playListCreationMenu: {fileID: 1022801988}
+  playListSelectionMenu: {fileID: 1500918665}
+  panery3: {fileID: 1264025026}
+  playlistChangeParametersMenu: {fileID: 714094016}
+  playlistChooseParticipantsMenu: {fileID: 1993123776}
+  playlistDataBaseMenu: {fileID: 1500918665}
+  playlistMpSetupMenu: {fileID: 1129679011}
+  navPoint1: {fileID: 81264306}
+  navPoint2: {fileID: 357279564}
 --- !u!224 &1304392141
 RectTransform:
   m_ObjectHideFlags: 0
@@ -90797,8 +90794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 424, y: -238.2692}
-  m_SizeDelta: {x: 848, y: 476.5384}
+  m_AnchoredPosition: {x: 424, y: -118.86394}
+  m_SizeDelta: {x: 848, y: 237.72787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1348452290
 MonoBehaviour:
@@ -101535,7 +101532,7 @@ RectTransform:
   m_Father: {fileID: 154125494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.171875}
+  m_AnchorMin: {x: 0, y: 0.30613208}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -108650,12 +108647,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1487bc2f5bdbc4685aeeb0dccbf5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  activeSprite: {fileID: 0}
-  inactiveSprite: {fileID: 0}
+  image: {fileID: 1634901374}
+  activeSprite: {fileID: 21300000, guid: 0ce94ac36862b114aa82117453d9ea39, type: 3}
+  inactiveSprite: {fileID: 21300000, guid: e73218b0ca071254abe41feea89fabbd, type: 3}
   setNativeSize: 0
-  changeOnClick: 1
-  button: {fileID: 0}
+  changeOnClick: 0
+  button: {fileID: 1634901373}
 --- !u!114 &1634901373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119419,7 +119416,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.9993579}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -132986,7 +132983,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 678305937}
         m_MethodName: OpenStatsPanel
         m_Mode: 1
         m_Arguments:
@@ -133243,8 +133240,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1764215083}
   m_HandleRect: {fileID: 1764215082}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.9993579
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -136296,8 +136293,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176, y: -531.4907}
-  m_SizeDelta: {x: 352, y: 324.31662}
+  m_AnchoredPosition: {x: 176, y: -465.72787}
+  m_SizeDelta: {x: 352, y: 258.55377}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2014323314
 MonoBehaviour:
@@ -136311,8 +136308,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b6ab3991f4c2b4f87d6139e949e41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contentTransform: {fileID: 0}
-  studentBlockPrefab: {fileID: 0}
+  SLListContentL: {fileID: 847990672}
+  SLFindNameL: {fileID: 1528957204}
+  studentPrefabL: {fileID: 6529563120270764399, guid: 603bb942deb9ba34dbd1a96abc4b0a35,
+    type: 3}
 --- !u!114 &2014323315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142440,7 +142439,7 @@ RectTransform:
   m_Children:
   - {fileID: 409777331}
   m_Father: {fileID: 1075375417}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

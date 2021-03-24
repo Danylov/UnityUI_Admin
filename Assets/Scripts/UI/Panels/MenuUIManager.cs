@@ -12,6 +12,7 @@ public class MenuUIManager : MonoBehaviour
 {
     [SerializeField] private AuthPanel authPanel;
     [SerializeField] private TaskPanel taskPanel;
+    [SerializeField] private LeftStudentPanel leftStudentPanel;
     [SerializeField] private UserPanel userPanel;
     [SerializeField] private ViewModePanel viewModePanel;
     [SerializeField] private NotificationsPanel notificationsPanel;
@@ -20,6 +21,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private LabDescPanel labDescPanel;
     public AuthPanel AuthPanel => authPanel;
     public TaskPanel TaskPanel => taskPanel;
+    public LeftStudentPanel LeftStudentPanel => leftStudentPanel;
     public UserPanel UserPanel => userPanel;
     public ViewModePanel ViewModePanel => viewModePanel;
     public NotificationsPanel NotificationsPanel => notificationsPanel;
@@ -80,6 +82,7 @@ public class MenuUIManager : MonoBehaviour
     {
         CloseAllPanels();
         mainPanel.gameObject.SetActive(true);
+        leftStudentPanel.SpawnStudentsL();
     }
 
     public void OpenCalendar(Vector2 position)
