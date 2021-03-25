@@ -2191,6 +2191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2cb9fd20393304d8a2e31ec33cc057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pun: {fileID: 277632755}
   authoriaztionPanel: {fileID: 762417021}
   registrationAdminPanel: {fileID: 308877337}
   registrationStudentPanel: {fileID: 2068379860}
@@ -19002,6 +19003,7 @@ GameObject:
   - component: {fileID: 277632751}
   - component: {fileID: 277632750}
   - component: {fileID: 277632754}
+  - component: {fileID: 277632755}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -19154,6 +19156,18 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
+--- !u!114 &277632755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277632749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11db0021b77500a4eb659c0612db1dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &278571212
 GameObject:
   m_ObjectHideFlags: 0

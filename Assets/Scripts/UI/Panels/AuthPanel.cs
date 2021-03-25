@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AuthPanel : MonoBehaviour
 {
+    [SerializeField] private Pun pun;
     [SerializeField] private AuthorizationPanel authoriaztionPanel;
     [SerializeField] private RegistrationAdminPanel registrationAdminPanel;
     [SerializeField] private RegistrationStudentPanel registrationStudentPanel;
 
     void Start()
     {
+        pun.StartPun();
         registrationAdminPanel.StartRegistrationAdminPanel();
         registrationStudentPanel.StartRegistrationStudentPanel();
     }
