@@ -15,7 +15,7 @@ public class TeachersDbHelper
     {
         db_connection.Close();
     }
-    public virtual void addTeacher(Teacher teacher)
+    public virtual int addTeacher(Teacher teacher)
     {
         throw null;
     }

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,7 +35,12 @@ public class AuthorizationPanel : MonoBehaviour
         if (reader.HasRows)
         {
             reader.Read();
-            if (reader[0].ToString() == currPassword)  MenuUIManager.Instance.OpenTaskPanel();
+            if (reader[1].ToString() == currPassword)
+            {
+                MenuUIManager.currTeacherId = Convert.ToInt32(reader[0]);
+                Debug.Log("Authorization: currTeacherId = " + MenuUIManager.currTeacherId); // Отладка
+                MenuUIManager.Instance.OpenTaskPanel();
+            }
             else Debug.Log("Введенные логин и пароль не соответствуют друг другу");
         } else Debug.Log("Введенный логин не найден в БД");
     }

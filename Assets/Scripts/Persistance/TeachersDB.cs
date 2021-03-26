@@ -19,7 +19,7 @@ public class TeachersDB : TeachersDbHelper
         dbcmd.ExecuteNonQuery();
     }
 
-    public override void addTeacher(Teacher teacher)
+    public override int addTeacher(Teacher teacher)
     {
         MySqlCommand dbcmd = getDbCommand();
         dbcmd.CommandText = "INSERT INTO teachers (name, family, mdlname, position, login, password, ipaddress, regtime, choosed) VALUES ( '" + 
@@ -27,12 +27,13 @@ public class TeachersDB : TeachersDbHelper
                             teacher.Position1 + "', '" + teacher.Login1 + "', '" + MenuUIManager.PasswEncryption(teacher.Password1) + 
                             "', '" + teacher.Ipaddress1 + "', '" + teacher.Regtime1.ToString("yyyy-MM-dd H:mm:ss") + "', '" + teacher.Choosed1 + "' )";
         dbcmd.ExecuteNonQuery();
+        return (int)dbcmd.LastInsertedId;
     }
    
     public override MySqlDataReader findTeacher(string login)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "SELECT password FROM teachers WHERE login = '" + login + "'";;
+        dbcmd.CommandText = "SELECT id, password FROM teachers WHERE login = '" + login + "'";;
         return dbcmd.ExecuteReader();
     }
     

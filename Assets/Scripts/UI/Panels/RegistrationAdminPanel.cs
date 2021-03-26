@@ -93,7 +93,8 @@ public class RegistrationAdminPanel : MonoBehaviour
     void AddTeacherToDB() 
     {
             var teachersDB = new TeachersDB();
-            teachersDB.addTeacher(new Teacher(Name, Family, MdlName, Position, Login, Passw, Ipaddress, Regtime, 0));
+            MenuUIManager.currTeacherId = teachersDB.addTeacher(new Teacher(Name, Family, MdlName, Position, Login, Passw, Ipaddress, Regtime, 0));
+            Debug.Log("RegistrationAdmin: currTeacherId = " + MenuUIManager.currTeacherId); // Отладка
             teachersDB.close();
             MenuUIManager.Instance.OpenTaskPanel();
     }

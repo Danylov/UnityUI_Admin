@@ -47,8 +47,9 @@ public class MenuUIManager : MonoBehaviour
 
     public static MenuUIManager Instance;
 
-    public static readonly string connect = "Server=127.0.0.1;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;"; 
-    
+    public static readonly string connect = "Server=127.0.0.1;Database=uiadmin;User ID=mysql;Password=mysql;Pooling=true;CharSet=utf8;";
+
+    public static int currTeacherId;
     private void Awake()
     {
         if (Instance == null) Instance = this;
