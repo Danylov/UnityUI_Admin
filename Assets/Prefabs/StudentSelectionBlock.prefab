@@ -437,6 +437,7 @@ MonoBehaviour:
   image: {fileID: 7356589545591821481}
   activeSprite: {fileID: 21300000, guid: 37a4c580cd17a7442ab4e97f4b7386e8, type: 3}
   inactiveSprite: {fileID: 21300000, guid: 00e55206fb0eeef4e9e8652479464f9d, type: 3}
+  setNativeSize: 0
   changeOnClick: 1
   button: {fileID: 7356589545591821483}
 --- !u!114 &7356589545591821483
@@ -494,5 +495,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0be8df2f1c75b347b5600299e87d938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  pcText: {fileID: 0}
+  nameText: {fileID: 7356589543716972743}
+  pcText: {fileID: 7356589544673124506}

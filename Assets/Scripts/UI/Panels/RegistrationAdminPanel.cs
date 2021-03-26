@@ -92,21 +92,10 @@ public class RegistrationAdminPanel : MonoBehaviour
 
     void AddTeacherToDB() 
     {
-        try
-        {
             var teachersDB = new TeachersDB();
             teachersDB.addTeacher(new Teacher(Name, Family, MdlName, Position, Login, Passw, Ipaddress, Regtime, 0));
             teachersDB.close();
             MenuUIManager.Instance.OpenTaskPanel();
-        }
-        catch (Exception ex)    // Отладка (вниз)
-        {
-            var errorSB = new StringBuilder();
-            var newErrorLine = string.Format("{0}", ex.Message);
-            errorSB.AppendLine(newErrorLine);
-            var csvFilePath = "c:\\" + "errorLauncher.txt";
-            File.WriteAllText(csvFilePath, errorSB.ToString());
-        }  // Отладка (вверх)
     }
     
     public static string GetLocalIPAddress()

@@ -7,4 +7,6 @@ public class StudentSelectionBlock : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI pcText;
+    public TextMeshProUGUI NameText => nameText;
+    public TextMeshProUGUI PcText => pcText;
 }

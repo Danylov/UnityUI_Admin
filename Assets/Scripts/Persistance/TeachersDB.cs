@@ -21,16 +21,12 @@ public class TeachersDB : TeachersDbHelper
 
     public override void addTeacher(Teacher teacher)
     {
-        MenuUIManager.Instance.SendPopup(3,"AddTeacherToDB(): 1.");  // Отладка
         MySqlCommand dbcmd = getDbCommand();
-        MenuUIManager.Instance.SendPopup(3,"AddTeacherToDB(): 2.");  // Отладка
         dbcmd.CommandText = "INSERT INTO teachers (name, family, mdlname, position, login, password, ipaddress, regtime, choosed) VALUES ( '" + 
                             teacher.Name1 + "', '" + teacher.Family1 + "', '" + teacher.MdlName1 + "', '" + 
                             teacher.Position1 + "', '" + teacher.Login1 + "', '" + MenuUIManager.PasswEncryption(teacher.Password1) + 
                             "', '" + teacher.Ipaddress1 + "', '" + teacher.Regtime1.ToString("yyyy-MM-dd H:mm:ss") + "', '" + teacher.Choosed1 + "' )";
-        MenuUIManager.Instance.SendPopup(3,"AddTeacherToDB(): 3.");  // Отладка
         dbcmd.ExecuteNonQuery();
-        MenuUIManager.Instance.SendPopup(3,"AddTeacherToDB(): 4.");  // Отладка
     }
    
     public override MySqlDataReader findTeacher(string login)
