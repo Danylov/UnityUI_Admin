@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class LabBlock : MonoBehaviour
 {
-    public ToggleButton ToggleButton;
+    public ToggleButton toggleButton;
     public Button changeParametersButton;
     [SerializeField] private TextMeshProUGUI labCodeText;
     [SerializeField] private TextMeshProUGUI labDescText;

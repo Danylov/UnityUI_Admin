@@ -14,12 +14,13 @@ public class TaskPanel : MonoBehaviour
     [SerializeField] private RectTransform SLListContentTP;
     [SerializeField] private RectTransform LabBlockContent;
 
-    [SerializeField] GameObject StudentSelectionBlockPrefab;
-    [SerializeField] GameObject LabBlockPrefab;
+    [SerializeField] private GameObject StudentSelectionBlockPrefab;
+    [SerializeField] private GameObject LabBlockPrefab;
     
     [SerializeField] private ChangableButton navPoint1;
     [SerializeField] private ChangableButton navPoint2;
-
+    
+    private ToggleButtonOne toggleButtonOne;
     private void CloseAllPanels()
     {
         playListCreationMenu.gameObject.SetActive(false);
@@ -87,6 +88,7 @@ public class TaskPanel : MonoBehaviour
         navPoint2.SetInactiveSprite();
         navPoint1.SetActiveSprite();
         taskPanelMain.gameObject.SetActive(true);
+        toggleButtonOne = LabBlockContent.GetComponent<ToggleButtonOne>();
         SpawnLabs();
     }
     
@@ -136,6 +138,7 @@ public class TaskPanel : MonoBehaviour
         var lab = Instantiate(LabBlockPrefab, spawnLocation, Quaternion.identity);
         lab.transform.SetParent(LabBlockContent.transform, false);
         var labBlock = lab.GetComponent<LabBlock>();
+        toggleButtonOne.AddButton(labBlock.toggleButton);
         labBlock.LabCodeText.text = code;
         labBlock.LabDescText.text = description;
     }

@@ -6,7 +6,7 @@ namespace UI
     [RequireComponent(typeof(Button))]
     public class ToggleButton : MonoBehaviour
     {
-        public bool isInGroup = false;
+        public bool isInGroup;
         [SerializeField] private Button button;
         public Button Button => button;
         [SerializeField] private Image tickImage;
@@ -22,9 +22,7 @@ namespace UI
         private void Switch()
         {
             if (isInGroup)  return;
-
             isOn = !isOn;
-
             tickImage.gameObject.SetActive(isOn);
         }
         

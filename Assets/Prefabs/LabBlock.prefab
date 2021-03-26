@@ -979,7 +979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43b4a59028e5a4488bb7aefb008570e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToggleButton: {fileID: 1699323871641957470}
+  toggleButton: {fileID: 1699323871641957470}
   changeParametersButton: {fileID: 1699323870850605774}
   labCodeText: {fileID: 1699323872376848447}
   labDescText: {fileID: 1699323871406603593}

@@ -38,7 +38,6 @@ public class AuthorizationPanel : MonoBehaviour
             if (reader[1].ToString() == currPassword)
             {
                 MenuUIManager.currTeacherId = Convert.ToInt32(reader[0]);
-                Debug.Log("Authorization: currTeacherId = " + MenuUIManager.currTeacherId); // Отладка
                 MenuUIManager.Instance.OpenTaskPanel();
             }
             else Debug.Log("Введенные логин и пароль не соответствуют друг другу");

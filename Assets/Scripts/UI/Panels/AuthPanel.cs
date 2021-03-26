@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using Photon.Pun.Demo.PunBasics;
+using UnityEngine;
 
 public class AuthPanel : MonoBehaviour
 {
-    [SerializeField] private Pun pun;
+    // [SerializeField] private PunServer punServer;
     [SerializeField] private AuthorizationPanel authoriaztionPanel;
     [SerializeField] private RegistrationAdminPanel registrationAdminPanel;
     [SerializeField] private RegistrationStudentPanel registrationStudentPanel;
 
     void Start()
     {
-        pun.StartPun();
+        // punServer.StartPun();
         registrationAdminPanel.StartRegistrationAdminPanel();
         registrationStudentPanel.StartRegistrationStudentPanel();
     }
