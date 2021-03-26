@@ -12,4 +12,7 @@ public class LabBlock : MonoBehaviour
     [SerializeField] private TextMeshProUGUI labCodeText;
     [SerializeField] private TextMeshProUGUI labDescText;
     [SerializeField] private TextMeshProUGUI parametersChangedText;
+    public TextMeshProUGUI LabCodeText => labCodeText;
+    public TextMeshProUGUI LabDescText => labDescText;
+    public TextMeshProUGUI ParametersChangedText => parametersChangedText;
 }

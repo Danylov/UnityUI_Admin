@@ -11389,8 +11389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 424, y: -526.95416}
-  m_SizeDelta: {x: 848, y: 484.95416}
+  m_AnchoredPosition: {x: 424, y: -215.38647}
+  m_SizeDelta: {x: 848, y: 173.38647}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &154952159
 MonoBehaviour:
@@ -24030,8 +24030,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 859, y: -421.97708}
-  m_SizeDelta: {x: 1014, y: 843.95416}
+  m_AnchoredPosition: {x: 859, y: -266.19324}
+  m_SizeDelta: {x: 1014, y: 532.3865}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348203064
 MonoBehaviour:
@@ -39182,7 +39182,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1890655400}
   m_HandleRect: {fileID: 1890655399}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -47011,8 +47011,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -421.97708}
-  m_SizeDelta: {x: 352, y: 843.95416}
+  m_AnchoredPosition: {x: 0, y: -266.19324}
+  m_SizeDelta: {x: 352, y: 532.3865}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &663228119
 MonoBehaviour:
@@ -76379,8 +76379,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 507, y: -454.97708}
-  m_SizeDelta: {x: 1014, y: 777.95416}
+  m_AnchoredPosition: {x: 507, y: -299.19324}
+  m_SizeDelta: {x: 1014, y: 466.38647}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1105977478
 MonoBehaviour:
@@ -80039,7 +80039,7 @@ GameObject:
   - component: {fileID: 1158826131}
   - component: {fileID: 1158826130}
   m_Layer: 5
-  m_Name: Content
+  m_Name: LabBlockContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88742,7 +88742,10 @@ MonoBehaviour:
   playlistDataBaseMenu: {fileID: 1500918665}
   playlistMpSetupMenu: {fileID: 212047342}
   SLListContentTP: {fileID: 1445987340}
+  LabBlockContent: {fileID: 1158826129}
   StudentSelectionBlockPrefab: {fileID: 7356589545591821487, guid: 28165f0a4d956af4d904028eec2d813a,
+    type: 3}
+  LabBlockPrefab: {fileID: 1699323871465337711, guid: c785be5f084713e4badfdf7f3d51b7eb,
     type: 3}
   navPoint1: {fileID: 81264306}
   navPoint2: {fileID: 357279564}
@@ -90921,8 +90924,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 424, y: -307.97708}
-  m_SizeDelta: {x: 848, y: 615.95416}
+  m_AnchoredPosition: {x: 424, y: -152.19324}
+  m_SizeDelta: {x: 848, y: 304.38647}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1348452290
 MonoBehaviour:
@@ -126809,7 +126812,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -136420,8 +136423,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176, y: -843.9541}
-  m_SizeDelta: {x: 352, y: 636.78}
+  m_AnchoredPosition: {x: 176, y: -532.3865}
+  m_SizeDelta: {x: 352, y: 325.21237}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2014323314
 MonoBehaviour:
