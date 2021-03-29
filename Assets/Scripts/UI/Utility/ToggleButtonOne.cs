@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ToggleButtonOne : MonoBehaviour
 {
-    public List<ToggleButton> trackingButtons;
+    private readonly List<ToggleButton> trackingButtons = new List<ToggleButton>();
 
     public void AddButton(ToggleButton trackingButton)
     {
@@ -17,6 +17,11 @@ public class ToggleButtonOne : MonoBehaviour
         {
             SwitchButtons(trackingButton);
         });
+    }
+
+    public void freeList()
+    {
+        trackingButtons.Clear();
     }
 
     private void SwitchButtons(ToggleButton currButton)

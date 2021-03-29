@@ -120,6 +120,7 @@ public class TaskPanel : MonoBehaviour
 
     public void SpawnLabs()
     {
+        toggleButtonOne.freeList();
         foreach(Transform child in LabBlockContent.transform)   Destroy(child.gameObject);
         var tasksDB = new TasksDB();
         var reader = tasksDB.getAllTasks();
