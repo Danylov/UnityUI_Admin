@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class ChangableButton : MonoBehaviour
 {
+    public int studentId;
+
     [SerializeField] private Image image;
 
     [SerializeField] private Sprite activeSprite;
@@ -12,7 +14,8 @@ public class ChangableButton : MonoBehaviour
     [SerializeField] private bool changeOnClick = true;
     [SerializeField] private Button button;
 
-    private bool isActive = false;
+    private bool isActive;
+    public bool IsActive => isActive;
 
     public void Start()
     {

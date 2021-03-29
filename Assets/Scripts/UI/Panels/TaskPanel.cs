@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,10 @@ public class TaskPanel : MonoBehaviour
     [SerializeField] private ChangableButton navPoint2;
     
     private ToggleButtonOne toggleButtonOne;
+
+    private List<ChangableButton>  studentChangableButtons = new List<ChangableButton>();
+    private List<LabBlock>  labBlocks = new List<LabBlock>();
+    private List<int>  choosedStudentsForLab = new List<int>();
     private void CloseAllPanels()
     {
         playListCreationMenu.gameObject.SetActive(false);
@@ -88,12 +93,12 @@ public class TaskPanel : MonoBehaviour
         navPoint2.SetInactiveSprite();
         navPoint1.SetActiveSprite();
         taskPanelMain.gameObject.SetActive(true);
-        toggleButtonOne = LabBlockContent.GetComponent<ToggleButtonOne>();
         SpawnLabs();
     }
     
     public void SpawnStudentsTP()
     {
+        studentChangableButtons.Clear();
         foreach(Transform child in SLListContentTP.transform)   Destroy(child.gameObject);
         var studentsDB = new StudentsDB();
         var reader = studentsDB.getAllStudents();
@@ -114,12 +119,17 @@ public class TaskPanel : MonoBehaviour
         var studentSB = Instantiate(StudentSelectionBlockPrefab, spawnLocation, Quaternion.identity);
         studentSB.transform.SetParent(SLListContentTP.transform, false);
         var studentSelectionBlock = studentSB.GetComponent<StudentSelectionBlock>();
+        var studentChangableButton = studentSB.GetComponent<ChangableButton>();
+        studentChangableButtons.Add(studentChangableButton);
         studentSelectionBlock.NameText.text = fullName;
         studentSelectionBlock.PcText.text = "0";
+        studentChangableButton.studentId = id;
     }
 
     public void SpawnLabs()
     {
+        labBlocks.Clear();
+        toggleButtonOne = LabBlockContent.GetComponent<ToggleButtonOne>();
         toggleButtonOne.freeList();
         foreach(Transform child in LabBlockContent.transform)   Destroy(child.gameObject);
         var tasksDB = new TasksDB();
@@ -139,8 +149,38 @@ public class TaskPanel : MonoBehaviour
         var lab = Instantiate(LabBlockPrefab, spawnLocation, Quaternion.identity);
         lab.transform.SetParent(LabBlockContent.transform, false);
         var labBlock = lab.GetComponent<LabBlock>();
+        labBlocks.Add(labBlock);
         toggleButtonOne.AddButton(labBlock.toggleButton);
+        labBlock.taskId = id;
         labBlock.LabCodeText.text = code;
         labBlock.LabDescText.text = description;
+    }
+
+    public void startSessions()
+    {
+        int currTaskId = -1;
+        foreach (LabBlock labBlock in labBlocks)
+        {
+            if (labBlock.toggleButton.IsOn) currTaskId = labBlock.taskId;
+        };
+        if (currTaskId == -1)
+        {
+            MenuUIManager.Instance.SendPopup(3, "Необходимо выбрать одну из задач");
+            return;
+        }
+        choosedStudentsForLab.Clear();
+        foreach (ChangableButton studentChangableButton in studentChangableButtons)
+        {
+            if (studentChangableButton.IsActive) choosedStudentsForLab.Add(studentChangableButton.studentId);
+        }
+        DateTime currTime = DateTime.Now;
+        choosedStudentsForLab.ForEach(choosedStudentForLab =>
+        {
+            Session newSession = new Session(MenuUIManager.currTeacherId, choosedStudentForLab, currTaskId,
+                currTime, DateTime.MinValue);
+            var sessionsDB = new SessionsDB();
+            sessionsDB.addSession(newSession);
+            sessionsDB.close();
+        });
     }
 }

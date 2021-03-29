@@ -9,9 +9,8 @@ public class Session
     private DateTime Begtime;
     private DateTime Endtime;
 
-    public Session(int id, int teacherid, int studentid, int taskid, DateTime begtime, DateTime endtime)
+    public Session(int teacherid, int studentid, int taskid, DateTime begtime, DateTime endtime)
     {
-        Id = id;
         Teacherid = teacherid;
         Studentid = studentid;
         Taskid = taskid;

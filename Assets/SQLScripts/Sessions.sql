@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `sessions` (
-                            `id` int unsigned NOT NULL,
+                            `id` int unsigned NOT NULL AUTO_INCREMENT,
                             `teacherid` int DEFAULT NULL,
                             `studentid` int DEFAULT NULL,
                             `taskid` int DEFAULT NULL,
