@@ -177,10 +177,11 @@ public class TaskPanel : MonoBehaviour
         choosedStudentsForLab.ForEach(choosedStudentForLab =>
         {
             Session newSession = new Session(MenuUIManager.currTeacherId, choosedStudentForLab, currTaskId,
-                currTime, DateTime.MinValue);
+                currTime, MenuUIManager.MinDateTime());
             var sessionsDB = new SessionsDB();
             sessionsDB.addSession(newSession);
             sessionsDB.close();
         });
+        OpenTaskPanelMainMenu();
     }
 }

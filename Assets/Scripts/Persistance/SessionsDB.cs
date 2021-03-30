@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 using MySql.Data.MySqlClient;
 using UnityEngine;
 
@@ -35,8 +36,37 @@ public class SessionsDB : SessionsDbHelper
     public override MySqlDataReader findSessionsByTeacherId(int teacherId)
     {
         MySqlCommand dbcmd = getDbCommand();
-        dbcmd.CommandText = "SELECT * FROM sessions WHERE teacherid = '" + teacherId + "'";;
+        dbcmd.CommandText = "SELECT * FROM sessions WHERE teacherid = '" + teacherId + "'";
         return dbcmd.ExecuteReader();
+    }
+
+    public override MySqlDataReader getAllSessions()
+    {
+        return base.getAllSessions("sessions");
+    }
+
+    public override int getNumberCompletedSessions()
+    {
+        MySqlCommand dbcmd = getDbCommand();
+        var minDateTime = MenuUIManager.MinDateTime().ToString("yyyy-MM-dd H:mm:ss");
+        dbcmd.CommandText = "SELECT * FROM sessions WHERE convert('" +  minDateTime + "',datetime) < convert(endtime,datetime);";
+        var reader = dbcmd.ExecuteReader();
+        int numRecords = 0;
+        while (reader.Read()) numRecords++;
+        reader.Close();
+        return numRecords;
+    }
+
+    public override int getNumberRunningSessions()
+    {
+        MySqlCommand dbcmd = getDbCommand();
+        var minDateTime = MenuUIManager.MinDateTime().ToString("yyyy-MM-dd H:mm:ss");
+        dbcmd.CommandText = "SELECT * FROM sessions WHERE convert(endtime,datetime) <= convert('" +  minDateTime + "',datetime);";
+        var reader = dbcmd.ExecuteReader();
+        int numRecords = 0;
+        while (reader.Read()) numRecords++;
+        reader.Close();
+        return numRecords;
     }
     
     public override void deleteSessionById(int id)
@@ -44,11 +74,6 @@ public class SessionsDB : SessionsDbHelper
         MySqlCommand dbcmd = getDbCommand();
         dbcmd.CommandText = "DELETE FROM  sessions WHERE id = '" + id + "'";
         dbcmd.ExecuteNonQuery();
-    }
-
-    public override MySqlDataReader getAllSessions()
-    {
-        return base.getAllSessions("sessions");
     }
 
     public override void deleteAllSessions()

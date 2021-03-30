@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using DG.Tweening;
@@ -218,4 +219,10 @@ public class MenuUIManager : MonoBehaviour
         return strBuilder.ToString();          
     }
 
+    public static DateTime MinDateTime()
+    {
+        long ticks = new DateTime(1800, 01, 01, 00, 00, 00,
+            new CultureInfo("uk-UA", false).Calendar).Ticks;
+        return new DateTime(ticks);
+    }
 }

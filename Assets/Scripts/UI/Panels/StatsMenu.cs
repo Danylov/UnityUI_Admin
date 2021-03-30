@@ -9,7 +9,9 @@ public class StatsMenu : MonoBehaviour
     [SerializeField] private StatsTeachersPanel statsMenuTeachers;
     [SerializeField] private StatsStudentsPanel statsMenuStudents;
     [SerializeField] private StatsTablePanel statsTable;
-
+    [SerializeField] private StatsGeneralPanel statsGeneralPanel;
+    
+    public StatsGeneralPanel StatsGeneralPanel => statsGeneralPanel;
     private void CloseAllPanels()
     {
         statsMenuAll.gameObject.SetActive(false);
@@ -21,6 +23,7 @@ public class StatsMenu : MonoBehaviour
     public void OpenPanel()
     {
         gameObject.SetActive(true);
+        statsGeneralPanel.StatsGeneralVisualization();
     }
 
     public void ClosePanel()

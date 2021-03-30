@@ -24,14 +24,26 @@ public class SessionsDbHelper
     {
         throw null;
     }
-    public virtual void deleteSessionById(int id)
-    {
-        throw null;
-    }    
     public virtual MySqlDataReader getAllSessions()
     {
         throw null;
     }
+
+    public virtual int getNumberCompletedSessions()
+    {
+        throw null;
+    }
+
+    public virtual int getNumberRunningSessions()
+    {
+        throw null;
+    }
+    
+    public virtual void deleteSessionById(int id)
+    {
+        throw null;
+    }    
+
     public virtual void deleteAllSessions()
     {
         throw null;

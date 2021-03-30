@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using UnityEngine;
 
 public class StudentsDB : StudentsDbHelper
 {
@@ -66,6 +67,15 @@ public class StudentsDB : StudentsDbHelper
     public override MySqlDataReader getAllStudents()
     {
         return base.getAllStudents("students");
+    }
+
+    public override int getNumberRegisteredStudents()
+    {
+        var reader = getAllStudents();
+        int numRegStudents = 0;
+        while (reader.Read()) numRegStudents++;
+        reader.Close();
+        return numRegStudents;
     }
 
     public override void deleteAllStudents()

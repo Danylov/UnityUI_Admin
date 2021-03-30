@@ -41,6 +41,10 @@ public class StudentsDbHelper
     {
         throw null;
     }
+    public virtual int getNumberRegisteredStudents()
+    {
+        throw null;
+    }
     public virtual void deleteAllStudents()
     {
         throw null;
