@@ -23,10 +23,29 @@ public class TeachersDbHelper
     {
         throw null;
     }
+    public virtual MySqlDataReader findTeacherById(int id)
+    {
+        throw null;
+    }
     public virtual MySqlDataReader findTeachersLike(string currInput)
     {
         throw null;
     }
+
+    public virtual MySqlDataReader getChoosedTeachers()
+    {
+        throw null;
+    }
+
+    public virtual int getNumberRegisteredTeachers()
+    {
+        throw null;
+    }
+
+    public virtual bool isAllTeachersChoosed()
+    {
+        throw null;
+    }  
     public virtual void deleteTeacherByLogin(string login)
     {
         throw null;

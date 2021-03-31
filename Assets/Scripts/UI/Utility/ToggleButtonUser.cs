@@ -6,14 +6,16 @@ namespace UI
     [RequireComponent(typeof(Button))]
     public class ToggleButtonUser : MonoBehaviour
     {
+        [SerializeField] private bool isTeacher;
+        [SerializeField] private Button button;
+        [SerializeField] private Image tickImage;
+        
         private GameObject SLTickButton;
         private ToggleAllButtons toggleAllButtons;
-        public int studentDbId;
-        public bool isInGroup = false;
-        [SerializeField] private Button button;
-        public Button Button => button;
-        [SerializeField] private Image tickImage;
+        public int userDbId;
+        public bool isInGroup;
         private bool isOn;
+        public Button Button => button;
         public bool IsOn => isOn;
 
         public void Start()
@@ -27,13 +29,19 @@ namespace UI
         private void Switch()
         {
             if (isInGroup)  return;
-
             isOn = !isOn;
-
             tickImage.gameObject.SetActive(isOn);
-            var studentsDB = new StudentsDB();
-            studentsDB.checkStudent(studentDbId, isOn);
-            studentsDB.close();
+
+            if (isTeacher)
+            {
+                var teachersDB = new TeachersDB();
+                teachersDB.checkTeacher(userDbId, isOn);
+                teachersDB.close();
+            } else {           
+                var studentsDB = new StudentsDB();
+                studentsDB.checkStudent(userDbId, isOn);
+                studentsDB.close();
+            }
             toggleAllButtons.AnalizeChecks();
         }
         

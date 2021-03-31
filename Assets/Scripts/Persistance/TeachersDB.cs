@@ -36,7 +36,14 @@ public class TeachersDB : TeachersDbHelper
         dbcmd.CommandText = "SELECT id, password FROM teachers WHERE login = '" + login + "'";;
         return dbcmd.ExecuteReader();
     }
-    
+      
+    public override MySqlDataReader findTeacherById(int id)
+    {
+        MySqlCommand dbcmd = getDbCommand();
+        dbcmd.CommandText = "SELECT * FROM teachers WHERE id = '" + id + "'";;
+        return dbcmd.ExecuteReader();
+    }
+ 
     public override MySqlDataReader findTeachersLike(string currInput)
     {
         MySqlCommand dbcmd = getDbCommand();
@@ -45,6 +52,32 @@ public class TeachersDB : TeachersDbHelper
         return dbcmd.ExecuteReader();
     }
     
+    public override MySqlDataReader getChoosedTeachers()
+    {
+        MySqlCommand dbcmd = getDbCommand();
+        dbcmd.CommandText = "SELECT * FROM  teachers WHERE choosed = 1";
+        MySqlDataReader reader = dbcmd.ExecuteReader();
+        return reader;
+    }
+    
+    public override int getNumberRegisteredTeachers()
+    {
+        var reader = getAllTeachers();
+        int numRegTeachers = 0;
+        while (reader.Read()) numRegTeachers++;
+        reader.Close();
+        return numRegTeachers;
+    }
+    public override bool isAllTeachersChoosed()
+    {
+        var numRegTeachers = getNumberRegisteredTeachers();
+        var reader = getChoosedTeachers();
+        int numChoosedTeachers = 0;
+        while (reader.Read()) numChoosedTeachers++;
+        reader.Close();
+        bool isAllStudChoosed = (numRegTeachers == numChoosedTeachers);
+        return isAllStudChoosed;
+    }
     public override void deleteTeacherByLogin(string login)
     {
         MySqlCommand dbcmd = getDbCommand();

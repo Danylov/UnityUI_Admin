@@ -46,7 +46,6 @@ public class LeftStudentPanel : MonoBehaviour
 
     private void SLFindNameChangedL(string currInput)
     {
-        Debug.Log("In SLFindNameChangedL(string currInput)"); // Отладка
         foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject); 
         var studentsDB = new StudentsDB();
         var reader = studentsDB.findStudentsLike(currInput);
@@ -63,7 +62,6 @@ public class LeftStudentPanel : MonoBehaviour
 
     public void OpenPanel()
     {
-        Debug.Log("In LeftStudentPanel.OpenPanel()"); // Отладка
         SLFindNameL.onValueChanged.AddListener(currInput => SLFindNameChangedL(currInput));
         SpawnStudentsL();
         gameObject.SetActive(true);

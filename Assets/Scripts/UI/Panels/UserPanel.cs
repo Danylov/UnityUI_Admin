@@ -14,14 +14,17 @@ public class UserPanel : MonoBehaviour
     // [SerializeField] private GameObject userBlockStudentPrefab;
     private List<LabBlock> trackedBlocks = new List<LabBlock>();
 
-    private ToggleAllButtons toggleAllButtons;
+    [SerializeField] private ToggleAllButtons toggleAllButtons;
+    [SerializeField] private UnloadAllChecked unloadAllChecked;
     [SerializeField] private GameObject SLListContent;
     [SerializeField] Button SLTickButton;
     [SerializeField] TMP_InputField SLFindName;
     [SerializeField] GameObject studentPrefab;
+    [SerializeField] GameObject teacherPrefab;
     
     public void SpawnStudents()
     {
+        SLFindName.onValueChanged.AddListener(currInput => SLFindNameChangedStudents(currInput));
         foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
         var studentsDB = new StudentsDB();
         var reader = studentsDB.getAllStudents();
@@ -34,7 +37,9 @@ public class UserPanel : MonoBehaviour
             i++;
         }
         studentsDB.close();
+        toggleAllButtons.IsTeacher = false;
         toggleAllButtons.AnalizeChecks();
+        unloadAllChecked.IsTeacher = false;
     }
 
     private void SpawnStudent(int i, int id, string name, string family, string mdlName, string studGroup, string login, string password, int choosed)
@@ -47,16 +52,48 @@ public class UserPanel : MonoBehaviour
             userBlockStudent.GroupText.text = studGroup;
             userBlockStudent.LoginText.text = login;
             userBlockStudent.PasswText.text = password;
-            userBlockStudent.ToggleButtonUser.studentDbId = id;
-            userBlockStudent.UnloadButton.studentDbId = id;
+            userBlockStudent.ToggleButtonUser.userDbId = id;
+            userBlockStudent.UnloadButton.userDbId = id;
             if (choosed == 1) userBlockStudent.ToggleButtonUser.SetOn();
     }
-        
+    
+    public void SpawnTeachers()
+    {
+        SLFindName.onValueChanged.AddListener(currInput => SLFindNameChangedTeachers(currInput));
+        foreach(Transform child in SLListContent.transform)   Destroy(child.gameObject);
+        var teachersDB = new TeachersDB();
+        var reader = teachersDB.getAllTeachers();
+        var i = 0;
+        while (reader.Read())
+        {
+            SpawnTeacher(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), 
+                Convert.ToInt32(reader[9]));
+            i++;
+        }
+        teachersDB.close();
+        toggleAllButtons.IsTeacher = true;
+        toggleAllButtons.AnalizeChecks();
+        unloadAllChecked.IsTeacher = true;
+    }
+
+    private void SpawnTeacher(int i, int id, string name, string family, string mdlName, string position, string login, int choosed)
+    {
+        var spawnLocation = new Vector3(0, 2*i, 0);
+        var teacherInfo = Instantiate(teacherPrefab, spawnLocation, Quaternion.identity);
+        teacherInfo.transform.SetParent(SLListContent.transform, false);
+        var userBlockTeacher = teacherInfo.GetComponent<UserBlockTeacher>();
+        userBlockTeacher.NameText.text = family + " " + name + " " + mdlName;
+        userBlockTeacher.JobText.text = position;
+        userBlockTeacher.LoginText.text = login;
+        userBlockTeacher.ToggleButtonUser.userDbId = id;
+        userBlockTeacher.UnloadButton.userDbId = id;
+        if (choosed == 1) userBlockTeacher.ToggleButtonUser.SetOn();
+    }
     public void OpenPanel()
     {
-        toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
         toggleAllButtons.ToggleAllButtonsStart();
-        SLFindName.onValueChanged.AddListener(currInput => SLFindNameChanged(currInput));
+        SLFindName.onValueChanged.AddListener(currInput => SLFindNameChangedStudents(currInput));
         SpawnStudents();
         gameObject.SetActive(true);
         }
@@ -66,7 +103,7 @@ public class UserPanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void SLFindNameChanged(string currInput)
+    private void SLFindNameChangedStudents(string currInput)
     {
         foreach(Transform child in SLListContent.transform)    Destroy(child.gameObject);
         var studentsDB = new StudentsDB();
@@ -82,6 +119,21 @@ public class UserPanel : MonoBehaviour
         studentsDB.close();
     }
 
+    private void SLFindNameChangedTeachers(string currInput)
+    {
+        foreach(Transform child in SLListContent.transform)    Destroy(child.gameObject);
+        var teachersDB = new TeachersDB();
+        var reader = teachersDB.findTeachersLike(currInput);
+        var i = 0;
+        while (reader.Read())
+        {
+            SpawnTeacher(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), 
+                Convert.ToInt32(reader[9]));
+            i++;
+        };
+        teachersDB.close();
+    }
     public void ShowRegistrationStudentPanel()
     {
         MenuUIManager.Instance.AuthPanel.OpenRegistrationStudentPanel();

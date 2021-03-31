@@ -10,7 +10,14 @@ namespace UI
         [SerializeField] private GameObject SLListContent;
         [SerializeField] private Button button;
         [SerializeField] private Image tickImage;
-        private bool isOn = false;
+        private bool isTeacher;
+        private bool isOn;
+
+        public bool IsTeacher
+        {
+            get => isTeacher;
+            set => isTeacher = value;
+        }
 
         public bool IsOn => isOn;
 
@@ -24,25 +31,43 @@ namespace UI
         {
             isOn = !isOn;
             tickImage.gameObject.SetActive(isOn);
-            var studentsDB = new StudentsDB();
-            studentsDB.checkAllStudents(isOn);
-            studentsDB.close();
-            foreach(Transform child in SLListContent.transform)
+            if (isTeacher)
             {
-                var stInfoBlock = child.GetComponent<UserStudentBlock>();
-                if (isOn) stInfoBlock.ToggleButtonUser.SetOn();
-                else stInfoBlock.ToggleButtonUser.SetOff();
+                var teachersDB = new TeachersDB();
+                teachersDB.checkAllTeachers(isOn);
+                teachersDB.close();
+                foreach(Transform child in SLListContent.transform)
+                {
+                    var stInfoBlock = child.GetComponent<UserBlockTeacher>();
+                    if (isOn) stInfoBlock.ToggleButtonUser.SetOn();
+                    else stInfoBlock.ToggleButtonUser.SetOff();
+                }
+            
+            } else {
+                var studentsDB = new StudentsDB();
+                studentsDB.checkAllStudents(isOn);
+                studentsDB.close();
+                foreach(Transform child in SLListContent.transform)
+                {
+                    var stInfoBlock = child.GetComponent<UserBlockStudent>();
+                    if (isOn) stInfoBlock.ToggleButtonUser.SetOn();
+                    else stInfoBlock.ToggleButtonUser.SetOff();
+                }
             }
+            
         }
         public void AnalizeChecks()
         {
-            bool AllChecks = true;
-            foreach(Transform child in SLListContent.transform)
+            if (isTeacher)
             {
-                var stInfoBlock = child.GetComponent<UserBlockStudent>();
-                if (!stInfoBlock.ToggleButtonUser.GetIsOn()) AllChecks = false;
+                var teachersDB = new TeachersDB();
+                isOn = teachersDB.isAllTeachersChoosed();
+                teachersDB.close();
+            } else {
+                var studentsDB = new StudentsDB();
+                isOn = studentsDB.isAllStudentsChoosed();
+                studentsDB.close();
             }
-            isOn = AllChecks;
             tickImage.gameObject.SetActive(isOn);
         }
     }

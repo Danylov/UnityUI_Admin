@@ -25,7 +25,7 @@ public class StudentsDB : StudentsDbHelper
                             student.StudGroup1 + "', '" + student.Login1 + "', '" + MenuUIManager.PasswEncryption(student.Password1) + 
                             "', '" + student.Ipaddress1 + "', '" + student.Choosed1 + "' )";
         dbcmd.ExecuteNonQuery();
-        }
+    }
    
     public override MySqlDataReader findStudentById(int id)
     {
@@ -77,6 +77,17 @@ public class StudentsDB : StudentsDbHelper
         reader.Close();
         return numRegStudents;
     }
+
+    public override bool isAllStudentsChoosed()
+    {
+        var numRegStudents = getNumberRegisteredStudents();
+        var reader = getChoosedStudents();
+        int numChoosedStudents = 0;
+        while (reader.Read()) numChoosedStudents++;
+        reader.Close();
+        bool isAllStudChoosed = (numRegStudents == numChoosedStudents);
+        return isAllStudChoosed;
+    }    
 
     public override void deleteAllStudents()
     {

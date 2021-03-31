@@ -6,6 +6,13 @@ public class UnloadAllChecked : MonoBehaviour
 {
     [SerializeField] private Button button;
     private UnloadButton unloadButton;
+    private bool isTeacher;
+    
+    public bool IsTeacher
+    {
+        get => isTeacher;
+        set => isTeacher = value;
+    }
     
     void Start()
     {
@@ -13,12 +20,17 @@ public class UnloadAllChecked : MonoBehaviour
     }
     private void UnloadAllCheckedClick()
     {
-        var studentsDB = new StudentsDB();
-        var reader = studentsDB.getChoosedStudents();
-        while (reader.Read())
+        if (isTeacher)
         {
-            UnloadButton.UnloadButtonClick(Convert.ToInt32(reader[0]));
+            var  teachersDB = new TeachersDB();
+            var reader =  teachersDB.getChoosedTeachers();
+            while (reader.Read())  UnloadButton.UnloadButtonTeacherClick(Convert.ToInt32(reader[0]));
+            teachersDB.close();
+        } else {
+            var studentsDB = new StudentsDB();
+            var reader = studentsDB.getChoosedStudents();
+            while (reader.Read())  UnloadButton.UnloadButtonStudentClick(Convert.ToInt32(reader[0]));
+            studentsDB.close();
         }
-        studentsDB.close();
     }
 }

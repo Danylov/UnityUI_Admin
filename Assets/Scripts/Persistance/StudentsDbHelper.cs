@@ -45,6 +45,10 @@ public class StudentsDbHelper
     {
         throw null;
     }
+    public virtual bool isAllStudentsChoosed()
+    {
+        throw null;
+    }    
     public virtual void deleteAllStudents()
     {
         throw null;
