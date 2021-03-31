@@ -39,7 +39,7 @@ namespace UI
             bool AllChecks = true;
             foreach(Transform child in SLListContent.transform)
             {
-                var stInfoBlock = child.GetComponent<UserStudentBlock>();
+                var stInfoBlock = child.GetComponent<UserBlockStudent>();
                 if (!stInfoBlock.ToggleButtonUser.GetIsOn()) AllChecks = false;
             }
             isOn = AllChecks;

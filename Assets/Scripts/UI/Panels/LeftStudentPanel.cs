@@ -24,20 +24,21 @@ public class LeftStudentPanel : MonoBehaviour
         while (reader.Read())
         {
             SpawnStudentL(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
-                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[8]));
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), 
+                reader[6].ToString(), Convert.ToInt32(reader[8]));
             i++;
         }
         studentsDB.close();
     }
 
     
-    private void SpawnStudentL(int i, int id, string fullName, string organizType, string position, string persNumber, string login, int choosed)
+    private void SpawnStudentL(int i, int id, string name, string family, string mdlName, string studGroup, string login, string password, int choosed)
     {
         var spawnLocation = new Vector3(0, 2*i, 0);
         var studentInfoL = Instantiate(studentPrefabL, spawnLocation, Quaternion.identity);
         studentInfoL.transform.SetParent(SLListContentL.transform, false);
         var leftPanelStudentBlock = studentInfoL.GetComponent<LeftPanelStudentBlock>();
-        leftPanelStudentBlock.StudentNameText.text = fullName;
+        leftPanelStudentBlock.StudentNameText.text = family + " " + name + " " + mdlName;
         leftPanelStudentBlock.LabCodeText.text = "0";
         leftPanelStudentBlock.LabTimer.text = "00:00";
         leftPanelStudentBlock.PcNumText.text = "-";
@@ -45,14 +46,16 @@ public class LeftStudentPanel : MonoBehaviour
 
     private void SLFindNameChangedL(string currInput)
     {
-foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject); 
+        Debug.Log("In SLFindNameChangedL(string currInput)"); // Отладка
+        foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject); 
         var studentsDB = new StudentsDB();
         var reader = studentsDB.findStudentsLike(currInput);
         var i = 0;
         while (reader.Read())
         {
             SpawnStudentL(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
-                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[8]));
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), 
+                reader[6].ToString(), Convert.ToInt32(reader[8]));
             i++;
         };
         studentsDB.close();
@@ -60,7 +63,9 @@ foreach(Transform child in SLListContentL.transform)   Destroy(child.gameObject)
 
     public void OpenPanel()
     {
+        Debug.Log("In LeftStudentPanel.OpenPanel()"); // Отладка
         SLFindNameL.onValueChanged.AddListener(currInput => SLFindNameChangedL(currInput));
+        SpawnStudentsL();
         gameObject.SetActive(true);
     }
 

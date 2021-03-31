@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 3670910313390593579}
   - component: {fileID: 3670910313390593578}
   - component: {fileID: 3670910313390593573}
-  - component: {fileID: 3670910313390593572}
+  - component: {fileID: 3661059305389903760}
   m_Layer: 5
   m_Name: UserBlockStudent
   m_TagString: Untagged
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3670910313390593572
+--- !u!114 &3661059305389903760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -413,11 +413,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3670910313390593574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903a3a2d11b457d4e8b1ba872255bca6, type: 3}
+  m_Script: {fileID: 11500000, guid: a39d5b37bbd94d408c9ec40fe3b5d5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 3670910314954550906}
+  groupText: {fileID: 3670910314012284205}
   loginText: {fileID: 3670910313459239971}
+  passwText: {fileID: 1643474580590237045}
+  toggleButtonUser: {fileID: 2474051118152602359}
+  unloadButton: {fileID: 7400334138332921747}
   blockContainer: {fileID: 3670910313390593575}
   changeButton: {fileID: 3670910313558396372}
 --- !u!1 &3670910313426139739
@@ -505,7 +509,7 @@ GameObject:
   - component: {fileID: 3670910313459239971}
   - component: {fileID: 3670910313459239968}
   m_Layer: 5
-  m_Name: Text
+  m_Name: LoginText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,8 +852,8 @@ GameObject:
   - component: {fileID: 3670910313609308230}
   - component: {fileID: 3670910313609308234}
   - component: {fileID: 3670910313609308229}
-  - component: {fileID: 3670910313609308228}
   - component: {fileID: 3670910313609308231}
+  - component: {fileID: 2474051118152602359}
   m_Layer: 5
   m_Name: Tick
   m_TagString: Untagged
@@ -914,21 +918,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3670910313609308228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3670910313609308225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45854ccbf341aff4aaed09ea475b9483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInGroup: 0
-  button: {fileID: 3670910313609308231}
-  tickImage: {fileID: 3670910313165368543}
 --- !u!114 &3670910313609308231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,6 +961,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2474051118152602359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670910313609308225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62769c7c5b14927b2b81d43b6502636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  studentDbId: 0
+  isInGroup: 0
+  button: {fileID: 3670910313609308231}
+  tickImage: {fileID: 3670910313165368543}
 --- !u!1 &3670910313664785200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1251,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3670910313390593572}
+      - m_Target: {fileID: 3661059305389903760}
         m_MethodName: SwitchState
         m_Mode: 1
         m_Arguments:
@@ -1594,8 +1599,10 @@ GameObject:
   - component: {fileID: 3670910314717161307}
   - component: {fileID: 3670910314717161305}
   - component: {fileID: 3670910314717161304}
+  - component: {fileID: 1731380437592004642}
+  - component: {fileID: 7400334138332921747}
   m_Layer: 5
-  m_Name: Upload
+  m_Name: Unload
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1648,7 +1655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u044B\u0437\u0440\u0443\u0437\u0438\u0442\u044C"
+  m_text: "\u0412\u044B\u0433\u0440\u0443\u0437\u0438\u0442\u044C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50c709e1671aa504788c07c69ffc4679, type: 2}
   m_sharedMaterial: {fileID: -6028694084317347080, guid: 50c709e1671aa504788c07c69ffc4679,
@@ -1718,6 +1725,63 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1731380437592004642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670910314717161306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 3670910314717161304}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7400334138332921747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670910314717161306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d219b93d9bb9120428064b11dae1c5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  studentDbId: 0
+  button: {fileID: 1731380437592004642}
 --- !u!1 &3670910314775482435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1795,7 @@ GameObject:
   - component: {fileID: 3670910314775482438}
   - component: {fileID: 3670910314775482433}
   m_Layer: 5
-  m_Name: Label
+  m_Name: LoginLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2210,7 +2274,7 @@ GameObject:
   - component: {fileID: 1643474580590237045}
   - component: {fileID: 1820078216646989917}
   m_Layer: 5
-  m_Name: GroupText
+  m_Name: PasswText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2365,7 +2429,7 @@ GameObject:
   - component: {fileID: 3889388063483664724}
   - component: {fileID: 3217645492671554815}
   m_Layer: 5
-  m_Name: Group
+  m_Name: Passw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

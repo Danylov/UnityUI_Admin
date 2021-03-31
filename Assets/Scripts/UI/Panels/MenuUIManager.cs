@@ -83,8 +83,8 @@ public class MenuUIManager : MonoBehaviour
     {
         CloseAllPanels();
         mainPanel.gameObject.SetActive(true);
-        leftStudentPanel.SpawnStudentsL();
-    }
+        leftStudentPanel.OpenPanel();
+        }
 
     public void OpenCalendar(Vector2 position)
     {

@@ -29,27 +29,27 @@ public class UserPanel : MonoBehaviour
         while (reader.Read())
         {
             SpawnStudent(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
-                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[8]));
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), 
+                reader[6].ToString(), Convert.ToInt32(reader[8]));
             i++;
         }
         studentsDB.close();
         toggleAllButtons.AnalizeChecks();
     }
 
-    private void SpawnStudent(int i, int id, string fullName, string organizType, string position, string persNumber, string login, int choosed)
+    private void SpawnStudent(int i, int id, string name, string family, string mdlName, string studGroup, string login, string password, int choosed)
     {
         var spawnLocation = new Vector3(0, 2*i, 0);
             var studentInfo = Instantiate(studentPrefab, spawnLocation, Quaternion.identity);
             studentInfo.transform.SetParent(SLListContent.transform, false);
-            var userStudentBlock = studentInfo.GetComponent<UserStudentBlock>();
-            userStudentBlock.NameText.text = fullName;
-            userStudentBlock.OrgTypeText.text = organizType;
-            userStudentBlock.JobText.text = position;
-            userStudentBlock.TabNumText.text = persNumber;
-            userStudentBlock.LoginText.text = login;
-            userStudentBlock.ToggleButtonUser.studentDbId = id;
-            userStudentBlock.UnloadButton.studentDbId = id;
-            if (choosed == 1) userStudentBlock.ToggleButtonUser.SetOn();
+            var userBlockStudent = studentInfo.GetComponent<UserBlockStudent>();
+            userBlockStudent.NameText.text = family + " " + name + " " + mdlName;
+            userBlockStudent.GroupText.text = studGroup;
+            userBlockStudent.LoginText.text = login;
+            userBlockStudent.PasswText.text = password;
+            userBlockStudent.ToggleButtonUser.studentDbId = id;
+            userBlockStudent.UnloadButton.studentDbId = id;
+            if (choosed == 1) userBlockStudent.ToggleButtonUser.SetOn();
     }
         
     public void OpenPanel()
@@ -75,7 +75,8 @@ public class UserPanel : MonoBehaviour
         while (reader.Read())
         {
             SpawnStudent(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
-                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), Convert.ToInt32(reader[8]));
+                reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), 
+                reader[6].ToString(), Convert.ToInt32(reader[8]));
             i++;
         };
         studentsDB.close();
