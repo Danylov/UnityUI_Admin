@@ -25,23 +25,23 @@ public class LeftStudentPanel : MonoBehaviour
         {
             SpawnStudentL(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
                 reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), 
-                reader[6].ToString(), Convert.ToInt32(reader[8]));
+                reader[6].ToString(), reader[7].ToString(), Convert.ToInt32(reader[8]));
             i++;
         }
         studentsDB.close();
     }
 
     
-    private void SpawnStudentL(int i, int id, string name, string family, string mdlName, string studGroup, string login, string password, int choosed)
+    private void SpawnStudentL(int i, int id, string name, string family, string mdlName, string studGroup, string login, string password, string ipaddress, int choosed)
     {
         var spawnLocation = new Vector3(0, 2*i, 0);
         var studentInfoL = Instantiate(studentPrefabL, spawnLocation, Quaternion.identity);
         studentInfoL.transform.SetParent(SLListContentL.transform, false);
         var leftPanelStudentBlock = studentInfoL.GetComponent<LeftPanelStudentBlock>();
         leftPanelStudentBlock.StudentNameText.text = family + " " + name + " " + mdlName;
-        leftPanelStudentBlock.LabCodeText.text = "0";
+        leftPanelStudentBlock.LabCodeText.text = studGroup;
         leftPanelStudentBlock.LabTimer.text = "00:00";
-        leftPanelStudentBlock.PcNumText.text = "-";
+        leftPanelStudentBlock.PcNumText.text = ipaddress;
     }
 
     private void SLFindNameChangedL(string currInput)
@@ -54,7 +54,7 @@ public class LeftStudentPanel : MonoBehaviour
         {
             SpawnStudentL(i, Convert.ToInt32(reader[0]), reader[1].ToString(), reader[2].ToString(),
                 reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), 
-                reader[6].ToString(), Convert.ToInt32(reader[8]));
+                reader[6].ToString(),reader[7].ToString(), Convert.ToInt32(reader[8]));
             i++;
         };
         studentsDB.close();
