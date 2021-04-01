@@ -7,17 +7,18 @@ namespace UI
     [RequireComponent(typeof(Button))]
     public class ToggleAllButtons : MonoBehaviour
     {
-        [SerializeField] private GameObject SLListContent;
+        public GameObject SLListContent;
         [SerializeField] private Button button;
         [SerializeField] private Image tickImage;
-        private bool isTeacher;
-        private bool isOn;
+        private int prefabType; // 0 - UserBlockTeacher, 1 - UserBlockStudent, 2 - StatsStudentBlock
 
-        public bool IsTeacher
+        public int PrefabType
         {
-            get => isTeacher;
-            set => isTeacher = value;
+            get => prefabType;
+            set => prefabType = value;
         }
+
+        private bool isOn;
 
         public bool IsOn => isOn;
 
@@ -31,34 +32,34 @@ namespace UI
         {
             isOn = !isOn;
             tickImage.gameObject.SetActive(isOn);
-            if (isTeacher)
+            if (prefabType == 0)
             {
                 var teachersDB = new TeachersDB();
                 teachersDB.checkAllTeachers(isOn);
                 teachersDB.close();
-                foreach(Transform child in SLListContent.transform)
-                {
-                    var stInfoBlock = child.GetComponent<UserBlockTeacher>();
-                    if (isOn) stInfoBlock.ToggleButtonUser.SetOn();
-                    else stInfoBlock.ToggleButtonUser.SetOff();
-                }
-            
             } else {
                 var studentsDB = new StudentsDB();
                 studentsDB.checkAllStudents(isOn);
                 studentsDB.close();
-                foreach(Transform child in SLListContent.transform)
+            }
+            foreach(Transform child in SLListContent.transform)
+            {
+                ToggleButtonUser toggleButtonUser;
+                switch (prefabType)
                 {
-                    var stInfoBlock = child.GetComponent<UserBlockStudent>();
-                    if (isOn) stInfoBlock.ToggleButtonUser.SetOn();
-                    else stInfoBlock.ToggleButtonUser.SetOff();
+                    case 0:  toggleButtonUser = child.GetComponent<UserBlockTeacher>().ToggleButtonUser; break;
+                    case 1:  toggleButtonUser = child.GetComponent<UserBlockStudent>().ToggleButtonUser; break;
+                    case 2:  toggleButtonUser = child.GetComponent<StatsStudentBlock>().ToggleButtonUser; break;
+                    default: toggleButtonUser = child.GetComponent<UserBlockStudent>().ToggleButtonUser; break;
                 }
+                if (isOn) toggleButtonUser.SetOn();
+                else toggleButtonUser.SetOff();
             }
             
         }
         public void AnalizeChecks()
         {
-            if (isTeacher)
+            if (prefabType == 0)
             {
                 var teachersDB = new TeachersDB();
                 isOn = teachersDB.isAllTeachersChoosed();

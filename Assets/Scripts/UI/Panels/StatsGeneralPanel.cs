@@ -19,4 +19,16 @@ public class StatsGeneralPanel : MonoBehaviour
         registeredStudentsCounter.text = studentsDB.getNumberRegisteredStudents().ToString();
         studentsDB.close();
     }
+    
+    public void OpenPanel()
+    {
+        gameObject.SetActive(true);
+        StatsGeneralVisualization();
+    }
+
+    public void ClosePanel()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

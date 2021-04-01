@@ -9,9 +9,8 @@ namespace UI
         [SerializeField] private bool isTeacher;
         [SerializeField] private Button button;
         [SerializeField] private Image tickImage;
+        public ToggleAllButtons toggleAllButtons;
         
-        private GameObject SLTickButton;
-        private ToggleAllButtons toggleAllButtons;
         public int userDbId;
         public bool isInGroup;
         private bool isOn;
@@ -20,8 +19,6 @@ namespace UI
 
         public void Start()
         {
-            SLTickButton = GameObject.Find("SLTickButton");
-            toggleAllButtons = SLTickButton.GetComponent<ToggleAllButtons>();
             tickImage.gameObject.SetActive(isOn);
             button.onClick.AddListener(Switch);
         }

@@ -5,16 +5,14 @@ using UnityEngine.Animations;
 
 public class StatsMenu : MonoBehaviour
 {
-    [SerializeField] private RectTransform statsMenuAll;
+    [SerializeField] private StatsGeneralPanel statsMenuGeneral;
     [SerializeField] private StatsTeachersPanel statsMenuTeachers;
     [SerializeField] private StatsStudentsPanel statsMenuStudents;
     [SerializeField] private StatsTablePanel statsTable;
-    [SerializeField] private StatsGeneralPanel statsGeneralPanel;
     
-    public StatsGeneralPanel StatsGeneralPanel => statsGeneralPanel;
     private void CloseAllPanels()
     {
-        statsMenuAll.gameObject.SetActive(false);
+        statsMenuGeneral.ClosePanel();
         statsMenuTeachers.ClosePanel();
         statsMenuStudents.ClosePanel();
         statsTable.ClosePanel();
@@ -23,7 +21,7 @@ public class StatsMenu : MonoBehaviour
     public void OpenPanel()
     {
         gameObject.SetActive(true);
-        statsGeneralPanel.StatsGeneralVisualization();
+        OpenStatsMenuGeneral();
     }
 
     public void ClosePanel()
@@ -31,10 +29,10 @@ public class StatsMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void OpenStatsMenuAll()
+    public void OpenStatsMenuGeneral()
     {
         CloseAllPanels();
-        statsMenuAll.gameObject.SetActive(true);
+        statsMenuGeneral.OpenPanel();
     }
 
     public void OpenStatsMenuTeachers()

@@ -423,6 +423,8 @@ GameObject:
   - component: {fileID: 1117665952623130295}
   - component: {fileID: 1117665952623130293}
   - component: {fileID: 1117665952623130292}
+  - component: {fileID: 3508572655771230791}
+  - component: {fileID: 7619155175277398110}
   m_Layer: 5
   m_Name: Upload
   m_TagString: Untagged
@@ -477,7 +479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u044B\u0437\u0440\u0443\u0437\u0438\u0442\u044C"
+  m_text: "\u0412\u044B\u0433\u0440\u0443\u0437\u0438\u0442\u044C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50c709e1671aa504788c07c69ffc4679, type: 2}
   m_sharedMaterial: {fileID: -6028694084317347080, guid: 50c709e1671aa504788c07c69ffc4679,
@@ -547,6 +549,64 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3508572655771230791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117665952623130294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d219b93d9bb9120428064b11dae1c5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userDbId: 0
+  isTeacher: 0
+  button: {fileID: 7619155175277398110}
+--- !u!114 &7619155175277398110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117665952623130294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1117665952623130292}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1117665952632684028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,8 +1401,8 @@ GameObject:
   - component: {fileID: 1117665953672608914}
   - component: {fileID: 1117665953672608918}
   - component: {fileID: 1117665953672608913}
-  - component: {fileID: 1117665953672608912}
   - component: {fileID: 1117665953672608915}
+  - component: {fileID: 2363667330024280728}
   m_Layer: 5
   m_Name: Tick
   m_TagString: Untagged
@@ -1407,21 +1467,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1117665953672608912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117665953672608925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45854ccbf341aff4aaed09ea475b9483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInGroup: 0
-  button: {fileID: 1117665953672608915}
-  tickImage: {fileID: 1117665953033839718}
 --- !u!114 &1117665953672608915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,6 +1510,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2363667330024280728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117665953672608925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62769c7c5b14927b2b81d43b6502636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTeacher: 0
+  button: {fileID: 1117665953672608915}
+  tickImage: {fileID: 1117665953033839718}
+  toggleAllButtons: {fileID: 0}
+  userDbId: 0
+  isInGroup: 0
 --- !u!1 &1117665953759668725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1772,7 @@ GameObject:
   - component: {fileID: 1117665954065078512}
   - component: {fileID: 1117665954065078515}
   - component: {fileID: 8447857278318569425}
+  - component: {fileID: 7093043923959175745}
   m_Layer: 5
   m_Name: StatsStudentBlock
   m_TagString: Untagged
@@ -1825,12 +1889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockTransform: {fileID: 1117665954065078514}
-  listContainer: {fileID: 1117665953590479358}
-  resizeButton: {fileID: 1117665953588213275}
-  innerLists:
-  - {fileID: 5436411990644899506}
-  defaultBlockHeight: 75
-  executionDelay: 0.05
+  thingsContainer: {fileID: 1117665953590479358}
 --- !u!114 &8447857278318569425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1843,11 +1902,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beed9561ef85044c8593f344d9f0bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stretchingList: {fileID: 1117665954065078515}
+  stretchingList: {fileID: 7093043923959175745}
   nameText: {fileID: 1117665953290228705}
   groupText: {fileID: 1117665953759668712}
+  toggleButtonUser: {fileID: 2363667330024280728}
+  unloadButton: {fileID: 3508572655771230791}
   trainingBlockPrefab: {fileID: 606783350794353141, guid: d6766711049380648adc1c1acefcfdc6,
     type: 3}
+--- !u!114 &7093043923959175745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117665954065078525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e604fe5a635d9f4691b0ce4a4cb6df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockTransform: {fileID: 1117665954065078514}
+  listContainer: {fileID: 1117665953590479358}
+  resizeButton: {fileID: 1117665953588213275}
+  innerLists: []
+  defaultBlockHeight: 75
+  executionDelay: 0.05
 --- !u!1001 &4835100016293431113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1980,6 +2059,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 606783350794353147, guid: d6766711049380648adc1c1acefcfdc6,
+        type: 3}
+      propertyPath: thingsContainer
+      value: 
+      objectReference: {fileID: 1117665953590479358}
     - target: {fileID: 606783351522118387, guid: d6766711049380648adc1c1acefcfdc6,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2083,15 +2167,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4835100016293431113}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5436411990644899506 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 606783350794353147, guid: d6766711049380648adc1c1acefcfdc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 4835100016293431113}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f3bb0806bb0b2842b09e8a0373dc7a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

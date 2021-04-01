@@ -17,7 +17,6 @@ public class UserPanel : MonoBehaviour
     [SerializeField] private ToggleAllButtons toggleAllButtons;
     [SerializeField] private UnloadAllChecked unloadAllChecked;
     [SerializeField] private GameObject SLListContent;
-    [SerializeField] Button SLTickButton;
     [SerializeField] TMP_InputField SLFindName;
     [SerializeField] GameObject studentPrefab;
     [SerializeField] GameObject teacherPrefab;
@@ -37,7 +36,7 @@ public class UserPanel : MonoBehaviour
             i++;
         }
         studentsDB.close();
-        toggleAllButtons.IsTeacher = false;
+        toggleAllButtons.PrefabType = 1;
         toggleAllButtons.AnalizeChecks();
         unloadAllChecked.IsTeacher = false;
     }
@@ -53,6 +52,7 @@ public class UserPanel : MonoBehaviour
             userBlockStudent.LoginText.text = login;
             userBlockStudent.PasswText.text = password;
             userBlockStudent.ToggleButtonUser.userDbId = id;
+            userBlockStudent.ToggleButtonUser.toggleAllButtons = toggleAllButtons;
             userBlockStudent.UnloadButton.userDbId = id;
             if (choosed == 1) userBlockStudent.ToggleButtonUser.SetOn();
     }
@@ -72,7 +72,7 @@ public class UserPanel : MonoBehaviour
             i++;
         }
         teachersDB.close();
-        toggleAllButtons.IsTeacher = true;
+        toggleAllButtons.PrefabType = 0;
         toggleAllButtons.AnalizeChecks();
         unloadAllChecked.IsTeacher = true;
     }
@@ -87,11 +87,13 @@ public class UserPanel : MonoBehaviour
         userBlockTeacher.JobText.text = position;
         userBlockTeacher.LoginText.text = login;
         userBlockTeacher.ToggleButtonUser.userDbId = id;
+        userBlockTeacher.ToggleButtonUser.toggleAllButtons = toggleAllButtons;
         userBlockTeacher.UnloadButton.userDbId = id;
         if (choosed == 1) userBlockTeacher.ToggleButtonUser.SetOn();
     }
     public void OpenPanel()
     {
+        toggleAllButtons.SLListContent = SLListContent;
         toggleAllButtons.ToggleAllButtonsStart();
         SLFindName.onValueChanged.AddListener(currInput => SLFindNameChangedStudents(currInput));
         SpawnStudents();
